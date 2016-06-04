@@ -501,6 +501,46 @@ namespace HlslTools.Syntax
         {
 
         }
+
+        public virtual void VisitUnityCompilationUnit(UnityCompilationUnitSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityShader(UnityShaderSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityShaderProperties(UnityShaderPropertiesSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityShaderProperty(UnityShaderPropertySyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnitySubShader(UnitySubShaderSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityPass(UnityPassSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityCgProgram(UnityCgProgramSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityFallback(UnityFallbackSyntax node)
+        {
+            DefaultVisit(node);
+        }
     }
 
     public abstract class SyntaxVisitor<T>
@@ -1005,6 +1045,46 @@ namespace HlslTools.Syntax
         public virtual T VisitFunctionLikeMacroReference(FunctionLikeMacroReference node)
         {
             return default(T);
+        }
+
+        public virtual T VisitUnityCompilationUnit(UnityCompilationUnitSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityShader(UnityShaderSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityShaderProperties(UnityShaderPropertiesSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityShaderProperty(UnityShaderPropertySyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnitySubShader(UnitySubShaderSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityPass(UnityPassSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityCgProgram(UnityCgProgramSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityFallback(UnityFallbackSyntax node)
+        {
+            return DefaultVisit(node);
         }
     }
 }

@@ -23,5 +23,20 @@ namespace HlslTools.Tests.Parser
             var roundtrippedText = syntaxTree.Root.ToFullString();
             Assert.That(roundtrippedText, Is.EqualTo(sourceCode));
         }
+
+        [TestCaseSource(typeof(ShaderTestUtility), nameof(ShaderTestUtility.GetUnityTestShaders))]
+        public void CanBuildUnitySyntaxTree(string testFile)
+        {
+            var sourceCode = File.ReadAllText(testFile);
+
+            // Build syntax tree.
+            var syntaxTree = SyntaxFactory.ParseUnitySyntaxTree(SourceText.From(sourceCode), fileSystem: new TestUnityFileSystem(testFile));
+
+            ShaderTestUtility.CheckForParseErrors(syntaxTree);
+
+            // Check roundtripping.
+            var roundtrippedText = syntaxTree.Root.ToFullString();
+            Assert.That(roundtrippedText, Is.EqualTo(sourceCode));
+        }
     }
 }

@@ -14,6 +14,11 @@ namespace HlslTools.Syntax
             return Parse(sourceText, options, fileSystem ?? new DummyFileSystem(), p => p.ParseCompilationUnit(cancellationToken));
         }
 
+        public static SyntaxTree ParseUnitySyntaxTree(SourceText sourceText, ParserOptions options = null, IIncludeFileSystem fileSystem = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return Parse(sourceText, options, fileSystem ?? new DummyFileSystem(), p => p.ParseUnityCompilationUnit(cancellationToken), LexerMode.UnitySyntax);
+        }
+
         public static CompilationUnitSyntax ParseCompilationUnit(string text, IIncludeFileSystem fileSystem = null)
         {
             return (CompilationUnitSyntax) Parse(SourceText.From(text), null, fileSystem, p => p.ParseCompilationUnit(CancellationToken.None)).Root;
@@ -29,10 +34,10 @@ namespace HlslTools.Syntax
             return (StatementSyntax) Parse(SourceText.From(text), null, null, p => p.ParseStatement()).Root;
         }
 
-        private static SyntaxTree Parse(SourceText sourceText, ParserOptions options, IIncludeFileSystem fileSystem, Func<HlslParser, SyntaxNode> parseFunc)
+        private static SyntaxTree Parse(SourceText sourceText, ParserOptions options, IIncludeFileSystem fileSystem, Func<HlslParser, SyntaxNode> parseFunc, LexerMode mode = LexerMode.Syntax)
         {
             var lexer = new HlslLexer(sourceText, options, fileSystem);
-            var parser = new HlslParser(lexer);
+            var parser = new HlslParser(lexer, mode);
 
             var result = new SyntaxTree(sourceText,
                 syntaxTree => new Tuple<SyntaxNode, List<FileSegment>>(

@@ -1267,6 +1267,14 @@ namespace HlslTools.Syntax
                 case SyntaxKind.VolatileKeyword:
                 case SyntaxKind.VoidKeyword:
                 case SyntaxKind.WhileKeyword:
+                case SyntaxKind.UnityShaderKeyword:
+                case SyntaxKind.UnitySubShaderKeyword:
+                case SyntaxKind.UnityPropertiesKeyword:
+                case SyntaxKind.UnityPassKeyword:
+                case SyntaxKind.UnityCgProgramKeyword:
+                case SyntaxKind.UnityEndCgKeyword:
+                case SyntaxKind.UnityFallbackKeyword:
+                case SyntaxKind.UnityOffKeyword:
                     return true;
 
                 default:
@@ -1415,6 +1423,33 @@ namespace HlslTools.Syntax
 
                 default:
                     return false;
+            }
+        }
+
+        public static SyntaxKind GetUnityKeywordKind(string text)
+        {
+            if (text == null)
+                throw new ArgumentNullException(nameof(text));
+
+            switch (text)
+            {
+                case "Shader":
+                    return SyntaxKind.UnityShaderKeyword;
+                case "Properties":
+                    return SyntaxKind.UnityPropertiesKeyword;
+                case "SubShader":
+                    return SyntaxKind.UnitySubShaderKeyword;
+                case "Pass":
+                    return SyntaxKind.UnityPassKeyword;
+                case "CGPROGRAM":
+                    return SyntaxKind.UnityCgProgramKeyword;
+                case "Fallback":
+                    return SyntaxKind.UnityFallbackKeyword;
+                case "Off":
+                    return SyntaxKind.UnityOffKeyword;
+
+                default:
+                    return SyntaxKind.IdentifierToken;
             }
         }
 

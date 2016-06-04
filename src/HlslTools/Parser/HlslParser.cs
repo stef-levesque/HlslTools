@@ -401,5 +401,21 @@ namespace HlslTools.Parser
 
             return new CompilationUnitSyntax(declarations, eof);
         }
+
+        public UnityCompilationUnitSyntax ParseUnityCompilationUnit(CancellationToken cancellationToken)
+        {
+            _cancellationToken = cancellationToken;
+
+            var saveTerm = _termState;
+            _termState |= TerminatorState.IsPossibleGlobalDeclarationStartOrStop;
+
+            var shader = ParseUnityShader();
+
+            _termState = saveTerm;
+
+            var eof = Match(SyntaxKind.EndOfFileToken);
+
+            return new UnityCompilationUnitSyntax(shader, eof);
+        }
     }
 }

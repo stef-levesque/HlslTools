@@ -94,14 +94,12 @@ namespace HlslTools.Parser
             SyntaxToken token;
             switch (_mode)
             {
-                case LexerMode.Syntax:
-                    token = LexSyntaxToken();
-                    break;
                 case LexerMode.Directive:
                     token = LexDirectiveToken();
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    token = LexSyntaxToken();
+                    break;
             }
 
             // Swallow end-of-file tokens from include files.
@@ -1120,9 +1118,18 @@ namespace HlslTools.Parser
             var span = TextSpan.FromBounds(Text, start, end);
             var text = Text.GetText(span);
 
-            _kind = SyntaxFacts.GetKeywordKind(text);
+            if (_mode == LexerMode.UnityCgProgramSyntax && text == "ENDCG")
+            {
+                _kind = SyntaxKind.UnityEndCgKeyword;
+            }
+            else
+            {
+                _kind = _mode == LexerMode.UnitySyntax
+                    ? SyntaxFacts.GetUnityKeywordKind(text)
+                    : SyntaxFacts.GetKeywordKind(text);
+            }
 
-            _contextualKind = (_mode == LexerMode.Directive)
+            _contextualKind = _mode == LexerMode.Directive
                 ? SyntaxFacts.GetPreprocessorKeywordKind(text) 
                 : SyntaxFacts.GetContextualKeywordKind(text);
 

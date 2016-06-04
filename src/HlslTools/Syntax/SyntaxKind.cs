@@ -503,6 +503,25 @@ namespace HlslTools.Syntax
         Parameter,
 
         IncompleteMember,
-        BadToken
+        BadToken,
+
+        // Unity
+        UnityCompilationUnit,
+        UnityShader,
+        UnityShaderProperties,
+        UnityShaderProperty,
+        UnitySubShader,
+        UnityPass,
+        UnityCgProgram,
+        UnityFallback,
+
+        UnityShaderKeyword,
+        UnityPropertiesKeyword,
+        UnitySubShaderKeyword,
+        UnityPassKeyword,
+        UnityCgProgramKeyword,
+        UnityEndCgKeyword,
+        UnityFallbackKeyword,
+        UnityOffKeyword
     }
 }

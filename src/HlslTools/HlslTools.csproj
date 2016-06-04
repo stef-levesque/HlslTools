@@ -159,6 +159,7 @@
     <Compile Include="Parser\DirectiveParser.cs" />
     <Compile Include="Parser\FileSegment.cs" />
     <Compile Include="Parser\HlslLexer.MacroExpansion.cs" />
+    <Compile Include="Parser\HlslParser.Unity.cs" />
     <Compile Include="Parser\ILexer.cs" />
     <Compile Include="Parser\MacroArgumentsParser.cs" />
     <Compile Include="Parser\ParserOptions.cs" />
@@ -329,6 +330,15 @@
     <Compile Include="Syntax\TypeSyntax.cs" />
     <Compile Include="Syntax\PrefixUnaryExpressionSyntax.cs" />
     <Compile Include="Binding\BoundNodes\UnaryOperatorKind.cs" />
+    <Compile Include="Syntax\UnityCgProgramSyntax.cs" />
+    <Compile Include="Syntax\UnityCompilationUnitSyntax.cs" />
+    <Compile Include="Syntax\UnityFallbackSyntax.cs" />
+    <Compile Include="Syntax\UnityPassSyntax.cs" />
+    <Compile Include="Syntax\UnityShaderPropertiesSyntax.cs" />
+    <Compile Include="Syntax\UnityShaderPropertySyntax.cs" />
+    <Compile Include="Syntax\UnityShaderSyntax.cs" />
+    <Compile Include="Syntax\UnityStateSyntax.cs" />
+    <Compile Include="Syntax\UnitySubShaderSyntax.cs" />
     <Compile Include="Syntax\VariableDeclarationStatementSyntax.cs" />
     <Compile Include="Syntax\VariableDeclarationSyntax.cs" />
     <Compile Include="Syntax\VariableDeclaratorQualifierSyntax.cs" />
