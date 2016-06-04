@@ -522,6 +522,7 @@ namespace HlslTools.Syntax
         UnityCgProgram,
         UnityStateProperty,
         UnityStatePropertySimpleValue,
+        UnityStatePropertyBlendValue,
 
         UnityShaderKeyword,
         UnityPropertiesKeyword,
@@ -556,6 +557,9 @@ namespace HlslTools.Syntax
         UnityOffsetKeyword,
         UnityBlendKeyword,
         UnityBlendOpKeyword,
+        UnityColorMaskKeyword,
+        UnityRgbKeyword,
+        UnityAKeyword,
         UnityAlphaToMaskKeyword,
         UnityAddKeyword,
         UnitySubKeyword,
@@ -587,6 +591,6 @@ namespace HlslTools.Syntax
         UnityOneMinusSrcColorKeyword,
         UnityOneMinusSrcAlphaKeyword,
         UnityOneMinusDstColorKeyword,
-        UnityOneMinusDstAlphaKeyword,
+        UnityOneMinusDstAlphaKeyword
     }
 }

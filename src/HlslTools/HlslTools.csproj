@@ -345,6 +345,7 @@
     <Compile Include="Syntax\UnityShaderSyntax.cs" />
     <Compile Include="Syntax\UnityShaderTagsSyntax.cs" />
     <Compile Include="Syntax\UnityShaderTagSyntax.cs" />
+    <Compile Include="Syntax\UnityStatePropertyBlendValueSyntax.cs" />
     <Compile Include="Syntax\UnityStatePropertySimpleValueSyntax.cs" />
     <Compile Include="Syntax\UnityStatePropertySyntax.cs" />
     <Compile Include="Syntax\UnityStatePropertyValueSyntax.cs" />

@@ -231,6 +231,7 @@ namespace HlslTools.Parser
             var openBraceToken = Match(SyntaxKind.OpenBraceToken);
 
             UnityShaderTagsSyntax tags = null;
+            var stateProperties = new List<UnityStatePropertySyntax>();
             var passes = new List<UnityPassSyntax>();
 
             var shouldContinue = true;
@@ -247,14 +248,14 @@ namespace HlslTools.Parser
                         break;
 
                     default:
-                        shouldContinue = false;
+                        shouldContinue = TryParseStateProperty(stateProperties);
                         break;
                 }
             }
 
             var closeBraceToken = Match(SyntaxKind.CloseBraceToken);
 
-            return new UnitySubShaderSyntax(subShaderKeyword, openBraceToken, tags, passes, closeBraceToken);
+            return new UnitySubShaderSyntax(subShaderKeyword, openBraceToken, tags, stateProperties, passes, closeBraceToken);
         }
 
         private UnityShaderTagsSyntax ParseUnityShaderTags()
@@ -297,12 +298,8 @@ namespace HlslTools.Parser
                         tags = ParseUnityShaderTags();
                         break;
 
-                    case SyntaxKind.UnityCullKeyword:
-                        stateProperties.Add(ParseUnityCull());
-                        break;
-
                     default:
-                        shouldContinue = false;
+                        shouldContinue = TryParseStateProperty(stateProperties);
                         break;
                 }
             }
@@ -335,20 +332,113 @@ namespace HlslTools.Parser
             return new UnityCgProgramSyntax(cgProgramKeyword, declarations, endCgKeyword);
         }
 
+        private bool TryParseStateProperty(List<UnityStatePropertySyntax> stateProperties)
+        {
+            switch (Current.Kind)
+            {
+                case SyntaxKind.UnityCullKeyword:
+                    stateProperties.Add(ParseUnityCull());
+                    return true;
+                case SyntaxKind.UnityZWriteKeyword:
+                    stateProperties.Add(ParseUnityZWrite());
+                    return true;
+                case SyntaxKind.UnityZTestKeyword:
+                    stateProperties.Add(ParseUnityZTest());
+                    return true;
+                case SyntaxKind.UnityBlendKeyword:
+                    stateProperties.Add(ParseUnityBlend());
+                    return true;
+                case SyntaxKind.UnityColorMaskKeyword:
+                    stateProperties.Add(ParseUnityColorMask());
+                    return true;
+
+                default:
+                    return false;
+            }
+        }
+
         private UnityStatePropertySyntax ParseUnityCull()
         {
-            var cullKeyword = Match(SyntaxKind.UnityCullKeyword);
+            var keyword = Match(SyntaxKind.UnityCullKeyword);
             var value = MatchOneOf(SyntaxKind.UnityBackKeyword, SyntaxKind.UnityFrontKeyword, SyntaxKind.UnityOffKeyword);
 
-            return new UnityStatePropertySyntax(cullKeyword, new UnityStatePropertySimpleValueSyntax(value));
+            return new UnityStatePropertySyntax(keyword, new UnityStatePropertySimpleValueSyntax(value));
+        }
+
+        private UnityStatePropertySyntax ParseUnityZWrite()
+        {
+            var keyword = Match(SyntaxKind.UnityZWriteKeyword);
+            var value = MatchOneOf(SyntaxKind.UnityOnKeyword, SyntaxKind.UnityOffKeyword);
+
+            return new UnityStatePropertySyntax(keyword, new UnityStatePropertySimpleValueSyntax(value));
+        }
+
+        private UnityStatePropertySyntax ParseUnityZTest()
+        {
+            var keyword = Match(SyntaxKind.UnityZTestKeyword);
+            var value = MatchOneOf(
+                SyntaxKind.UnityLEqualKeyword,
+                SyntaxKind.UnityLessKeyword,
+                SyntaxKind.UnityGreaterKeyword,
+                SyntaxKind.UnityGEqualKeyword,
+                SyntaxKind.UnityEqualKeyword,
+                SyntaxKind.UnityNotEqualKeyword,
+                SyntaxKind.UnityAlwaysKeyword);
+
+            return new UnityStatePropertySyntax(keyword, new UnityStatePropertySimpleValueSyntax(value));
         }
 
         private UnityStatePropertySyntax ParseUnityFallback()
         {
-            var fallbackKeyword = Match(SyntaxKind.UnityFallbackKeyword);
+            var keyword = Match(SyntaxKind.UnityFallbackKeyword);
             var value = MatchOneOf(SyntaxKind.UnityOffKeyword, SyntaxKind.StringLiteralToken);
 
-            return new UnityStatePropertySyntax(fallbackKeyword, new UnityStatePropertySimpleValueSyntax(value));
+            return new UnityStatePropertySyntax(keyword, new UnityStatePropertySimpleValueSyntax(value));
+        }
+
+        private UnityStatePropertySyntax ParseUnityBlend()
+        {
+            var keyword = Match(SyntaxKind.UnityBlendKeyword);
+
+            UnityStatePropertyValueSyntax value;
+            if (Current.Kind.IsUnityBlendFactor())
+            {
+                value = new UnityStatePropertyBlendValueSyntax(
+                    MatchUnityBlendFactor(),
+                    MatchUnityBlendFactor());
+            }
+            else
+            {
+                value = new UnityStatePropertySimpleValueSyntax(Match(SyntaxKind.UnityOffKeyword));
+            }
+
+            return new UnityStatePropertySyntax(keyword, value);
+        }
+
+        private SyntaxToken MatchUnityBlendFactor()
+        {
+            return MatchOneOf(
+                SyntaxKind.UnityOneKeyword,
+                SyntaxKind.UnityZeroKeyword,
+                SyntaxKind.UnitySrcColorKeyword,
+                SyntaxKind.UnitySrcAlphaKeyword,
+                SyntaxKind.UnityDstColorKeyword,
+                SyntaxKind.UnityDstAlphaKeyword,
+                SyntaxKind.UnityOneMinusSrcColorKeyword,
+                SyntaxKind.UnityOneMinusSrcAlphaKeyword,
+                SyntaxKind.UnityOneMinusDstColorKeyword,
+                SyntaxKind.UnityOneMinusDstAlphaKeyword);
+        }
+
+        private UnityStatePropertySyntax ParseUnityColorMask()
+        {
+            var keyword = Match(SyntaxKind.UnityColorMaskKeyword);
+            var value = MatchOneOf(
+                SyntaxKind.UnityRgbKeyword,
+                SyntaxKind.UnityAKeyword,
+                SyntaxKind.IntegerLiteralToken);
+
+            return new UnityStatePropertySyntax(keyword, new UnityStatePropertySimpleValueSyntax(value));
         }
     }
 }

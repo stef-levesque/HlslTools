@@ -581,6 +581,11 @@ namespace HlslTools.Syntax
         {
             DefaultVisit(node);
         }
+
+        public virtual void VisitUnityStatePropertyBlendValue(UnityStatePropertyBlendValueSyntax node)
+        {
+            DefaultVisit(node);
+        }
     }
 
     public abstract class SyntaxVisitor<T>
@@ -1163,6 +1168,11 @@ namespace HlslTools.Syntax
         }
 
         public virtual T VisitUnityStatePropertySimpleValue(UnityStatePropertySimpleValueSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyBlendValue(UnityStatePropertyBlendValueSyntax node)
         {
             return DefaultVisit(node);
         }
