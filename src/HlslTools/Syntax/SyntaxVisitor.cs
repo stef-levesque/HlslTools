@@ -522,6 +522,41 @@ namespace HlslTools.Syntax
             DefaultVisit(node);
         }
 
+        public virtual void VisitUnityShaderPropertySimpleType(UnityShaderPropertySimpleTypeSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityShaderPropertyRangeType(UnityShaderPropertyRangeTypeSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityShaderPropertyNumericDefaultValue(UnityShaderPropertyNumericDefaultValueSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityShaderPropertyVectorDefaultValue(UnityShaderPropertyVectorDefaultValueSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityShaderPropertyTextureDefaultValue(UnityShaderPropertyTextureDefaultValueSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityShaderTags(UnityShaderTagsSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityShaderTag(UnityShaderTagSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
         public virtual void VisitUnitySubShader(UnitySubShaderSyntax node)
         {
             DefaultVisit(node);
@@ -1063,6 +1098,41 @@ namespace HlslTools.Syntax
         }
 
         public virtual T VisitUnityShaderProperty(UnityShaderPropertySyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityShaderTags(UnityShaderTagsSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityShaderTag(UnityShaderTagSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityShaderPropertySimpleType(UnityShaderPropertySimpleTypeSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityShaderPropertyRangeType(UnityShaderPropertyRangeTypeSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityShaderPropertyNumericDefaultValue(UnityShaderPropertyNumericDefaultValueSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityShaderPropertyVectorDefaultValue(UnityShaderPropertyVectorDefaultValueSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityShaderPropertyTextureDefaultValue(UnityShaderPropertyTextureDefaultValueSyntax node)
         {
             return DefaultVisit(node);
         }

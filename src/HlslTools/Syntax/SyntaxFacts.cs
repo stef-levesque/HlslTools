@@ -235,6 +235,41 @@ namespace HlslTools.Syntax
                 case SyntaxKind.WhileKeyword:
                     return "while";
 
+                case SyntaxKind.UnityShaderKeyword:
+                    return "Shader";
+                case SyntaxKind.UnityPropertiesKeyword:
+                    return "Properties";
+                case SyntaxKind.UnityRangeKeyword:
+                    return "Range";
+                case SyntaxKind.UnityFloatKeyword:
+                    return "Float";
+                case SyntaxKind.UnityIntKeyword:
+                    return "Int";
+                case SyntaxKind.UnityColorKeyword:
+                    return "Color";
+                case SyntaxKind.UnityVectorKeyword:
+                    return "Vector";
+                case SyntaxKind.Unity2DKeyword:
+                    return "2D";
+                case SyntaxKind.Unity3DKeyword:
+                    return "3D";
+                case SyntaxKind.UnityCubeKeyword:
+                    return "Cube";
+                case SyntaxKind.UnitySubShaderKeyword:
+                    return "SubShader";
+                case SyntaxKind.UnityTagsKeyword:
+                    return "Tags";
+                case SyntaxKind.UnityPassKeyword:
+                    return "Pass";
+                case SyntaxKind.UnityCgProgramKeyword:
+                    return "CGPROGRAM";
+                case SyntaxKind.UnityEndCgKeyword:
+                    return "ENDCG";
+                case SyntaxKind.UnityFallbackKeyword:
+                    return "Fallback";
+                case SyntaxKind.UnityOffKeyword:
+                    return "Off";
+
                 default:
                     return string.Empty;
             }
@@ -1268,8 +1303,17 @@ namespace HlslTools.Syntax
                 case SyntaxKind.VoidKeyword:
                 case SyntaxKind.WhileKeyword:
                 case SyntaxKind.UnityShaderKeyword:
-                case SyntaxKind.UnitySubShaderKeyword:
                 case SyntaxKind.UnityPropertiesKeyword:
+                case SyntaxKind.UnityRangeKeyword:
+                case SyntaxKind.UnityFloatKeyword:
+                case SyntaxKind.UnityIntKeyword:
+                case SyntaxKind.UnityColorKeyword:
+                case SyntaxKind.UnityVectorKeyword:
+                case SyntaxKind.Unity2DKeyword:
+                case SyntaxKind.Unity3DKeyword:
+                case SyntaxKind.UnityCubeKeyword:
+                case SyntaxKind.UnitySubShaderKeyword:
+                case SyntaxKind.UnityTagsKeyword:
                 case SyntaxKind.UnityPassKeyword:
                 case SyntaxKind.UnityCgProgramKeyword:
                 case SyntaxKind.UnityEndCgKeyword:
@@ -1437,8 +1481,26 @@ namespace HlslTools.Syntax
                     return SyntaxKind.UnityShaderKeyword;
                 case "Properties":
                     return SyntaxKind.UnityPropertiesKeyword;
+                case "Range":
+                    return SyntaxKind.UnityRangeKeyword;
+                case "Float":
+                    return SyntaxKind.UnityFloatKeyword;
+                case "Int":
+                    return SyntaxKind.UnityIntKeyword;
+                case "Color":
+                    return SyntaxKind.UnityColorKeyword;
+                case "Vector":
+                    return SyntaxKind.UnityVectorKeyword;
+                case "2D":
+                    return SyntaxKind.Unity2DKeyword;
+                case "3D":
+                    return SyntaxKind.Unity3DKeyword;
+                case "Cube":
+                    return SyntaxKind.UnityCubeKeyword;
                 case "SubShader":
                     return SyntaxKind.UnitySubShaderKeyword;
+                case "Tags":
+                    return SyntaxKind.UnityTagsKeyword;
                 case "Pass":
                     return SyntaxKind.UnityPassKeyword;
                 case "CGPROGRAM":

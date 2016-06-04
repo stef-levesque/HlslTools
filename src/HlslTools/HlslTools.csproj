@@ -335,8 +335,17 @@
     <Compile Include="Syntax\UnityFallbackSyntax.cs" />
     <Compile Include="Syntax\UnityPassSyntax.cs" />
     <Compile Include="Syntax\UnityShaderPropertiesSyntax.cs" />
+    <Compile Include="Syntax\UnityShaderPropertyDefaultValueSyntax.cs" />
+    <Compile Include="Syntax\UnityShaderPropertyNumericDefaultValueSyntax.cs" />
+    <Compile Include="Syntax\UnityShaderPropertyRangeTypeSyntax.cs" />
+    <Compile Include="Syntax\UnityShaderPropertySimpleTypeSyntax.cs" />
     <Compile Include="Syntax\UnityShaderPropertySyntax.cs" />
+    <Compile Include="Syntax\UnityShaderPropertyTextureDefaultValueSyntax.cs" />
+    <Compile Include="Syntax\UnityShaderPropertyTypeSyntax.cs" />
+    <Compile Include="Syntax\UnityShaderPropertyVectorDefaultValueSyntax.cs" />
     <Compile Include="Syntax\UnityShaderSyntax.cs" />
+    <Compile Include="Syntax\UnityShaderTagsSyntax.cs" />
+    <Compile Include="Syntax\UnityShaderTagSyntax.cs" />
     <Compile Include="Syntax\UnityStateSyntax.cs" />
     <Compile Include="Syntax\UnitySubShaderSyntax.cs" />
     <Compile Include="Syntax\VariableDeclarationStatementSyntax.cs" />

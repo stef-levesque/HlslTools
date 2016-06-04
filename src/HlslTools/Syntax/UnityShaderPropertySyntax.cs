@@ -1,15 +1,27 @@
 namespace HlslTools.Syntax
 {
-    public class UnityShaderPropertySyntax : SyntaxNode
+    public sealed class UnityShaderPropertySyntax : SyntaxNode
     {
-        public readonly IdentifierNameSyntax Name;
+        public readonly SyntaxToken NameToken;
+        public readonly SyntaxToken OpenParenToken;
+        public readonly SyntaxToken DisplayNameToken;
+        public readonly SyntaxToken CommaToken;
+        public readonly UnityShaderPropertyTypeSyntax PropertyType;
+        public readonly SyntaxToken CloseParenToken;
+        public readonly SyntaxToken EqualsToken;
+        public readonly UnityShaderPropertyDefaultValueSyntax DefaultValue;
 
-        // TODO
-
-        public UnityShaderPropertySyntax(IdentifierNameSyntax name)
+        public UnityShaderPropertySyntax(SyntaxToken nameToken, SyntaxToken openParenToken, SyntaxToken displayNameToken, SyntaxToken commaToken, UnityShaderPropertyTypeSyntax propertyType, SyntaxToken closeParenToken, SyntaxToken equalsToken, UnityShaderPropertyDefaultValueSyntax defaultValue)
             : base(SyntaxKind.UnityShaderProperty)
         {
-            RegisterChildNode(out Name, name);
+            RegisterChildNode(out NameToken, nameToken);
+            RegisterChildNode(out OpenParenToken, openParenToken);
+            RegisterChildNode(out DisplayNameToken, displayNameToken);
+            RegisterChildNode(out CommaToken, commaToken);
+            RegisterChildNode(out PropertyType, propertyType);
+            RegisterChildNode(out CloseParenToken, closeParenToken);
+            RegisterChildNode(out EqualsToken, equalsToken);
+            RegisterChildNode(out DefaultValue, defaultValue);
         }
 
         public override void Accept(SyntaxVisitor visitor)

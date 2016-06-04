@@ -818,9 +818,9 @@ namespace HlslTools.Parser
                     break;
 
                 default:
-                    if (Char.IsLetter(_charReader.Current) || _charReader.Current == '_')
+                    if (char.IsLetter(_charReader.Current) || _charReader.Current == '_' || (_mode == LexerMode.UnitySyntax && char.IsDigit(_charReader.Current) && _charReader.Peek() == 'D'))
                         ReadIdentifierOrKeyword();
-                    else if (Char.IsDigit(_charReader.Current))
+                    else if (char.IsDigit(_charReader.Current))
                         ReadNumber();
                     else
                         ReadInvalidCharacter();
