@@ -11,11 +11,16 @@ namespace HlslTools.Tests.Support
     {
         public static IEnumerable<TestCaseData> FindTestShaders(string rootFolder)
         {
+            return FindTestShaders(rootFolder, ".hlsl", ".fx", ".vsh", ".psh");
+        }
+
+        private static IEnumerable<TestCaseData> FindTestShaders(string rootFolder, params string[] extensions)
+        {
             return Directory.GetFiles(rootFolder, "*.*", SearchOption.AllDirectories)
                 .Where(x =>
                 {
                     var ext = Path.GetExtension(x).ToLower();
-                    return ext == ".hlsl" || ext == ".fx" || ext == ".vsh" || ext == ".psh";
+                    return extensions.Contains(ext);
                 })
                 .Select(x => new TestCaseData(x));
         }
@@ -23,6 +28,11 @@ namespace HlslTools.Tests.Support
         internal static IEnumerable<TestCaseData> GetTestShaders()
         {
             return FindTestShaders("Shaders");
+        }
+
+        internal static IEnumerable<TestCaseData> GetUnityTestShaders()
+        {
+            return FindTestShaders("Shaders", ".shader");
         }
 
         public static void CheckForParseErrors(SyntaxTree syntaxTree)

@@ -87,7 +87,26 @@ namespace HlslTools.Tests.Parser
         public void CanLexShader(string testFile)
         {
             // Act.
-            var tokens = LexAllTokens(testFile);
+            var tokens = LexAllTokens(SourceText.From(File.ReadAllText(testFile)), new TestFileSystem(testFile));
+
+            // Assert.
+            Assert.That(tokens, Has.Count.GreaterThan(0));
+
+            foreach (var token in tokens)
+                foreach (var diagnostic in token.GetDiagnostics())
+                    Debug.WriteLine($"{diagnostic} at {diagnostic.Span}");
+
+            Assert.That(tokens.Any(t => t.ContainsDiagnostics), Is.False);
+        }
+
+        [TestCaseSource(typeof(ShaderTestUtility), nameof(ShaderTestUtility.GetUnityTestShaders))]
+        public void CanLexUnityShader(string testFile)
+        {
+            // Unity includes some headers by default. And built-in headers are available without a path prefix.
+            // http://docs.unity3d.com/Manual/SL-BuiltinIncludes.html
+
+            // Act.
+            var tokens = LexAllTokens(SourceText.From(File.ReadAllText(testFile)), new TestUnityFileSystem(testFile));
 
             // Assert.
             Assert.That(tokens, Has.Count.GreaterThan(0));
@@ -100,11 +119,6 @@ namespace HlslTools.Tests.Parser
         }
 
         #region Test helpers
-
-        private static IReadOnlyList<SyntaxToken> LexAllTokens(string testFile)
-        {
-            return LexAllTokens(SourceText.From(File.ReadAllText(testFile)), new TestFileSystem(testFile));
-        }
 
         private static IReadOnlyList<SyntaxToken> LexAllTokens(SourceText text, IIncludeFileSystem fileSystem = null)
         {

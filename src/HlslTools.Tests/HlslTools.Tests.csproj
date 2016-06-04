@@ -73,6 +73,7 @@
     <Compile Include="Support\InMemoryFileSystem.cs" />
     <Compile Include="Support\ShaderTestUtility.cs" />
     <Compile Include="Support\TestFileSystem.cs" />
+    <Compile Include="Support\TestUnityFileSystem.cs" />
     <Compile Include="Symbols\IntrinsicTypesTests.cs" />
     <Compile Include="Text\TextSpanTests.cs" />
   </ItemGroup>
