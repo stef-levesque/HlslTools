@@ -656,6 +656,7 @@
     <Content Include="Shaders\Sdk\Direct3D10\ProceduralMaterials\Noise.fx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Shaders\Unity\readme.txt" />
     <None Include="Shaders\Sdk\Direct3D10\ProceduralMaterials\ProceduralHelpers.fxh">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -1417,6 +1418,525 @@
     </Content>
     <Content Include="Shaders\Sdk\DirectX SDK EULA.txt" />
     <Content Include="Shaders\Sdk\readme.txt" />
+    <Content Include="Shaders\Unity\CGIncludes\AutoLight.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\HLSLSupport.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\Lighting.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\SpeedTreeBillboardCommon.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\SpeedTreeCommon.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\SpeedTreeVertex.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\SpeedTreeWind.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\TerrainEngine.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\TerrainSplatmapCommon.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\Tessellation.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\UnityBuiltin2xTreeLibrary.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\UnityBuiltin3xTreeLibrary.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\UnityCG.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\UnityDeferredLibrary.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\UnityGlobalIllumination.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\UnityLightingCommon.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\UnityMetaPass.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\UnityPBSLighting.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\UnityShaderVariables.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\UnityShadowLibrary.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\UnityStandardBRDF.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\UnityStandardConfig.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\UnityStandardCore.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\UnityStandardCoreForward.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\UnityStandardCoreForwardSimple.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\UnityStandardInput.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\UnityStandardMeta.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\UnityStandardShadow.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\UnityStandardUtils.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\CGIncludes\UnityUI.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResources\Camera-DepthNormalTexture.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResources\Font.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResources\Internal-BlitCopy.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResources\Internal-Clear.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResources\Internal-Colored.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResources\Internal-CombineDepthNormals.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResources\Internal-ErrorShader.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResources\Internal-Flare.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResources\Internal-GUITexture.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResources\Internal-GUITextureBlit.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResources\Internal-GUITextureClip.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResources\Internal-GUITextureClipText.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResources\Internal-Halo.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResources\Internal-PrePassCollectShadows.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResources\Internal-SplashShadowBlur.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResources\Internal-SplashShadowCaster.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResources\Internal-SplashShadowReceiver.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResources\Internal-SplashShadowReceiverSimple.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResources\PerformanceTools\FrameDebuggerRenderTargetDisplay.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResources\Sprites-Default.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Alpha-Bumped.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Alpha-BumpSpec.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Alpha-Diffuse.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Alpha-Glossy.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Alpha-Parallax.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Alpha-ParallaxSpec.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Alpha-VertexLit.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\AlphaTest-Bumped.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\AlphaTest-BumpSpec.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\AlphaTest-Diffuse.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\AlphaTest-Glossy.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\AlphaTest-SoftEdgeUnlit.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\AlphaTest-VertexLit.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Cubemaps\CubeBlend.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Cubemaps\CubeBlur.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Cubemaps\CubeBlurOdd.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Cubemaps\CubeCopy.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Decal.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Flare.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\GIDebug\TextureUV.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\GIDebug\UV1sAsPositions.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\GIDebug\VertexColors.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Illumin-Bumped.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Illumin-BumpSpec.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Illumin-Diffuse.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Illumin-Glossy.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Illumin-Parallax.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Illumin-ParallaxSpec.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Illumin-VertexLit.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Internal-DeferredReflections.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Internal-DeferredShading.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Internal-PrePassLighting.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Lightmap-Bumped.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Lightmap-BumpSpec.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Lightmap-Diffuse.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Lightmap-Glossy.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Lightmap-VertexLit.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Mobile\Mobile-Bumped.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Mobile\Mobile-BumpSpec-1DirectionalLight.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Mobile\Mobile-BumpSpec.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Mobile\Mobile-Diffuse.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Mobile\Mobile-Lightmap-Unlit.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Mobile\Mobile-Particle-Add.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Mobile\Mobile-Particle-Alpha-VertexLit.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Mobile\Mobile-Particle-Alpha.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Mobile\Mobile-Particle-Multiply.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Mobile\Mobile-Skybox.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Mobile\Mobile-VertexLit-OnlyDirectionalLights.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Mobile\Mobile-VertexLit.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Nature\SoftOcclusion\TreeSoftOcclusionBark.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Nature\SoftOcclusion\TreeSoftOcclusionBarkRendertex.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Nature\SoftOcclusion\TreeSoftOcclusionLeaves.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Nature\SoftOcclusion\TreeSoftOcclusionLeavesRendertex.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Nature\SpeedTree.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Nature\SpeedTreeBillboard.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Nature\TreeCreator\TreeCreatorBark.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Nature\TreeCreator\TreeCreatorBarkOptimized.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Nature\TreeCreator\TreeCreatorBarkRendertex.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Nature\TreeCreator\TreeCreatorLeaves.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Nature\TreeCreator\TreeCreatorLeavesFast.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Nature\TreeCreator\TreeCreatorLeavesFastOptimized.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Nature\TreeCreator\TreeCreatorLeavesOptimized.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Nature\TreeCreator\TreeCreatorLeavesRendertex.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Normal-Bumped.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Normal-BumpSpec.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Normal-Diffuse.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Normal-DiffuseDetail.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Normal-DiffuseFast.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Normal-Glossy.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Normal-Parallax.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Normal-ParallaxSpec.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Normal-VertexLit.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Particle Add.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Particle AddMultiply.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Particle AddSmooth.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Particle Alpha Blend.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Particle Blend.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Particle Multiply.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Particle MultiplyDouble.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Particle Premultiply Blend.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Particle VertexLit Blended.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Reflect-Bumped.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Reflect-BumpNolight.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Reflect-BumpSpec.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Reflect-BumpVertexLit.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Reflect-Diffuse.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Reflect-Glossy.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Reflect-Parallax.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Reflect-ParallaxSpec.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Reflect-VertexLit.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Skybox-Cubed.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Skybox-Procedural.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Skybox.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Sprites-Diffuse.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Standard.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\StandardSpecular.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\TerrainShaders\Details\VertexLit.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\TerrainShaders\Details\WavingGrass.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\TerrainShaders\Details\WavingGrassBillboard.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\TerrainShaders\Splats\AddPass.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\TerrainShaders\Splats\FirstPass.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\TerrainShaders\Splats\Specular-AddPass.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\TerrainShaders\Splats\Specular-Base.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\TerrainShaders\Splats\Specular-FirstPass.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\TerrainShaders\Splats\Standard-AddPass.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\TerrainShaders\Splats\Standard-Base.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\TerrainShaders\Splats\Standard-FirstPass.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\TerrainShaders\Trees\BillboardTree.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\UI\UI-Default.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\UI\UI-DefaultFont.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\UI\UI-Lit-Bumped.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\UI\UI-Lit-Detail.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\UI\UI-Lit-Refraction.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\UI\UI-Lit-RefractionDetail.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\UI\UI-Lit-Transparent.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\UI\UI-Unlit-Detail.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\UI\UI-Unlit-Text.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\UI\UI-Unlit-TextDetail.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\UI\UI-Unlit-Transparent.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Unlit\Unlit-Alpha.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Unlit\Unlit-AlphaTest.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Unlit\Unlit-Color.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Unity\DefaultResourcesExtra\Unlit\Unlit-Normal.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Key.snk">
