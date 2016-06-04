@@ -90,7 +90,7 @@ namespace HlslTools.Parser
 
             // Relex identifier tokens, because at this point keywords are stored as identifiers.
             for (var i = 0; i < expandedTokens.Count; i++)
-                if (expandedTokens[i].Kind == SyntaxKind.IdentifierToken)
+                if (expandedTokens[i].Kind == SyntaxKind.IdentifierToken && expandedTokens[i].ContextualKind != SyntaxKind.DefinedKeyword)
                 {
                     var relexedToken = new HlslLexer(new StringText(expandedTokens[i].Text)).Lex(LexerMode.Syntax);
                     expandedTokens[i] = expandedTokens[i].WithKind(relexedToken.Kind).WithContextualKind(relexedToken.ContextualKind);
