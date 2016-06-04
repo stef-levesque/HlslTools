@@ -267,8 +267,104 @@ namespace HlslTools.Syntax
                     return "ENDCG";
                 case SyntaxKind.UnityFallbackKeyword:
                     return "Fallback";
+                case SyntaxKind.UnityOnKeyword:
+                    return "On";
                 case SyntaxKind.UnityOffKeyword:
                     return "Off";
+                case SyntaxKind.UnityCullKeyword:
+                    return "Cull";
+                case SyntaxKind.UnityBackKeyword:
+                    return "Back";
+                case SyntaxKind.UnityFrontKeyword:
+                    return "Front";
+                case SyntaxKind.UnityZWriteKeyword:
+                    return "ZWrite";
+                case SyntaxKind.UnityZTestKeyword:
+                    return "ZTest";
+                case SyntaxKind.UnityLessKeyword:
+                    return "Less";
+                case SyntaxKind.UnityGreaterKeyword:
+                    return "Greater";
+                case SyntaxKind.UnityLEqualKeyword:
+                    return "LEqual";
+                case SyntaxKind.UnityGEqualKeyword:
+                    return "GEqual";
+                case SyntaxKind.UnityEqualKeyword:
+                    return "Equal";
+                case SyntaxKind.UnityNotEqualKeyword:
+                    return "NotEqual";
+                case SyntaxKind.UnityAlwaysKeyword:
+                    return "Always";
+                case SyntaxKind.UnityOffsetKeyword:
+                    return "Offset";
+                case SyntaxKind.UnityBlendKeyword:
+                    return "Blend";
+                case SyntaxKind.UnityBlendOpKeyword:
+                    return "BlendOp";
+                case SyntaxKind.UnityAlphaToMaskKeyword:
+                    return "AlphaToMask";
+                case SyntaxKind.UnityAddKeyword:
+                    return "Add";
+                case SyntaxKind.UnitySubKeyword:
+                    return "Sub";
+                case SyntaxKind.UnityRevSubKeyword:
+                    return "RevSub";
+                case SyntaxKind.UnityMinKeyword:
+                    return "Min";
+                case SyntaxKind.UnityMaxKeyword:
+                    return "Max";
+                case SyntaxKind.UnityLogicalClearKeyword:
+                    return "LogicalClear";
+                case SyntaxKind.UnityLogicalSetKeyword:
+                    return "LogicalSet";
+                case SyntaxKind.UnityLogicalCopyKeyword:
+                    return "LogicalCopy";
+                case SyntaxKind.UnityLogicalCopyInvertedKeyword:
+                    return "LogicalCopyInverted";
+                case SyntaxKind.UnityLogicalNoopKeyword:
+                    return "LogicalNoop";
+                case SyntaxKind.UnityLogicalInvertKeyword:
+                    return "LogicalInvert";
+                case SyntaxKind.UnityLogicalAndKeyword:
+                    return "LogicalAnd";
+                case SyntaxKind.UnityLogicalNandKeyword:
+                    return "LogicalNand";
+                case SyntaxKind.UnityLogicalOrKeyword:
+                    return "LogicalOr";
+                case SyntaxKind.UnityLogicalNorKeyword:
+                    return "LogicalNor";
+                case SyntaxKind.UnityLogicalXorKeyword:
+                    return "LogicalXor";
+                case SyntaxKind.UnityLogicalEquivKeyword:
+                    return "LogicalEquiv";
+                case SyntaxKind.UnityLogicalAndReverseKeyword:
+                    return "LogicalAndReverse";
+                case SyntaxKind.UnityLogicalAndInvertedKeyword:
+                    return "LogicalAndInverted";
+                case SyntaxKind.UnityLogicalOrReverseKeyword:
+                    return "LogicalOrReverse";
+                case SyntaxKind.UnityLogicalOrInvertedKeyword:
+                    return "LogicalOrInverted";
+                case SyntaxKind.UnityOneKeyword:
+                    return "One";
+                case SyntaxKind.UnityZeroKeyword:
+                    return "Zero";
+                case SyntaxKind.UnitySrcColorKeyword:
+                    return "SrcColor";
+                case SyntaxKind.UnitySrcAlphaKeyword:
+                    return "SrcAlpha";
+                case SyntaxKind.UnityDstColorKeyword:
+                    return "DstColor";
+                case SyntaxKind.UnityDstAlphaKeyword:
+                    return "DstAlpha";
+                case SyntaxKind.UnityOneMinusSrcColorKeyword:
+                    return "OneMinusSrcColor";
+                case SyntaxKind.UnityOneMinusSrcAlphaKeyword:
+                    return "OneMinusSrcAlpha";
+                case SyntaxKind.UnityOneMinusDstColorKeyword:
+                    return "OneMinusDstColor";
+                case SyntaxKind.UnityOneMinusDstAlphaKeyword:
+                    return "OneMinusDstAlpha";
 
                 default:
                     return string.Empty;
@@ -1318,7 +1414,55 @@ namespace HlslTools.Syntax
                 case SyntaxKind.UnityCgProgramKeyword:
                 case SyntaxKind.UnityEndCgKeyword:
                 case SyntaxKind.UnityFallbackKeyword:
+                case SyntaxKind.UnityOnKeyword:
                 case SyntaxKind.UnityOffKeyword:
+                case SyntaxKind.UnityCullKeyword:
+                case SyntaxKind.UnityBackKeyword:
+                case SyntaxKind.UnityFrontKeyword:
+                case SyntaxKind.UnityZWriteKeyword:
+                case SyntaxKind.UnityZTestKeyword:
+                case SyntaxKind.UnityLessKeyword:
+                case SyntaxKind.UnityGreaterKeyword:
+                case SyntaxKind.UnityLEqualKeyword:
+                case SyntaxKind.UnityGEqualKeyword:
+                case SyntaxKind.UnityEqualKeyword:
+                case SyntaxKind.UnityNotEqualKeyword:
+                case SyntaxKind.UnityAlwaysKeyword:
+                case SyntaxKind.UnityOffsetKeyword:
+                case SyntaxKind.UnityBlendKeyword:
+                case SyntaxKind.UnityBlendOpKeyword:
+                case SyntaxKind.UnityAlphaToMaskKeyword:
+                case SyntaxKind.UnityAddKeyword:
+                case SyntaxKind.UnitySubKeyword:
+                case SyntaxKind.UnityRevSubKeyword:
+                case SyntaxKind.UnityMinKeyword:
+                case SyntaxKind.UnityMaxKeyword:
+                case SyntaxKind.UnityLogicalClearKeyword:
+                case SyntaxKind.UnityLogicalSetKeyword:
+                case SyntaxKind.UnityLogicalCopyKeyword:
+                case SyntaxKind.UnityLogicalCopyInvertedKeyword:
+                case SyntaxKind.UnityLogicalNoopKeyword:
+                case SyntaxKind.UnityLogicalInvertKeyword:
+                case SyntaxKind.UnityLogicalAndKeyword:
+                case SyntaxKind.UnityLogicalNandKeyword:
+                case SyntaxKind.UnityLogicalOrKeyword:
+                case SyntaxKind.UnityLogicalNorKeyword:
+                case SyntaxKind.UnityLogicalXorKeyword:
+                case SyntaxKind.UnityLogicalEquivKeyword:
+                case SyntaxKind.UnityLogicalAndReverseKeyword:
+                case SyntaxKind.UnityLogicalAndInvertedKeyword:
+                case SyntaxKind.UnityLogicalOrReverseKeyword:
+                case SyntaxKind.UnityLogicalOrInvertedKeyword:
+                case SyntaxKind.UnityOneKeyword:
+                case SyntaxKind.UnityZeroKeyword:
+                case SyntaxKind.UnitySrcColorKeyword:
+                case SyntaxKind.UnitySrcAlphaKeyword:
+                case SyntaxKind.UnityDstColorKeyword:
+                case SyntaxKind.UnityDstAlphaKeyword:
+                case SyntaxKind.UnityOneMinusSrcColorKeyword:
+                case SyntaxKind.UnityOneMinusSrcAlphaKeyword:
+                case SyntaxKind.UnityOneMinusDstColorKeyword:
+                case SyntaxKind.UnityOneMinusDstAlphaKeyword:
                     return true;
 
                 default:
@@ -1507,8 +1651,104 @@ namespace HlslTools.Syntax
                     return SyntaxKind.UnityCgProgramKeyword;
                 case "Fallback":
                     return SyntaxKind.UnityFallbackKeyword;
+                case "On":
+                    return SyntaxKind.UnityOnKeyword;
                 case "Off":
                     return SyntaxKind.UnityOffKeyword;
+                case "Cull":
+                    return SyntaxKind.UnityCullKeyword;
+                case "Back":
+                    return SyntaxKind.UnityBackKeyword;
+                case "Front":
+                    return SyntaxKind.UnityFrontKeyword;
+                case "ZWrite":
+                    return SyntaxKind.UnityZWriteKeyword;
+                case "ZTest":
+                    return SyntaxKind.UnityZTestKeyword;
+                case "Less":
+                    return SyntaxKind.UnityLessKeyword;
+                case "Greater":
+                    return SyntaxKind.UnityGreaterKeyword;
+                case "LEqual":
+                    return SyntaxKind.UnityLEqualKeyword;
+                case "GEqual":
+                    return SyntaxKind.UnityGEqualKeyword;
+                case "Equal":
+                    return SyntaxKind.UnityEqualKeyword;
+                case "NotEqual":
+                    return SyntaxKind.UnityNotEqualKeyword;
+                case "Always":
+                    return SyntaxKind.UnityAlwaysKeyword;
+                case "Offset":
+                    return SyntaxKind.UnityOffsetKeyword;
+                case "Blend":
+                    return SyntaxKind.UnityBlendKeyword;
+                case "BlendOp":
+                    return SyntaxKind.UnityBlendOpKeyword;
+                case "AlphaToMask":
+                    return SyntaxKind.UnityAlphaToMaskKeyword;
+                case "Add":
+                    return SyntaxKind.UnityAddKeyword;
+                case "Sub":
+                    return SyntaxKind.UnitySubKeyword;
+                case "RevSub":
+                    return SyntaxKind.UnityRevSubKeyword;
+                case "Min":
+                    return SyntaxKind.UnityMinKeyword;
+                case "Max":
+                    return SyntaxKind.UnityMaxKeyword;
+                case "LogicalClear":
+                    return SyntaxKind.UnityLogicalClearKeyword;
+                case "LogicalSet":
+                    return SyntaxKind.UnityLogicalSetKeyword;
+                case "LogicalCopy":
+                    return SyntaxKind.UnityLogicalCopyKeyword;
+                case "LogicalCopyInverted":
+                    return SyntaxKind.UnityLogicalCopyInvertedKeyword;
+                case "LogicalNoop":
+                    return SyntaxKind.UnityLogicalNoopKeyword;
+                case "LogicalInvert":
+                    return SyntaxKind.UnityLogicalInvertKeyword;
+                case "LogicalAnd":
+                    return SyntaxKind.UnityLogicalAndKeyword;
+                case "LogicalNand":
+                    return SyntaxKind.UnityLogicalNandKeyword;
+                case "LogicalOr":
+                    return SyntaxKind.UnityLogicalOrKeyword;
+                case "LogicalNor":
+                    return SyntaxKind.UnityLogicalNorKeyword;
+                case "LogicalXor":
+                    return SyntaxKind.UnityLogicalXorKeyword;
+                case "LogicalEquiv":
+                    return SyntaxKind.UnityLogicalEquivKeyword;
+                case "LogicalAndReverse":
+                    return SyntaxKind.UnityLogicalAndReverseKeyword;
+                case "LogicalAndInverted":
+                    return SyntaxKind.UnityLogicalAndInvertedKeyword;
+                case "LogicalOrReverse":
+                    return SyntaxKind.UnityLogicalOrReverseKeyword;
+                case "LogicalOrInverted":
+                    return SyntaxKind.UnityLogicalOrInvertedKeyword;
+                case "One":
+                    return SyntaxKind.UnityOneKeyword;
+                case "Zero":
+                    return SyntaxKind.UnityZeroKeyword;
+                case "SrcColor":
+                    return SyntaxKind.UnitySrcColorKeyword;
+                case "SrcAlpha":
+                    return SyntaxKind.UnitySrcAlphaKeyword;
+                case "DstColor":
+                    return SyntaxKind.UnityDstColorKeyword;
+                case "DstAlpha":
+                    return SyntaxKind.UnityDstAlphaKeyword;
+                case "OneMinusSrcColor":
+                    return SyntaxKind.UnityOneMinusSrcColorKeyword;
+                case "OneMinusSrcAlpha":
+                    return SyntaxKind.UnityOneMinusSrcAlphaKeyword;
+                case "OneMinusDstColor":
+                    return SyntaxKind.UnityOneMinusDstColorKeyword;
+                case "OneMinusDstAlpha":
+                    return SyntaxKind.UnityOneMinusDstAlphaKeyword;
 
                 default:
                     return SyntaxKind.IdentifierToken;

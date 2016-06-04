@@ -20,14 +20,14 @@ namespace HlslTools.Parser
             while (Current.Kind == SyntaxKind.UnitySubShaderKeyword)
                 subShaders.Add(ParseUnitySubShader());
 
-            var states = new List<UnityStateSyntax>();
+            var stateProperties = new List<UnityStatePropertySyntax>();
             var shouldContinue = true;
             while (shouldContinue && Current.Kind != SyntaxKind.CloseBraceToken)
             {
                 switch (Current.Kind)
                 {
                     case SyntaxKind.UnityFallbackKeyword:
-                        states.Add(ParseUnityFallback());
+                        stateProperties.Add(ParseUnityFallback());
                         break;
 
                     default:
@@ -38,7 +38,14 @@ namespace HlslTools.Parser
 
             var closeBraceToken = Match(SyntaxKind.CloseBraceToken);
 
-            return new UnityShaderSyntax(shaderKeyword, nameToken, openBraceToken, properties, subShaders, states, closeBraceToken);
+            return new UnityShaderSyntax(
+                shaderKeyword, 
+                nameToken, 
+                openBraceToken, 
+                properties, 
+                subShaders, 
+                stateProperties,
+                closeBraceToken);
         }
 
         private UnityShaderPropertiesSyntax ParseUnityShaderProperties()
@@ -224,12 +231,26 @@ namespace HlslTools.Parser
             var openBraceToken = Match(SyntaxKind.OpenBraceToken);
 
             UnityShaderTagsSyntax tags = null;
-            if (Current.Kind == SyntaxKind.UnityTagsKeyword)
-                tags = ParseUnityShaderTags();
-
             var passes = new List<UnityPassSyntax>();
-            while (Current.Kind == SyntaxKind.UnityPassKeyword)
-                passes.Add(ParseUnityPass());
+
+            var shouldContinue = true;
+            while (shouldContinue && Current.Kind != SyntaxKind.CloseBraceToken)
+            {
+                switch (Current.Kind)
+                {
+                    case SyntaxKind.UnityTagsKeyword:
+                        tags = ParseUnityShaderTags();
+                        break;
+
+                    case SyntaxKind.UnityPassKeyword:
+                        passes.Add(ParseUnityPass());
+                        break;
+
+                    default:
+                        shouldContinue = false;
+                        break;
+                }
+            }
 
             var closeBraceToken = Match(SyntaxKind.CloseBraceToken);
 
@@ -264,11 +285,33 @@ namespace HlslTools.Parser
             var passKeyword = Match(SyntaxKind.UnityPassKeyword);
             var openBraceToken = Match(SyntaxKind.OpenBraceToken);
 
+            UnityShaderTagsSyntax tags = null;
+            var stateProperties = new List<UnityStatePropertySyntax>();
+
+            var shouldContinue = true;
+            while (shouldContinue && Current.Kind != SyntaxKind.CloseBraceToken)
+            {
+                switch (Current.Kind)
+                {
+                    case SyntaxKind.UnityTagsKeyword:
+                        tags = ParseUnityShaderTags();
+                        break;
+
+                    case SyntaxKind.UnityCullKeyword:
+                        stateProperties.Add(ParseUnityCull());
+                        break;
+
+                    default:
+                        shouldContinue = false;
+                        break;
+                }
+            }
+
             var cgProgram = ParseUnityCgProgram();
 
             var closeBraceToken = Match(SyntaxKind.CloseBraceToken);
 
-            return new UnityPassSyntax(passKeyword, openBraceToken, cgProgram, closeBraceToken);
+            return new UnityPassSyntax(passKeyword, openBraceToken, tags, stateProperties, cgProgram, closeBraceToken);
         }
 
         private UnityCgProgramSyntax ParseUnityCgProgram()
@@ -292,13 +335,20 @@ namespace HlslTools.Parser
             return new UnityCgProgramSyntax(cgProgramKeyword, declarations, endCgKeyword);
         }
 
-        private UnityFallbackSyntax ParseUnityFallback()
+        private UnityStatePropertySyntax ParseUnityCull()
+        {
+            var cullKeyword = Match(SyntaxKind.UnityCullKeyword);
+            var value = MatchOneOf(SyntaxKind.UnityBackKeyword, SyntaxKind.UnityFrontKeyword, SyntaxKind.UnityOffKeyword);
+
+            return new UnityStatePropertySyntax(cullKeyword, new UnityStatePropertySimpleValueSyntax(value));
+        }
+
+        private UnityStatePropertySyntax ParseUnityFallback()
         {
             var fallbackKeyword = Match(SyntaxKind.UnityFallbackKeyword);
-            var value = (Current.Kind == SyntaxKind.StringLiteralToken)
-                ? Match(SyntaxKind.StringLiteralToken)
-                : Match(SyntaxKind.UnityOffKeyword);
-            return new UnityFallbackSyntax(fallbackKeyword, value);
+            var value = MatchOneOf(SyntaxKind.UnityOffKeyword, SyntaxKind.StringLiteralToken);
+
+            return new UnityStatePropertySyntax(fallbackKeyword, new UnityStatePropertySimpleValueSyntax(value));
         }
     }
 }

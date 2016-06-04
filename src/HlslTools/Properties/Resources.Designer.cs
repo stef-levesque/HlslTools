@@ -385,6 +385,15 @@ namespace HlslTools.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Found &apos;{0}&apos; but expected one of the following: {1}..
+        /// </summary>
+        internal static string TokenExpectedMultipleChoices {
+            get {
+                return ResourceManager.GetString("TokenExpectedMultipleChoices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unexpected token &apos;{0}&apos;..
         /// </summary>
         internal static string TokenUnexpected {

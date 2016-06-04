@@ -146,6 +146,36 @@ namespace HlslTools.Parser
             return InsertMissingToken(kind);
         }
 
+        protected SyntaxToken MatchOneOf(SyntaxKind preferred, params SyntaxKind[] otherOptions)
+        {
+            var allOptions = new[] { preferred }.Concat(otherOptions).ToList();
+
+            if (allOptions.Contains(Current.Kind))
+                return NextToken();
+
+            if (allOptions.Contains(Lookahead.Kind))
+            {
+                // Skip current token, and carry on parsing.
+                var skippedTokensTrivia = CreateSkippedTokensTrivia(new[] { Current });
+
+                var diagnostics = new List<Diagnostic>(Lookahead.Diagnostics);
+                diagnostics.ReportTokenUnexpected(Current.Span, Current);
+
+                NextToken();
+
+                var result = Current.WithDiagnostics(diagnostics).WithLeadingTrivia(new[] { skippedTokensTrivia });
+
+                NextToken();
+
+                return result;
+            }
+
+            // TODO: NQuery checks if user is currently typing an identifier, and
+            // the partial identifier is a keyword.
+
+            return InsertMissingToken(preferred, otherOptions);
+        }
+
         protected TNode WithDiagnostic<TNode>(TNode node, DiagnosticId diagnosticId, params object[] args)
             where TNode : SyntaxNode
         {
@@ -167,6 +197,22 @@ namespace HlslTools.Parser
             diagnostics.ReportTokenExpected(diagnosticSpan, Current, kind);
 
             return new SyntaxToken(kind, true, missingTokenSourceRange, missingTokenSpan).WithDiagnostics(diagnostics);
+        }
+
+        protected SyntaxToken InsertMissingToken(SyntaxKind preferred, SyntaxKind[] otherOptions)
+        {
+            var missingTokenSourceRange = new SourceRange(Current.FullSourceRange.Start, 0);
+
+            var missingTokenSpan = new TextSpan(Current.Span.SourceText, Current.Span.Start, 0);
+            var leadingLocatedTrivia = Current.LeadingTrivia.OfType<LocatedNode>().FirstOrDefault();
+            if (leadingLocatedTrivia != null)
+                missingTokenSpan = new TextSpan(leadingLocatedTrivia.Span.SourceText, leadingLocatedTrivia.Span.Start, 0);
+
+            var diagnosticSpan = GetDiagnosticTextSpanForMissingToken();
+            var diagnostics = new List<Diagnostic>(1);
+            diagnostics.ReportTokenExpectedMultipleChoices(diagnosticSpan, Current, new[] { preferred }.Concat(otherOptions));
+
+            return new SyntaxToken(preferred, true, missingTokenSourceRange, missingTokenSpan).WithDiagnostics(diagnostics);
         }
 
         protected SourceRange GetDiagnosticSourceRangeForMissingToken()

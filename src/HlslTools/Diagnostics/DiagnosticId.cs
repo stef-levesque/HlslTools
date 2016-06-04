@@ -12,6 +12,7 @@
         InvalidHex,
         NumberTooLarge,
         TokenExpected,
+        TokenExpectedMultipleChoices,
         TokenUnexpected,
 
         EndIfDirectiveExpected,

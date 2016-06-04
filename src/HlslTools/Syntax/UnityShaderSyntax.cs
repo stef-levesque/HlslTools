@@ -9,10 +9,10 @@ namespace HlslTools.Syntax
         public readonly SyntaxToken OpenBraceToken;
         public readonly UnityShaderPropertiesSyntax Properties;
         public readonly List<UnitySubShaderSyntax> SubShaders;
-        public readonly List<UnityStateSyntax> States;
+        public readonly List<UnityStatePropertySyntax> StateProperties;
         public readonly SyntaxToken CloseBraceToken;
 
-        public UnityShaderSyntax(SyntaxToken shaderKeyword, SyntaxToken nameToken, SyntaxToken openBraceToken, UnityShaderPropertiesSyntax properties, List<UnitySubShaderSyntax> subShaders, List<UnityStateSyntax> states, SyntaxToken closeBraceToken)
+        public UnityShaderSyntax(SyntaxToken shaderKeyword, SyntaxToken nameToken, SyntaxToken openBraceToken, UnityShaderPropertiesSyntax properties, List<UnitySubShaderSyntax> subShaders, List<UnityStatePropertySyntax> stateProperties, SyntaxToken closeBraceToken)
             : base(SyntaxKind.UnityShader)
         {
             RegisterChildNode(out ShaderKeyword, shaderKeyword);
@@ -20,7 +20,7 @@ namespace HlslTools.Syntax
             RegisterChildNode(out OpenBraceToken, openBraceToken);
             RegisterChildNode(out Properties, properties);
             RegisterChildNodes(out SubShaders, subShaders);
-            RegisterChildNodes(out States, states);
+            RegisterChildNodes(out StateProperties, stateProperties);
             RegisterChildNode(out CloseBraceToken, closeBraceToken);
         }
 

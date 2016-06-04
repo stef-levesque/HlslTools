@@ -572,7 +572,12 @@ namespace HlslTools.Syntax
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityFallback(UnityFallbackSyntax node)
+        public virtual void VisitUnityStateProperty(UnityStatePropertySyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityStatePropertySimpleValue(UnityStatePropertySimpleValueSyntax node)
         {
             DefaultVisit(node);
         }
@@ -1152,7 +1157,12 @@ namespace HlslTools.Syntax
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityFallback(UnityFallbackSyntax node)
+        public virtual T VisitUnityStateProperty(UnityStatePropertySyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertySimpleValue(UnityStatePropertySimpleValueSyntax node)
         {
             return DefaultVisit(node);
         }

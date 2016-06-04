@@ -332,7 +332,6 @@
     <Compile Include="Binding\BoundNodes\UnaryOperatorKind.cs" />
     <Compile Include="Syntax\UnityCgProgramSyntax.cs" />
     <Compile Include="Syntax\UnityCompilationUnitSyntax.cs" />
-    <Compile Include="Syntax\UnityFallbackSyntax.cs" />
     <Compile Include="Syntax\UnityPassSyntax.cs" />
     <Compile Include="Syntax\UnityShaderPropertiesSyntax.cs" />
     <Compile Include="Syntax\UnityShaderPropertyDefaultValueSyntax.cs" />
@@ -346,7 +345,9 @@
     <Compile Include="Syntax\UnityShaderSyntax.cs" />
     <Compile Include="Syntax\UnityShaderTagsSyntax.cs" />
     <Compile Include="Syntax\UnityShaderTagSyntax.cs" />
-    <Compile Include="Syntax\UnityStateSyntax.cs" />
+    <Compile Include="Syntax\UnityStatePropertySimpleValueSyntax.cs" />
+    <Compile Include="Syntax\UnityStatePropertySyntax.cs" />
+    <Compile Include="Syntax\UnityStatePropertyValueSyntax.cs" />
     <Compile Include="Syntax\UnitySubShaderSyntax.cs" />
     <Compile Include="Syntax\VariableDeclarationStatementSyntax.cs" />
     <Compile Include="Syntax\VariableDeclarationSyntax.cs" />
