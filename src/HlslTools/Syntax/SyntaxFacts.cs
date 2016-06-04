@@ -371,6 +371,10 @@ namespace HlslTools.Syntax
                     return "OneMinusDstColor";
                 case SyntaxKind.UnityOneMinusDstAlphaKeyword:
                     return "OneMinusDstAlpha";
+                case SyntaxKind.UnityLodKeyword:
+                    return "LOD";
+                case SyntaxKind.UnityNameKeyword:
+                    return "Name";
 
                 default:
                     return string.Empty;
@@ -1472,6 +1476,8 @@ namespace HlslTools.Syntax
                 case SyntaxKind.UnityOneMinusSrcAlphaKeyword:
                 case SyntaxKind.UnityOneMinusDstColorKeyword:
                 case SyntaxKind.UnityOneMinusDstAlphaKeyword:
+                case SyntaxKind.UnityLodKeyword:
+                case SyntaxKind.UnityNameKeyword:
                     return true;
 
                 default:
@@ -1766,6 +1772,10 @@ namespace HlslTools.Syntax
                     return SyntaxKind.UnityOneMinusDstColorKeyword;
                 case "oneminusdstalpha":
                     return SyntaxKind.UnityOneMinusDstAlphaKeyword;
+                case "lod":
+                    return SyntaxKind.UnityLodKeyword;
+                case "name":
+                    return SyntaxKind.UnityNameKeyword;
 
                 default:
                     return SyntaxKind.IdentifierToken;

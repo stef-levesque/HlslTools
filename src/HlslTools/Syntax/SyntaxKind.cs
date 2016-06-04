@@ -591,6 +591,8 @@ namespace HlslTools.Syntax
         UnityOneMinusSrcColorKeyword,
         UnityOneMinusSrcAlphaKeyword,
         UnityOneMinusDstColorKeyword,
-        UnityOneMinusDstAlphaKeyword
+        UnityOneMinusDstAlphaKeyword,
+        UnityLodKeyword,
+        UnityNameKeyword
     }
 }

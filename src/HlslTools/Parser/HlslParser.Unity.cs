@@ -232,6 +232,7 @@ namespace HlslTools.Parser
 
             UnityShaderTagsSyntax tags = null;
             var stateProperties = new List<UnityStatePropertySyntax>();
+            UnityCgProgramSyntax cgProgram = null;
             var passes = new List<UnityPassSyntax>();
 
             var shouldContinue = true;
@@ -242,7 +243,9 @@ namespace HlslTools.Parser
                     case SyntaxKind.UnityTagsKeyword:
                         tags = ParseUnityShaderTags();
                         break;
-
+                    case SyntaxKind.UnityCgProgramKeyword:
+                        cgProgram = ParseUnityCgProgram();
+                        break;
                     case SyntaxKind.UnityPassKeyword:
                         passes.Add(ParseUnityPass());
                         break;
@@ -255,7 +258,14 @@ namespace HlslTools.Parser
 
             var closeBraceToken = Match(SyntaxKind.CloseBraceToken);
 
-            return new UnitySubShaderSyntax(subShaderKeyword, openBraceToken, tags, stateProperties, passes, closeBraceToken);
+            return new UnitySubShaderSyntax(
+                subShaderKeyword, 
+                openBraceToken, 
+                tags, 
+                stateProperties, 
+                cgProgram, 
+                passes, 
+                closeBraceToken);
         }
 
         private UnityShaderTagsSyntax ParseUnityShaderTags()
@@ -286,8 +296,10 @@ namespace HlslTools.Parser
             var passKeyword = Match(SyntaxKind.UnityPassKeyword);
             var openBraceToken = Match(SyntaxKind.OpenBraceToken);
 
+            UnityStatePropertySyntax name = null;
             UnityShaderTagsSyntax tags = null;
             var stateProperties = new List<UnityStatePropertySyntax>();
+            UnityCgProgramSyntax cgProgram = null;
 
             var shouldContinue = true;
             while (shouldContinue && Current.Kind != SyntaxKind.CloseBraceToken)
@@ -297,6 +309,12 @@ namespace HlslTools.Parser
                     case SyntaxKind.UnityTagsKeyword:
                         tags = ParseUnityShaderTags();
                         break;
+                    case SyntaxKind.UnityCgProgramKeyword:
+                        cgProgram = ParseUnityCgProgram();
+                        break;
+                    case SyntaxKind.UnityNameKeyword:
+                        name = ParseUnityName();
+                        break;
 
                     default:
                         shouldContinue = TryParseStateProperty(stateProperties);
@@ -304,11 +322,16 @@ namespace HlslTools.Parser
                 }
             }
 
-            var cgProgram = ParseUnityCgProgram();
-
             var closeBraceToken = Match(SyntaxKind.CloseBraceToken);
 
-            return new UnityPassSyntax(passKeyword, openBraceToken, tags, stateProperties, cgProgram, closeBraceToken);
+            return new UnityPassSyntax(
+                passKeyword, 
+                openBraceToken, 
+                name, 
+                tags, 
+                stateProperties, 
+                cgProgram, 
+                closeBraceToken);
         }
 
         private UnityCgProgramSyntax ParseUnityCgProgram()
@@ -350,6 +373,9 @@ namespace HlslTools.Parser
                     return true;
                 case SyntaxKind.UnityColorMaskKeyword:
                     stateProperties.Add(ParseUnityColorMask());
+                    return true;
+                case SyntaxKind.UnityLodKeyword:
+                    stateProperties.Add(ParseUnityLod());
                     return true;
 
                 default:
@@ -437,6 +463,22 @@ namespace HlslTools.Parser
                 SyntaxKind.UnityRgbKeyword,
                 SyntaxKind.UnityAKeyword,
                 SyntaxKind.IntegerLiteralToken);
+
+            return new UnityStatePropertySyntax(keyword, new UnityStatePropertySimpleValueSyntax(value));
+        }
+
+        private UnityStatePropertySyntax ParseUnityLod()
+        {
+            var keyword = Match(SyntaxKind.UnityLodKeyword);
+            var value = Match(SyntaxKind.IntegerLiteralToken);
+
+            return new UnityStatePropertySyntax(keyword, new UnityStatePropertySimpleValueSyntax(value));
+        }
+
+        private UnityStatePropertySyntax ParseUnityName()
+        {
+            var keyword = Match(SyntaxKind.UnityNameKeyword);
+            var value = Match(SyntaxKind.StringLiteralToken);
 
             return new UnityStatePropertySyntax(keyword, new UnityStatePropertySimpleValueSyntax(value));
         }
