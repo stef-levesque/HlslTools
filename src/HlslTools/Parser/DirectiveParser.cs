@@ -195,26 +195,12 @@ namespace HlslTools.Parser
             var paramList = new List<SyntaxNode>();
             if (Current.Kind != SyntaxKind.CloseParenToken)
             {
-                paramList.Add(Match(SyntaxKind.IdentifierToken));
+                ParseFunctionLikeParameterName(paramList);
 
                 while (Current.Kind == SyntaxKind.CommaToken)
                 {
                     paramList.Add(Match(SyntaxKind.CommaToken));
-
-                    switch (Current.Kind)
-                    {
-                        case SyntaxKind.IdentifierToken:
-                            paramList.Add(Match(SyntaxKind.IdentifierToken));
-                            break;
-
-                        default:
-                            if (Current.Kind.IsKeyword())
-                            {
-                                paramList.Add(NextToken().WithKind(SyntaxKind.IdentifierToken));
-                                break;
-                            }
-                            goto case SyntaxKind.IdentifierToken;
-                    }
+                    ParseFunctionLikeParameterName(paramList);
                 }
             }
 
@@ -229,6 +215,24 @@ namespace HlslTools.Parser
             var eod = ParseEndOfDirective(name.IsMissing);
 
             return new FunctionLikeDefineDirectiveTriviaSyntax(hash, keyword, name, parameters, body, eod, isActive);
+        }
+
+        private void ParseFunctionLikeParameterName(List<SyntaxNode> paramList)
+        {
+            switch (Current.Kind)
+            {
+                case SyntaxKind.IdentifierToken:
+                    paramList.Add(Match(SyntaxKind.IdentifierToken));
+                    break;
+
+                default:
+                    if (Current.Kind.IsKeyword())
+                    {
+                        paramList.Add(NextToken().WithKind(SyntaxKind.IdentifierToken));
+                        break;
+                    }
+                    goto case SyntaxKind.IdentifierToken;
+            }
         }
 
         private DefineDirectiveTriviaSyntax ParseObjectLikeDefineDirective(SyntaxToken hash, SyntaxToken keyword, SyntaxToken name, bool isActive)
