@@ -293,6 +293,20 @@ namespace HlslTools.Syntax
                     return "Name";
                 case SyntaxKind.UnityLightingKeyword:
                     return "Lighting";
+                case SyntaxKind.UnityStencilKeyword:
+                    return "Stencil";
+                case SyntaxKind.UnityRefKeyword:
+                    return "Ref";
+                case SyntaxKind.UnityReadMaskKeyword:
+                    return "ReadMask";
+                case SyntaxKind.UnityWriteMaskKeyword:
+                    return "WriteMask";
+                case SyntaxKind.UnityCompKeyword:
+                    return "Comp";
+                case SyntaxKind.UnityFailKeyword:
+                    return "Fail";
+                case SyntaxKind.UnityZFailKeyword:
+                    return "ZFail";
 
                 default:
                     return string.Empty;
@@ -1355,6 +1369,13 @@ namespace HlslTools.Syntax
                 case SyntaxKind.UnityLodKeyword:
                 case SyntaxKind.UnityNameKeyword:
                 case SyntaxKind.UnityLightingKeyword:
+                case SyntaxKind.UnityStencilKeyword:
+                case SyntaxKind.UnityRefKeyword:
+                case SyntaxKind.UnityReadMaskKeyword:
+                case SyntaxKind.UnityWriteMaskKeyword:
+                case SyntaxKind.UnityCompKeyword:
+                case SyntaxKind.UnityFailKeyword:
+                case SyntaxKind.UnityZFailKeyword:
                     return true;
 
                 default:
@@ -1571,6 +1592,20 @@ namespace HlslTools.Syntax
                     return SyntaxKind.UnityNameKeyword;
                 case "lighting":
                     return SyntaxKind.UnityLightingKeyword;
+                case "stencil":
+                    return SyntaxKind.UnityStencilKeyword;
+                case "ref":
+                    return SyntaxKind.UnityRefKeyword;
+                case "readmask":
+                    return SyntaxKind.UnityReadMaskKeyword;
+                case "writemask":
+                    return SyntaxKind.UnityWriteMaskKeyword;
+                case "comp":
+                    return SyntaxKind.UnityCompKeyword;
+                case "fail":
+                    return SyntaxKind.UnityFailKeyword;
+                case "zfail":
+                    return SyntaxKind.UnityZFailKeyword;
 
                 default:
                     return SyntaxKind.IdentifierToken;

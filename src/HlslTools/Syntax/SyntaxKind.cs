@@ -534,6 +534,14 @@ namespace HlslTools.Syntax
         UnityStatePropertyLod,
         UnityStatePropertyName,
         UnityStatePropertyLighting,
+        UnityStatePropertyStencil,
+        UnityStatePropertyStencilRef,
+        UnityStatePropertyStencilReadMask,
+        UnityStatePropertyStencilWriteMask,
+        UnityStatePropertyStencilComp,
+        UnityStatePropertyStencilPass,
+        UnityStatePropertyStencilFail,
+        UnityStatePropertyStencilZFail,
 
         UnityShaderKeyword,
         UnityPropertiesKeyword,
@@ -563,6 +571,13 @@ namespace HlslTools.Syntax
         UnityAlphaToMaskKeyword,
         UnityLodKeyword,
         UnityNameKeyword,
-        UnityLightingKeyword
+        UnityLightingKeyword,
+        UnityStencilKeyword,
+        UnityRefKeyword,
+        UnityReadMaskKeyword,
+        UnityWriteMaskKeyword,
+        UnityCompKeyword,
+        UnityFailKeyword,
+        UnityZFailKeyword
     }
 }

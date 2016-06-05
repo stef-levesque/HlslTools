@@ -399,6 +399,9 @@ namespace HlslTools.Parser
                 case SyntaxKind.UnityLightingKeyword:
                     stateProperties.Add(ParseUnityLighting());
                     return true;
+                case SyntaxKind.UnityStencilKeyword:
+                    stateProperties.Add(ParseUnityStencil());
+                    return true;
 
                 default:
                     return false;
@@ -520,6 +523,110 @@ namespace HlslTools.Parser
             var value = Match(SyntaxKind.IdentifierToken);
 
             return new UnityStatePropertyLightingSyntax(keyword, value);
+        }
+
+        private UnityStatePropertySyntax ParseUnityStencil()
+        {
+            var keyword = Match(SyntaxKind.UnityStencilKeyword);
+            var openBraceToken = Match(SyntaxKind.OpenBraceToken);
+
+            var stateProperties = new List<UnityStatePropertySyntax>();
+            var shouldContinue = true;
+            while (shouldContinue && Current.Kind != SyntaxKind.CloseBraceToken)
+            {
+                switch (Current.Kind)
+                {
+                    case SyntaxKind.UnityRefKeyword:
+                        stateProperties.Add(ParseUnityStencilRef());
+                        break;
+                    case SyntaxKind.UnityReadMaskKeyword:
+                        stateProperties.Add(ParseUnityStencilReadMask());
+                        break;
+                    case SyntaxKind.UnityWriteMaskKeyword:
+                        stateProperties.Add(ParseUnityStencilWriteMask());
+                        break;
+                    case SyntaxKind.UnityCompKeyword:
+                        stateProperties.Add(ParseUnityStencilComp());
+                        break;
+                    case SyntaxKind.UnityPassKeyword:
+                        stateProperties.Add(ParseUnityStencilPass());
+                        break;
+                    case SyntaxKind.UnityFailKeyword:
+                        stateProperties.Add(ParseUnityStencilFail());
+                        break;
+                    case SyntaxKind.UnityZFailKeyword:
+                        stateProperties.Add(ParseUnityStencilZFail());
+                        break;
+
+                    default:
+                        shouldContinue = false;
+                        break;
+                }
+            }
+
+            var closeBraceToken = Match(SyntaxKind.CloseBraceToken);
+
+            return new UnityStatePropertyStencilSyntax(
+                keyword, 
+                openBraceToken, 
+                stateProperties, 
+                closeBraceToken);
+        }
+
+        private UnityStatePropertySyntax ParseUnityStencilRef()
+        {
+            var keyword = Match(SyntaxKind.UnityRefKeyword);
+            var value = Match(SyntaxKind.IntegerLiteralToken);
+
+            return new UnityStatePropertyStencilRefSyntax(keyword, value);
+        }
+
+        private UnityStatePropertySyntax ParseUnityStencilReadMask()
+        {
+            var keyword = Match(SyntaxKind.UnityReadMaskKeyword);
+            var value = Match(SyntaxKind.IntegerLiteralToken);
+
+            return new UnityStatePropertyStencilReadMaskSyntax(keyword, value);
+        }
+
+        private UnityStatePropertySyntax ParseUnityStencilWriteMask()
+        {
+            var keyword = Match(SyntaxKind.UnityWriteMaskKeyword);
+            var value = Match(SyntaxKind.IntegerLiteralToken);
+
+            return new UnityStatePropertyStencilWriteMaskSyntax(keyword, value);
+        }
+
+        private UnityStatePropertySyntax ParseUnityStencilComp()
+        {
+            var keyword = Match(SyntaxKind.UnityCompKeyword);
+            var value = Match(SyntaxKind.IdentifierToken);
+
+            return new UnityStatePropertyStencilCompSyntax(keyword, value);
+        }
+
+        private UnityStatePropertySyntax ParseUnityStencilPass()
+        {
+            var keyword = Match(SyntaxKind.UnityPassKeyword);
+            var value = Match(SyntaxKind.IdentifierToken);
+
+            return new UnityStatePropertyStencilPassSyntax(keyword, value);
+        }
+
+        private UnityStatePropertySyntax ParseUnityStencilFail()
+        {
+            var keyword = Match(SyntaxKind.UnityFailKeyword);
+            var value = Match(SyntaxKind.IdentifierToken);
+
+            return new UnityStatePropertyStencilFailSyntax(keyword, value);
+        }
+
+        private UnityStatePropertySyntax ParseUnityStencilZFail()
+        {
+            var keyword = Match(SyntaxKind.UnityZFailKeyword);
+            var value = Match(SyntaxKind.IdentifierToken);
+
+            return new UnityStatePropertyStencilZFailSyntax(keyword, value);
         }
     }
 }

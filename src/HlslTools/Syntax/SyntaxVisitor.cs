@@ -641,6 +641,46 @@ namespace HlslTools.Syntax
         {
             DefaultVisit(node);
         }
+
+        public virtual void VisitUnityStatePropertyStencil(UnityStatePropertyStencilSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityStatePropertyStencilRef(UnityStatePropertyStencilRefSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityStatePropertyStencilReadMask(UnityStatePropertyStencilReadMaskSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityStatePropertyStencilWriteMask(UnityStatePropertyStencilWriteMaskSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityStatePropertyStencilComp(UnityStatePropertyStencilCompSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityStatePropertyStencilPass(UnityStatePropertyStencilPassSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityStatePropertyStencilFail(UnityStatePropertyStencilFailSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityStatePropertyStencilZFail(UnityStatePropertyStencilZFailSyntax node)
+        {
+            DefaultVisit(node);
+        }
     }
 
     public abstract class SyntaxVisitor<T>
@@ -1283,6 +1323,46 @@ namespace HlslTools.Syntax
         }
 
         public virtual T VisitUnityStatePropertyLighting(UnityStatePropertyLightingSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyStencil(UnityStatePropertyStencilSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyStencilRef(UnityStatePropertyStencilRefSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyStencilReadMask(UnityStatePropertyStencilReadMaskSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyStencilWriteMask(UnityStatePropertyStencilWriteMaskSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyStencilComp(UnityStatePropertyStencilCompSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyStencilPass(UnityStatePropertyStencilPassSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyStencilFail(UnityStatePropertyStencilFailSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyStencilZFail(UnityStatePropertyStencilZFailSyntax node)
         {
             return DefaultVisit(node);
         }

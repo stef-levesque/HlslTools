@@ -356,6 +356,14 @@
     <Compile Include="Syntax\UnityStatePropertyLightingSyntax.cs" />
     <Compile Include="Syntax\UnityStatePropertyLodSyntax.cs" />
     <Compile Include="Syntax\UnityStatePropertyNameSyntax.cs" />
+    <Compile Include="Syntax\UnityStatePropertyStencilCompSyntax.cs" />
+    <Compile Include="Syntax\UnityStatePropertyStencilFailSyntax.cs" />
+    <Compile Include="Syntax\UnityStatePropertyStencilPassSyntax.cs" />
+    <Compile Include="Syntax\UnityStatePropertyStencilReadMaskSyntax.cs" />
+    <Compile Include="Syntax\UnityStatePropertyStencilRefSyntax.cs" />
+    <Compile Include="Syntax\UnityStatePropertyStencilSyntax.cs" />
+    <Compile Include="Syntax\UnityStatePropertyStencilWriteMaskSyntax.cs" />
+    <Compile Include="Syntax\UnityStatePropertyStencilZFailSyntax.cs" />
     <Compile Include="Syntax\UnityStatePropertySyntax.cs" />
     <Compile Include="Syntax\UnityStatePropertyValueSyntax.cs" />
     <Compile Include="Syntax\UnityStatePropertyVariableValueSyntax.cs" />
