@@ -19,8 +19,8 @@ namespace HlslTools.Syntax
             RegisterChildNode(out ShaderKeyword, shaderKeyword);
             RegisterChildNode(out NameToken, nameToken);
             RegisterChildNode(out OpenBraceToken, openBraceToken);
-            RegisterChildNode(out CgInclude, cgInclude);
             RegisterChildNode(out Properties, properties);
+            RegisterChildNode(out CgInclude, cgInclude);
             RegisterChildNodes(out Statements, statements);
             RegisterChildNodes(out StateProperties, stateProperties);
             RegisterChildNode(out CloseBraceToken, closeBraceToken);
