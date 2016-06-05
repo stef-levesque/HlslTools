@@ -257,8 +257,7 @@ namespace HlslTools.Parser
             var categoryKeyword = Match(SyntaxKind.UnityCategoryKeyword);
             var openBraceToken = Match(SyntaxKind.OpenBraceToken);
 
-            UnityShaderTagsSyntax tags = null;
-            var stateProperties = new List<UnityStatePropertySyntax>();
+            var statements = new List<SyntaxNode>();
             var subShaders = new List<UnitySubShaderSyntax>();
 
             var shouldContinue = true;
@@ -267,14 +266,14 @@ namespace HlslTools.Parser
                 switch (Current.Kind)
                 {
                     case SyntaxKind.UnityTagsKeyword:
-                        tags = ParseUnityShaderTags();
+                        statements.Add(ParseUnityShaderTags());
                         break;
                     case SyntaxKind.UnitySubShaderKeyword:
                         subShaders.Add(ParseUnitySubShader());
                         break;
 
                     default:
-                        shouldContinue = TryParseStateProperty(stateProperties);
+                        shouldContinue = TryParseStateProperty(statements);
                         break;
                 }
             }
@@ -284,8 +283,7 @@ namespace HlslTools.Parser
             return new UnityCategorySyntax(
                 categoryKeyword,
                 openBraceToken,
-                tags,
-                stateProperties,
+                statements,
                 subShaders,
                 closeBraceToken);
         }
@@ -295,8 +293,7 @@ namespace HlslTools.Parser
             var subShaderKeyword = Match(SyntaxKind.UnitySubShaderKeyword);
             var openBraceToken = Match(SyntaxKind.OpenBraceToken);
 
-            UnityShaderTagsSyntax tags = null;
-            var stateProperties = new List<UnityStatePropertySyntax>();
+            var statements = new List<SyntaxNode>();
             UnityCgProgramSyntax cgProgram = null;
             var passes = new List<BaseUnityPassSyntax>();
 
@@ -306,7 +303,7 @@ namespace HlslTools.Parser
                 switch (Current.Kind)
                 {
                     case SyntaxKind.UnityTagsKeyword:
-                        tags = ParseUnityShaderTags();
+                        statements.Add(ParseUnityShaderTags());
                         break;
                     case SyntaxKind.UnityCgProgramKeyword:
                         cgProgram = ParseUnityCgProgram();
@@ -322,7 +319,7 @@ namespace HlslTools.Parser
                         break;
 
                     default:
-                        shouldContinue = TryParseStateProperty(stateProperties);
+                        shouldContinue = TryParseStateProperty(statements);
                         break;
                 }
             }
@@ -331,9 +328,8 @@ namespace HlslTools.Parser
 
             return new UnitySubShaderSyntax(
                 subShaderKeyword, 
-                openBraceToken, 
-                tags, 
-                stateProperties, 
+                openBraceToken,
+                statements, 
                 cgProgram, 
                 passes, 
                 closeBraceToken);
@@ -368,8 +364,7 @@ namespace HlslTools.Parser
             var openBraceToken = Match(SyntaxKind.OpenBraceToken);
 
             UnityStatePropertySyntax name = null;
-            UnityShaderTagsSyntax tags = null;
-            var stateProperties = new List<UnityStatePropertySyntax>();
+            var statements = new List<SyntaxNode>();
             UnityCgProgramSyntax cgProgram = null;
 
             var shouldContinue = true;
@@ -378,7 +373,7 @@ namespace HlslTools.Parser
                 switch (Current.Kind)
                 {
                     case SyntaxKind.UnityTagsKeyword:
-                        tags = ParseUnityShaderTags();
+                        statements.Add(ParseUnityShaderTags());
                         break;
                     case SyntaxKind.UnityCgProgramKeyword:
                         cgProgram = ParseUnityCgProgram();
@@ -388,7 +383,7 @@ namespace HlslTools.Parser
                         break;
 
                     default:
-                        shouldContinue = TryParseStateProperty(stateProperties);
+                        shouldContinue = TryParseStateProperty(statements);
                         break;
                 }
             }
@@ -398,9 +393,8 @@ namespace HlslTools.Parser
             return new UnityPassSyntax(
                 passKeyword, 
                 openBraceToken, 
-                name, 
-                tags, 
-                stateProperties, 
+                name,
+                statements,
                 cgProgram, 
                 closeBraceToken);
         }
@@ -468,7 +462,7 @@ namespace HlslTools.Parser
             endCgKeyword = Match(SyntaxKind.UnityEndCgKeyword);
         }
 
-        private bool TryParseStateProperty(List<UnityStatePropertySyntax> stateProperties)
+        private bool TryParseStateProperty(List<SyntaxNode> stateProperties)
         {
             switch (Current.Kind)
             {

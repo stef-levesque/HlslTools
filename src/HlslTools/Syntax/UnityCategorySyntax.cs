@@ -6,18 +6,16 @@ namespace HlslTools.Syntax
     {
         public readonly SyntaxToken CategoryKeyword;
         public readonly SyntaxToken OpenBraceToken;
-        public readonly UnityShaderTagsSyntax Tags;
-        public readonly List<UnityStatePropertySyntax> StateProperties;
+        public readonly List<SyntaxNode> Statements;
         public readonly List<UnitySubShaderSyntax> SubShaders;
         public readonly SyntaxToken CloseBraceToken;
 
-        public UnityCategorySyntax(SyntaxToken categoryKeyword, SyntaxToken openBraceToken, UnityShaderTagsSyntax tags, List<UnityStatePropertySyntax> stateProperties, List<UnitySubShaderSyntax> subShaders, SyntaxToken closeBraceToken)
+        public UnityCategorySyntax(SyntaxToken categoryKeyword, SyntaxToken openBraceToken, List<SyntaxNode> statements, List<UnitySubShaderSyntax> subShaders, SyntaxToken closeBraceToken)
             : base(SyntaxKind.UnityCategory)
         {
             RegisterChildNode(out CategoryKeyword, categoryKeyword);
             RegisterChildNode(out OpenBraceToken, openBraceToken);
-            RegisterChildNode(out Tags, tags);
-            RegisterChildNodes(out StateProperties, stateProperties);
+            RegisterChildNodes(out Statements, statements);
             RegisterChildNodes(out SubShaders, subShaders);
             RegisterChildNode(out CloseBraceToken, closeBraceToken);
         }
