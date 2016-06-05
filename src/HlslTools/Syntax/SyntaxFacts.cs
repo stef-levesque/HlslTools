@@ -315,6 +315,8 @@ namespace HlslTools.Syntax
                     return "UsePass";
                 case SyntaxKind.UnityGrabPassKeyword:
                     return "GrabPass";
+                case SyntaxKind.UnityDependencyKeyword:
+                    return "Dependency";
 
                 default:
                     return string.Empty;
@@ -1388,6 +1390,7 @@ namespace HlslTools.Syntax
                 case SyntaxKind.UnityZFailKeyword:
                 case SyntaxKind.UnityUsePassKeyword:
                 case SyntaxKind.UnityGrabPassKeyword:
+                case SyntaxKind.UnityDependencyKeyword:
                     return true;
 
                 default:
@@ -1626,6 +1629,8 @@ namespace HlslTools.Syntax
                     return SyntaxKind.UnityUsePassKeyword;
                 case "grabpass":
                     return SyntaxKind.UnityGrabPassKeyword;
+                case "dependency":
+                    return SyntaxKind.UnityDependencyKeyword;
 
                 default:
                     return SyntaxKind.IdentifierToken;

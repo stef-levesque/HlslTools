@@ -711,6 +711,11 @@ namespace HlslTools.Syntax
         {
             DefaultVisit(node);
         }
+
+        public virtual void VisitUnityStatePropertyDependency(UnityStatePropertyDependencySyntax node)
+        {
+            DefaultVisit(node);
+        }
     }
 
     public abstract class SyntaxVisitor<T>
@@ -1423,6 +1428,11 @@ namespace HlslTools.Syntax
         }
 
         public virtual T VisitUnityGrabPass(UnityGrabPassSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyDependency(UnityStatePropertyDependencySyntax node)
         {
             return DefaultVisit(node);
         }

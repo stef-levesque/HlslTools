@@ -335,6 +335,7 @@
     <Compile Include="Syntax\UnityCgIncludeSyntax.cs" />
     <Compile Include="Syntax\UnityCgProgramSyntax.cs" />
     <Compile Include="Syntax\UnityCompilationUnitSyntax.cs" />
+    <Compile Include="Syntax\UnityStatePropertyDependencySyntax.cs" />
     <Compile Include="Syntax\UnityGrabPassSyntax.cs" />
     <Compile Include="Syntax\UnityPassSyntax.cs" />
     <Compile Include="Syntax\UnityShaderPropertiesSyntax.cs" />

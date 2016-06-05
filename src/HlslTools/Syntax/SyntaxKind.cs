@@ -548,6 +548,7 @@ namespace HlslTools.Syntax
         UnityStatePropertyStencilPass,
         UnityStatePropertyStencilFail,
         UnityStatePropertyStencilZFail,
+        UnityStatePropertyDependency,
 
         UnityShaderKeyword,
         UnityPropertiesKeyword,
@@ -588,6 +589,7 @@ namespace HlslTools.Syntax
         UnityFailKeyword,
         UnityZFailKeyword,
         UnityUsePassKeyword,
-        UnityGrabPassKeyword
+        UnityGrabPassKeyword,
+        UnityDependencyKeyword
     }
 }

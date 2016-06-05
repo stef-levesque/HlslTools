@@ -46,6 +46,9 @@ namespace HlslTools.Parser
                     case SyntaxKind.UnityCustomEditorKeyword:
                         stateProperties.Add(ParseUnityCustomEditor());
                         break;
+                    case SyntaxKind.UnityDependencyKeyword:
+                        stateProperties.Add(ParseUnityDependency());
+                        break;
 
                     default:
                         shouldContinue = false;
@@ -534,6 +537,16 @@ namespace HlslTools.Parser
             var value = Match(SyntaxKind.StringLiteralToken);
 
             return new UnityStatePropertyCustomEditorSyntax(keyword, value);
+        }
+
+        private UnityStatePropertySyntax ParseUnityDependency()
+        {
+            var keyword = Match(SyntaxKind.UnityDependencyKeyword);
+            var name = Match(SyntaxKind.StringLiteralToken);
+            var equalsToken = Match(SyntaxKind.EqualsToken);
+            var dependentShaderToken = Match(SyntaxKind.StringLiteralToken);
+
+            return new UnityStatePropertyDependencySyntax(keyword, name, equalsToken, dependentShaderToken);
         }
 
         private UnityStatePropertySyntax ParseUnityCull()
