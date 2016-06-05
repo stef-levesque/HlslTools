@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace HlslTools.Syntax
 {
-    public class UnityPassSyntax : SyntaxNode
+    public sealed class UnityPassSyntax : BaseUnityPassSyntax
     {
         public readonly SyntaxToken PassKeyword;
         public readonly SyntaxToken OpenBraceToken;

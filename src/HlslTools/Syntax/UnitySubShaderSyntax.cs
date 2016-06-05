@@ -9,10 +9,10 @@ namespace HlslTools.Syntax
         public readonly UnityShaderTagsSyntax Tags;
         public readonly List<UnityStatePropertySyntax> StateProperties;
         public readonly UnityCgProgramSyntax CgProgram;
-        public readonly List<UnityPassSyntax> Passes;
+        public readonly List<BaseUnityPassSyntax> Passes;
         public readonly SyntaxToken CloseBraceToken;
 
-        public UnitySubShaderSyntax(SyntaxToken subShaderKeyword, SyntaxToken openBraceToken, UnityShaderTagsSyntax tags, List<UnityStatePropertySyntax> stateProperties, UnityCgProgramSyntax cgProgram, List<UnityPassSyntax> passes, SyntaxToken closeBraceToken)
+        public UnitySubShaderSyntax(SyntaxToken subShaderKeyword, SyntaxToken openBraceToken, UnityShaderTagsSyntax tags, List<UnityStatePropertySyntax> stateProperties, UnityCgProgramSyntax cgProgram, List<BaseUnityPassSyntax> passes, SyntaxToken closeBraceToken)
             : base(SyntaxKind.UnitySubShader)
         {
             RegisterChildNode(out SubShaderKeyword, subShaderKeyword);

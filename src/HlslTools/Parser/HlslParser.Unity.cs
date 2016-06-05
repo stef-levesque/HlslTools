@@ -295,7 +295,7 @@ namespace HlslTools.Parser
             UnityShaderTagsSyntax tags = null;
             var stateProperties = new List<UnityStatePropertySyntax>();
             UnityCgProgramSyntax cgProgram = null;
-            var passes = new List<UnityPassSyntax>();
+            var passes = new List<BaseUnityPassSyntax>();
 
             var shouldContinue = true;
             while (shouldContinue && Current.Kind != SyntaxKind.CloseBraceToken)
@@ -310,6 +310,12 @@ namespace HlslTools.Parser
                         break;
                     case SyntaxKind.UnityPassKeyword:
                         passes.Add(ParseUnityPass());
+                        break;
+                    case SyntaxKind.UnityUsePassKeyword:
+                        passes.Add(ParseUnityUsePass());
+                        break;
+                    case SyntaxKind.UnityGrabPassKeyword:
+                        passes.Add(ParseUnityGrabPass());
                         break;
 
                     default:
@@ -394,6 +400,28 @@ namespace HlslTools.Parser
                 stateProperties, 
                 cgProgram, 
                 closeBraceToken);
+        }
+
+        private UnityGrabPassSyntax ParseUnityGrabPass()
+        {
+            var grabPassKeyword = Match(SyntaxKind.UnityGrabPassKeyword);
+            var openBraceToken = Match(SyntaxKind.OpenBraceToken);
+            var closeBraceToken = Match(SyntaxKind.CloseBraceToken);
+
+            return new UnityGrabPassSyntax(
+                grabPassKeyword,
+                openBraceToken,
+                closeBraceToken);
+        }
+
+        private UnityUsePassSyntax ParseUnityUsePass()
+        {
+            var usePassKeyword = Match(SyntaxKind.UnityUsePassKeyword);
+            var passName = Match(SyntaxKind.StringLiteralToken);
+
+            return new UnityUsePassSyntax(
+                usePassKeyword,
+                passName);
         }
 
         private UnityCgProgramSyntax ParseUnityCgProgram()

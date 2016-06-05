@@ -521,6 +521,8 @@ namespace HlslTools.Syntax
         UnityCategory,
         UnitySubShader,
         UnityPass,
+        UnityUsePass,
+        UnityGrabPass,
         UnityCgProgram,
         UnityCgInclude,
         UnityStatePropertyConstantValue,
@@ -584,6 +586,8 @@ namespace HlslTools.Syntax
         UnityWriteMaskKeyword,
         UnityCompKeyword,
         UnityFailKeyword,
-        UnityZFailKeyword
+        UnityZFailKeyword,
+        UnityUsePassKeyword,
+        UnityGrabPassKeyword
     }
 }

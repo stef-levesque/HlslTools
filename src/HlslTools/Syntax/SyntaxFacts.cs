@@ -311,6 +311,10 @@ namespace HlslTools.Syntax
                     return "Fail";
                 case SyntaxKind.UnityZFailKeyword:
                     return "ZFail";
+                case SyntaxKind.UnityUsePassKeyword:
+                    return "UsePass";
+                case SyntaxKind.UnityGrabPassKeyword:
+                    return "GrabPass";
 
                 default:
                     return string.Empty;
@@ -1382,6 +1386,8 @@ namespace HlslTools.Syntax
                 case SyntaxKind.UnityCompKeyword:
                 case SyntaxKind.UnityFailKeyword:
                 case SyntaxKind.UnityZFailKeyword:
+                case SyntaxKind.UnityUsePassKeyword:
+                case SyntaxKind.UnityGrabPassKeyword:
                     return true;
 
                 default:
@@ -1616,6 +1622,10 @@ namespace HlslTools.Syntax
                     return SyntaxKind.UnityFailKeyword;
                 case "zfail":
                     return SyntaxKind.UnityZFailKeyword;
+                case "usepass":
+                    return SyntaxKind.UnityUsePassKeyword;
+                case "grabpass":
+                    return SyntaxKind.UnityGrabPassKeyword;
 
                 default:
                     return SyntaxKind.IdentifierToken;

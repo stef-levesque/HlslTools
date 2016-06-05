@@ -701,6 +701,16 @@ namespace HlslTools.Syntax
         {
             DefaultVisit(node);
         }
+
+        public virtual void VisitUnityUsePass(UnityUsePassSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityGrabPass(UnityGrabPassSyntax node)
+        {
+            DefaultVisit(node);
+        }
     }
 
     public abstract class SyntaxVisitor<T>
@@ -1403,6 +1413,16 @@ namespace HlslTools.Syntax
         }
 
         public virtual T VisitUnityStatePropertyStencilZFail(UnityStatePropertyStencilZFailSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityUsePass(UnityUsePassSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityGrabPass(UnityGrabPassSyntax node)
         {
             return DefaultVisit(node);
         }
