@@ -520,7 +520,7 @@ namespace HlslTools.Parser
         private UnityStatePropertySyntax ParseUnityColorMask()
         {
             var keyword = Match(SyntaxKind.UnityColorMaskKeyword);
-            var maskToken = MatchOneOf(
+            var maskToken = ParseUnityStatePropertyValue(
                 SyntaxKind.IdentifierToken,
                 SyntaxKind.IntegerLiteralToken);
 
@@ -612,7 +612,7 @@ namespace HlslTools.Parser
         private UnityStatePropertySyntax ParseUnityStencilRef()
         {
             var keyword = Match(SyntaxKind.UnityRefKeyword);
-            var value = Match(SyntaxKind.IntegerLiteralToken);
+            var value = ParseUnityStatePropertyValue(SyntaxKind.IntegerLiteralToken);
 
             return new UnityStatePropertyStencilRefSyntax(keyword, value);
         }
@@ -620,7 +620,7 @@ namespace HlslTools.Parser
         private UnityStatePropertySyntax ParseUnityStencilReadMask()
         {
             var keyword = Match(SyntaxKind.UnityReadMaskKeyword);
-            var value = Match(SyntaxKind.IntegerLiteralToken);
+            var value = ParseUnityStatePropertyValue(SyntaxKind.IntegerLiteralToken);
 
             return new UnityStatePropertyStencilReadMaskSyntax(keyword, value);
         }
@@ -628,7 +628,7 @@ namespace HlslTools.Parser
         private UnityStatePropertySyntax ParseUnityStencilWriteMask()
         {
             var keyword = Match(SyntaxKind.UnityWriteMaskKeyword);
-            var value = Match(SyntaxKind.IntegerLiteralToken);
+            var value = ParseUnityStatePropertyValue(SyntaxKind.IntegerLiteralToken);
 
             return new UnityStatePropertyStencilWriteMaskSyntax(keyword, value);
         }
@@ -636,7 +636,7 @@ namespace HlslTools.Parser
         private UnityStatePropertySyntax ParseUnityStencilComp()
         {
             var keyword = Match(SyntaxKind.UnityCompKeyword);
-            var value = Match(SyntaxKind.IdentifierToken);
+            var value = ParseUnityStatePropertyValue(SyntaxKind.IdentifierToken);
 
             return new UnityStatePropertyStencilCompSyntax(keyword, value);
         }
@@ -644,7 +644,7 @@ namespace HlslTools.Parser
         private UnityStatePropertySyntax ParseUnityStencilPass()
         {
             var keyword = Match(SyntaxKind.UnityPassKeyword);
-            var value = Match(SyntaxKind.IdentifierToken);
+            var value = ParseUnityStatePropertyValue(SyntaxKind.IdentifierToken);
 
             return new UnityStatePropertyStencilPassSyntax(keyword, value);
         }
@@ -652,7 +652,7 @@ namespace HlslTools.Parser
         private UnityStatePropertySyntax ParseUnityStencilFail()
         {
             var keyword = Match(SyntaxKind.UnityFailKeyword);
-            var value = Match(SyntaxKind.IdentifierToken);
+            var value = ParseUnityStatePropertyValue(SyntaxKind.IdentifierToken);
 
             return new UnityStatePropertyStencilFailSyntax(keyword, value);
         }
@@ -660,7 +660,7 @@ namespace HlslTools.Parser
         private UnityStatePropertySyntax ParseUnityStencilZFail()
         {
             var keyword = Match(SyntaxKind.UnityZFailKeyword);
-            var value = Match(SyntaxKind.IdentifierToken);
+            var value = ParseUnityStatePropertyValue(SyntaxKind.IdentifierToken);
 
             return new UnityStatePropertyStencilZFailSyntax(keyword, value);
         }

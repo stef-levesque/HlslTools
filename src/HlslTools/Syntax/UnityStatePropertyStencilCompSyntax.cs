@@ -3,13 +3,13 @@ namespace HlslTools.Syntax
     public sealed class UnityStatePropertyStencilCompSyntax : UnityStatePropertySyntax
     {
         public readonly SyntaxToken CompKeyword;
-        public readonly SyntaxToken ValueToken;
+        public readonly UnityStatePropertyValueSyntax Value;
 
-        public UnityStatePropertyStencilCompSyntax(SyntaxToken compKeyword, SyntaxToken valueToken)
+        public UnityStatePropertyStencilCompSyntax(SyntaxToken compKeyword, UnityStatePropertyValueSyntax value)
             : base(SyntaxKind.UnityStatePropertyStencilComp)
         {
             RegisterChildNode(out CompKeyword, compKeyword);
-            RegisterChildNode(out ValueToken, valueToken);
+            RegisterChildNode(out Value, value);
         }
 
         public override void Accept(SyntaxVisitor visitor)

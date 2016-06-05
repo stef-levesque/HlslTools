@@ -3,13 +3,13 @@ namespace HlslTools.Syntax
     public sealed class UnityStatePropertyColorMaskSyntax : UnityStatePropertySyntax
     {
         public readonly SyntaxToken ColorMaskKeyword;
-        public readonly SyntaxToken MaskToken;
+        public readonly UnityStatePropertyValueSyntax Mask;
 
-        public UnityStatePropertyColorMaskSyntax(SyntaxToken colorMaskKeyword, SyntaxToken maskToken)
+        public UnityStatePropertyColorMaskSyntax(SyntaxToken colorMaskKeyword, UnityStatePropertyValueSyntax mask)
             : base(SyntaxKind.UnityStatePropertyColorMask)
         {
             RegisterChildNode(out ColorMaskKeyword, colorMaskKeyword);
-            RegisterChildNode(out MaskToken, maskToken);
+            RegisterChildNode(out Mask, mask);
         }
 
         public override void Accept(SyntaxVisitor visitor)

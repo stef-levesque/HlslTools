@@ -3,13 +3,13 @@ namespace HlslTools.Syntax
     public sealed class UnityStatePropertyStencilFailSyntax : UnityStatePropertySyntax
     {
         public readonly SyntaxToken FailKeyword;
-        public readonly SyntaxToken ValueToken;
+        public readonly UnityStatePropertyValueSyntax Value;
 
-        public UnityStatePropertyStencilFailSyntax(SyntaxToken failKeyword, SyntaxToken valueToken)
+        public UnityStatePropertyStencilFailSyntax(SyntaxToken failKeyword, UnityStatePropertyValueSyntax value)
             : base(SyntaxKind.UnityStatePropertyStencilFail)
         {
             RegisterChildNode(out FailKeyword, failKeyword);
-            RegisterChildNode(out ValueToken, valueToken);
+            RegisterChildNode(out Value, value);
         }
 
         public override void Accept(SyntaxVisitor visitor)

@@ -3,13 +3,13 @@ namespace HlslTools.Syntax
     public sealed class UnityStatePropertyStencilReadMaskSyntax : UnityStatePropertySyntax
     {
         public readonly SyntaxToken ReadMaskKeyword;
-        public readonly SyntaxToken ValueToken;
+        public readonly UnityStatePropertyValueSyntax Value;
 
-        public UnityStatePropertyStencilReadMaskSyntax(SyntaxToken readMaskKeyword, SyntaxToken valueToken)
+        public UnityStatePropertyStencilReadMaskSyntax(SyntaxToken readMaskKeyword, UnityStatePropertyValueSyntax value)
             : base(SyntaxKind.UnityStatePropertyStencilReadMask)
         {
             RegisterChildNode(out ReadMaskKeyword, readMaskKeyword);
-            RegisterChildNode(out ValueToken, valueToken);
+            RegisterChildNode(out Value, value);
         }
 
         public override void Accept(SyntaxVisitor visitor)

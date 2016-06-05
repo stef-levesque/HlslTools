@@ -3,13 +3,13 @@ namespace HlslTools.Syntax
     public sealed class UnityStatePropertyStencilPassSyntax : UnityStatePropertySyntax
     {
         public readonly SyntaxToken PassKeyword;
-        public readonly SyntaxToken ValueToken;
+        public readonly UnityStatePropertyValueSyntax Value;
 
-        public UnityStatePropertyStencilPassSyntax(SyntaxToken passKeyword, SyntaxToken valueToken)
+        public UnityStatePropertyStencilPassSyntax(SyntaxToken passKeyword, UnityStatePropertyValueSyntax value)
             : base(SyntaxKind.UnityStatePropertyStencilPass)
         {
             RegisterChildNode(out PassKeyword, passKeyword);
-            RegisterChildNode(out ValueToken, valueToken);
+            RegisterChildNode(out Value, value);
         }
 
         public override void Accept(SyntaxVisitor visitor)
