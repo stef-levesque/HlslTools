@@ -20,9 +20,19 @@ namespace HlslTools.Parser
             if (Current.Kind == SyntaxKind.UnityCgIncludeKeyword)
                 cgInclude = ParseUnityCgInclude();
 
-            var subShaders = new List<UnitySubShaderSyntax>();
-            while (Current.Kind == SyntaxKind.UnitySubShaderKeyword)
-                subShaders.Add(ParseUnitySubShader());
+            var statements = new List<SyntaxNode>();
+            while (Current.Kind == SyntaxKind.UnitySubShaderKeyword || Current.Kind == SyntaxKind.UnityCategoryKeyword)
+            {
+                switch (Current.Kind)
+                {
+                    case SyntaxKind.UnitySubShaderKeyword:
+                        statements.Add(ParseUnitySubShader());
+                        break;
+                    case SyntaxKind.UnityCategoryKeyword:
+                        statements.Add(ParseUnityCategory());
+                        break;
+                }
+            }
 
             var stateProperties = new List<UnityStatePropertySyntax>();
             var shouldContinue = true;
@@ -51,7 +61,7 @@ namespace HlslTools.Parser
                 openBraceToken, 
                 properties,
                 cgInclude,
-                subShaders, 
+                statements, 
                 stateProperties,
                 closeBraceToken);
         }
@@ -236,6 +246,44 @@ namespace HlslTools.Parser
             return new UnityShaderPropertyTextureDefaultValueSyntax(
                 defaultTextureToken,
                 openBraceToken,
+                closeBraceToken);
+        }
+
+        private UnityCategorySyntax ParseUnityCategory()
+        {
+            var categoryKeyword = Match(SyntaxKind.UnityCategoryKeyword);
+            var openBraceToken = Match(SyntaxKind.OpenBraceToken);
+
+            UnityShaderTagsSyntax tags = null;
+            var stateProperties = new List<UnityStatePropertySyntax>();
+            var subShaders = new List<UnitySubShaderSyntax>();
+
+            var shouldContinue = true;
+            while (shouldContinue && Current.Kind != SyntaxKind.CloseBraceToken)
+            {
+                switch (Current.Kind)
+                {
+                    case SyntaxKind.UnityTagsKeyword:
+                        tags = ParseUnityShaderTags();
+                        break;
+                    case SyntaxKind.UnitySubShaderKeyword:
+                        subShaders.Add(ParseUnitySubShader());
+                        break;
+
+                    default:
+                        shouldContinue = TryParseStateProperty(stateProperties);
+                        break;
+                }
+            }
+
+            var closeBraceToken = Match(SyntaxKind.CloseBraceToken);
+
+            return new UnityCategorySyntax(
+                categoryKeyword,
+                openBraceToken,
+                tags,
+                stateProperties,
+                subShaders,
                 closeBraceToken);
         }
 

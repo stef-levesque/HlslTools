@@ -557,6 +557,11 @@ namespace HlslTools.Syntax
             DefaultVisit(node);
         }
 
+        public virtual void VisitUnityCategory(UnityCategorySyntax node)
+        {
+            DefaultVisit(node);
+        }
+
         public virtual void VisitUnitySubShader(UnitySubShaderSyntax node)
         {
             DefaultVisit(node);
@@ -1228,6 +1233,11 @@ namespace HlslTools.Syntax
         }
 
         public virtual T VisitUnityShaderTag(UnityShaderTagSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityCategory(UnityCategorySyntax node)
         {
             return DefaultVisit(node);
         }
