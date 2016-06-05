@@ -16,6 +16,10 @@ namespace HlslTools.Parser
             if (Current.Kind == SyntaxKind.UnityPropertiesKeyword)
                 properties = ParseUnityShaderProperties();
 
+            UnityCgIncludeSyntax cgInclude = null;
+            if (Current.Kind == SyntaxKind.UnityCgIncludeKeyword)
+                cgInclude = ParseUnityCgInclude();
+
             var subShaders = new List<UnitySubShaderSyntax>();
             while (Current.Kind == SyntaxKind.UnitySubShaderKeyword)
                 subShaders.Add(ParseUnitySubShader());
@@ -42,7 +46,8 @@ namespace HlslTools.Parser
                 shaderKeyword, 
                 nameToken, 
                 openBraceToken, 
-                properties, 
+                properties,
+                cgInclude,
                 subShaders, 
                 stateProperties,
                 closeBraceToken);
@@ -332,21 +337,41 @@ namespace HlslTools.Parser
         {
             var cgProgramKeyword = Match(SyntaxKind.UnityCgProgramKeyword);
 
+            List<SyntaxNode> declarations;
+            SyntaxToken endCgKeyword;
+
+            ParseUnityCgProgramOrInclude(out declarations, out endCgKeyword);
+
+            return new UnityCgProgramSyntax(cgProgramKeyword, declarations, endCgKeyword);
+        }
+
+        private UnityCgIncludeSyntax ParseUnityCgInclude()
+        {
+            var cgIncludeKeyword = Match(SyntaxKind.UnityCgIncludeKeyword);
+
+            List<SyntaxNode> declarations;
+            SyntaxToken endCgKeyword;
+
+            ParseUnityCgProgramOrInclude(out declarations, out endCgKeyword);
+
+            return new UnityCgIncludeSyntax(cgIncludeKeyword, declarations, endCgKeyword);
+        }
+
+        private void ParseUnityCgProgramOrInclude(out List<SyntaxNode> declarations, out SyntaxToken endCgKeyword)
+        {
             _mode = LexerMode.UnityCgProgramSyntax;
 
             var saveTerm = _termState;
             _termState |= TerminatorState.IsPossibleGlobalDeclarationStartOrStop;
 
-            var declarations = new List<SyntaxNode>();
+            declarations = new List<SyntaxNode>();
             ParseTopLevelDeclarations(declarations, SyntaxKind.UnityEndCgKeyword);
 
             _termState = saveTerm;
 
             _mode = LexerMode.UnitySyntax;
 
-            var endCgKeyword = Match(SyntaxKind.UnityEndCgKeyword);
-
-            return new UnityCgProgramSyntax(cgProgramKeyword, declarations, endCgKeyword);
+            endCgKeyword = Match(SyntaxKind.UnityEndCgKeyword);
         }
 
         private bool TryParseStateProperty(List<UnityStatePropertySyntax> stateProperties)

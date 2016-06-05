@@ -265,6 +265,8 @@ namespace HlslTools.Syntax
                     return "Pass";
                 case SyntaxKind.UnityCgProgramKeyword:
                     return "CGPROGRAM";
+                case SyntaxKind.UnityCgIncludeKeyword:
+                    return "CGINCLUDE";
                 case SyntaxKind.UnityEndCgKeyword:
                     return "ENDCG";
                 case SyntaxKind.UnityFallbackKeyword:
@@ -1339,6 +1341,7 @@ namespace HlslTools.Syntax
                 case SyntaxKind.UnityTagsKeyword:
                 case SyntaxKind.UnityPassKeyword:
                 case SyntaxKind.UnityCgProgramKeyword:
+                case SyntaxKind.UnityCgIncludeKeyword:
                 case SyntaxKind.UnityEndCgKeyword:
                 case SyntaxKind.UnityFallbackKeyword:
                 case SyntaxKind.UnityCullKeyword:
@@ -1508,9 +1511,11 @@ namespace HlslTools.Syntax
             if (text == null)
                 throw new ArgumentNullException(nameof(text));
 
-            // Every Unity keyword apart from CGPROGRAM is case insensitive.
+            // Every Unity keyword apart from CGPROGRAM and CGINCLUDE is case insensitive.
             if (text == "CGPROGRAM")
                 return SyntaxKind.UnityCgProgramKeyword;
+            if (text == "CGINCLUDE")
+                return SyntaxKind.UnityCgIncludeKeyword;
 
             switch (text.ToLower())
             {

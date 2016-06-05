@@ -2,28 +2,28 @@ using System.Collections.Generic;
 
 namespace HlslTools.Syntax
 {
-    public sealed class UnityCgProgramSyntax : SyntaxNode
+    public sealed class UnityCgIncludeSyntax : SyntaxNode
     {
-        public readonly SyntaxToken CgProgramKeyword;
+        public readonly SyntaxToken CgIncludeKeyword;
         public readonly List<SyntaxNode> Declarations;
         public readonly SyntaxToken EndCgKeyword;
 
-        public UnityCgProgramSyntax(SyntaxToken cgProgramKeyword, List<SyntaxNode> declarations, SyntaxToken endCgKeyword)
-            : base(SyntaxKind.UnityCgProgram)
+        public UnityCgIncludeSyntax(SyntaxToken cgIncludeKeyword, List<SyntaxNode> declarations, SyntaxToken endCgKeyword)
+            : base(SyntaxKind.UnityCgInclude)
         {
-            RegisterChildNode(out CgProgramKeyword, cgProgramKeyword);
+            RegisterChildNode(out CgIncludeKeyword, cgIncludeKeyword);
             RegisterChildNodes(out Declarations, declarations);
             RegisterChildNode(out EndCgKeyword, endCgKeyword);
         }
 
         public override void Accept(SyntaxVisitor visitor)
         {
-            visitor.VisitUnityCgProgram(this);
+            visitor.VisitUnityCgInclude(this);
         }
 
         public override T Accept<T>(SyntaxVisitor<T> visitor)
         {
-            return visitor.VisitUnityCgProgram(this);
+            return visitor.VisitUnityCgInclude(this);
         }
     }
 }

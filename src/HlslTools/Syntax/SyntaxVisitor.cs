@@ -572,6 +572,11 @@ namespace HlslTools.Syntax
             DefaultVisit(node);
         }
 
+        public virtual void VisitUnityCgInclude(UnityCgIncludeSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
         public virtual void VisitUnityStatePropertyConstantValue(UnityStatePropertyConstantValueSyntax node)
         {
             DefaultVisit(node);
@@ -1208,6 +1213,11 @@ namespace HlslTools.Syntax
         }
 
         public virtual T VisitUnityCgProgram(UnityCgProgramSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityCgInclude(UnityCgIncludeSyntax node)
         {
             return DefaultVisit(node);
         }
