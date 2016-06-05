@@ -572,17 +572,67 @@ namespace HlslTools.Syntax
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStateProperty(UnityStatePropertySyntax node)
+        public virtual void VisitUnityStatePropertyConstantValue(UnityStatePropertyConstantValueSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertySimpleValue(UnityStatePropertySimpleValueSyntax node)
+        public virtual void VisitUnityStatePropertyVariableValue(UnityStatePropertyVariableValueSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyBlendValue(UnityStatePropertyBlendValueSyntax node)
+        public virtual void VisitUnityStatePropertyFallback(UnityStatePropertyFallbackSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityStatePropertyCull(UnityStatePropertyCullSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityStatePropertyZWrite(UnityStatePropertyZWriteSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityStatePropertyZTest(UnityStatePropertyZTestSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityStatePropertyBlendOff(UnityStatePropertyBlendOffSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityStatePropertyBlendColor(UnityStatePropertyBlendColorSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityStatePropertyBlendColorAlpha(UnityStatePropertyBlendColorAlphaSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityStatePropertyColorMask(UnityStatePropertyColorMaskSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityStatePropertyLod(UnityStatePropertyLodSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityStatePropertyName(UnityStatePropertyNameSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityStatePropertyLighting(UnityStatePropertyLightingSyntax node)
         {
             DefaultVisit(node);
         }
@@ -1162,17 +1212,67 @@ namespace HlslTools.Syntax
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStateProperty(UnityStatePropertySyntax node)
+        public virtual T VisitUnityStatePropertyConstantValue(UnityStatePropertyConstantValueSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertySimpleValue(UnityStatePropertySimpleValueSyntax node)
+        public virtual T VisitUnityStatePropertyVariableValue(UnityStatePropertyVariableValueSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyBlendValue(UnityStatePropertyBlendValueSyntax node)
+        public virtual T VisitUnityStatePropertyFallback(UnityStatePropertyFallbackSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyCull(UnityStatePropertyCullSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyZWrite(UnityStatePropertyZWriteSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyZTest(UnityStatePropertyZTestSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyBlendOff(UnityStatePropertyBlendOffSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyBlendColor(UnityStatePropertyBlendColorSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyBlendColorAlpha(UnityStatePropertyBlendColorAlphaSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyColorMask(UnityStatePropertyColorMaskSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyLod(UnityStatePropertyLodSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyName(UnityStatePropertyNameSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyLighting(UnityStatePropertyLightingSyntax node)
         {
             return DefaultVisit(node);
         }
