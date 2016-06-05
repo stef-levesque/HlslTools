@@ -510,6 +510,7 @@ namespace HlslTools.Syntax
         UnityShader,
         UnityShaderProperties,
         UnityShaderProperty,
+        UnityShaderPropertyAttribute,
         UnityShaderPropertySimpleType,
         UnityShaderPropertyRangeType,
         UnityShaderPropertyNumericDefaultValue,

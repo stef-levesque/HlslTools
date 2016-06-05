@@ -335,6 +335,7 @@
     <Compile Include="Syntax\UnityCompilationUnitSyntax.cs" />
     <Compile Include="Syntax\UnityPassSyntax.cs" />
     <Compile Include="Syntax\UnityShaderPropertiesSyntax.cs" />
+    <Compile Include="Syntax\UnityShaderPropertyAttributeSyntax.cs" />
     <Compile Include="Syntax\UnityShaderPropertyDefaultValueSyntax.cs" />
     <Compile Include="Syntax\UnityShaderPropertyNumericDefaultValueSyntax.cs" />
     <Compile Include="Syntax\UnityShaderPropertyRangeTypeSyntax.cs" />

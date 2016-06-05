@@ -59,7 +59,7 @@ namespace HlslTools.Parser
             var openBraceToken = Match(SyntaxKind.OpenBraceToken);
 
             var properties = new List<UnityShaderPropertySyntax>();
-            while (Current.Kind == SyntaxKind.IdentifierToken)
+            while (Current.Kind == SyntaxKind.IdentifierToken || Current.Kind == SyntaxKind.OpenBracketToken)
                 properties.Add(ParseUnityShaderProperty());
 
             var closeBraceToken = Match(SyntaxKind.CloseBraceToken);
@@ -69,6 +69,10 @@ namespace HlslTools.Parser
 
         private UnityShaderPropertySyntax ParseUnityShaderProperty()
         {
+            UnityShaderPropertyAttributeSyntax attribute = null;
+            if (Current.Kind == SyntaxKind.OpenBracketToken)
+                attribute = ParseUnityShaderPropertyAttribute();
+
             var nameToken = Match(SyntaxKind.IdentifierToken);
             var openParenToken = Match(SyntaxKind.OpenParenToken);
             var displayNameToken = Match(SyntaxKind.StringLiteralToken);
@@ -79,6 +83,7 @@ namespace HlslTools.Parser
             var defaultValue = ParseUnityShaderPropertyDefaultValue(propertyType);
 
             return new UnityShaderPropertySyntax(
+                attribute,
                 nameToken,
                 openParenToken,
                 displayNameToken,
@@ -87,6 +92,18 @@ namespace HlslTools.Parser
                 closeParenToken,
                 equalsToken,
                 defaultValue);
+        }
+
+        private UnityShaderPropertyAttributeSyntax ParseUnityShaderPropertyAttribute()
+        {
+            var openBracketToken = Match(SyntaxKind.OpenBracketToken);
+            var name = Match(SyntaxKind.IdentifierToken);
+            var closeBracketToken = Match(SyntaxKind.CloseBracketToken);
+
+            return new UnityShaderPropertyAttributeSyntax(
+                openBracketToken,
+                name,
+                closeBracketToken);
         }
 
         private UnityShaderPropertyTypeSyntax ParseUnityShaderPropertyType()
