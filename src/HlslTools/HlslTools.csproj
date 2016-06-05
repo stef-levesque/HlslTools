@@ -352,6 +352,7 @@
     <Compile Include="Syntax\UnityStatePropertyBlendOffSyntax.cs" />
     <Compile Include="Syntax\UnityStatePropertyColorMaskSyntax.cs" />
     <Compile Include="Syntax\UnityStatePropertyConstantValueSyntax.cs" />
+    <Compile Include="Syntax\UnityStatePropertyCustomEditorSyntax.cs" />
     <Compile Include="Syntax\UnityStatePropertyFallbackSyntax.cs" />
     <Compile Include="Syntax\UnityStatePropertyCullSyntax.cs" />
     <Compile Include="Syntax\UnityStatePropertyLightingSyntax.cs" />

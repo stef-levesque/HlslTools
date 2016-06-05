@@ -271,6 +271,8 @@ namespace HlslTools.Syntax
                     return "ENDCG";
                 case SyntaxKind.UnityFallbackKeyword:
                     return "Fallback";
+                case SyntaxKind.UnityCustomEditorKeyword:
+                    return "CustomEditor";
                 case SyntaxKind.UnityCullKeyword:
                     return "Cull";
                 case SyntaxKind.UnityZWriteKeyword:
@@ -1358,6 +1360,7 @@ namespace HlslTools.Syntax
                 case SyntaxKind.UnityCgIncludeKeyword:
                 case SyntaxKind.UnityEndCgKeyword:
                 case SyntaxKind.UnityFallbackKeyword:
+                case SyntaxKind.UnityCustomEditorKeyword:
                 case SyntaxKind.UnityCullKeyword:
                 case SyntaxKind.UnityZWriteKeyword:
                 case SyntaxKind.UnityZTestKeyword:
@@ -1570,6 +1573,8 @@ namespace HlslTools.Syntax
                     return SyntaxKind.UnityPassKeyword;
                 case "fallback":
                     return SyntaxKind.UnityFallbackKeyword;
+                case "customeditor":
+                    return SyntaxKind.UnityCustomEditorKeyword;
                 case "cull":
                     return SyntaxKind.UnityCullKeyword;
                 case "zwrite":

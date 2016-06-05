@@ -597,6 +597,11 @@ namespace HlslTools.Syntax
             DefaultVisit(node);
         }
 
+        public virtual void VisitUnityStatePropertyCustomEditor(UnityStatePropertyCustomEditorSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
         public virtual void VisitUnityStatePropertyCull(UnityStatePropertyCullSyntax node)
         {
             DefaultVisit(node);
@@ -1288,6 +1293,11 @@ namespace HlslTools.Syntax
         }
 
         public virtual T VisitUnityStatePropertyFallback(UnityStatePropertyFallbackSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyCustomEditor(UnityStatePropertyCustomEditorSyntax node)
         {
             return DefaultVisit(node);
         }

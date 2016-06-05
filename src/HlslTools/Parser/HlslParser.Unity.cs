@@ -33,6 +33,9 @@ namespace HlslTools.Parser
                     case SyntaxKind.UnityFallbackKeyword:
                         stateProperties.Add(ParseUnityFallback());
                         break;
+                    case SyntaxKind.UnityCustomEditorKeyword:
+                        stateProperties.Add(ParseUnityCustomEditor());
+                        break;
 
                     default:
                         shouldContinue = false;
@@ -445,6 +448,14 @@ namespace HlslTools.Parser
             var value = MatchOneOf(SyntaxKind.IdentifierToken, SyntaxKind.StringLiteralToken);
 
             return new UnityStatePropertyFallbackSyntax(keyword, value);
+        }
+
+        private UnityStatePropertySyntax ParseUnityCustomEditor()
+        {
+            var keyword = Match(SyntaxKind.UnityCustomEditorKeyword);
+            var value = Match(SyntaxKind.StringLiteralToken);
+
+            return new UnityStatePropertyCustomEditorSyntax(keyword, value);
         }
 
         private UnityStatePropertySyntax ParseUnityCull()
