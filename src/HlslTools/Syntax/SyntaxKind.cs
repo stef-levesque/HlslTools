@@ -527,6 +527,7 @@ namespace HlslTools.Syntax
         UnityStatePropertyCull,
         UnityStatePropertyZWrite,
         UnityStatePropertyZTest,
+        UnityStatePropertyOffset,
         UnityStatePropertyBlendOff,
         UnityStatePropertyBlendColor,
         UnityStatePropertyBlendColorAlpha,

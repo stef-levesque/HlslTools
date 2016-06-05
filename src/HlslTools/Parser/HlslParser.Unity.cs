@@ -380,6 +380,9 @@ namespace HlslTools.Parser
                 case SyntaxKind.UnityZTestKeyword:
                     stateProperties.Add(ParseUnityZTest());
                     return true;
+                case SyntaxKind.UnityOffsetKeyword:
+                    stateProperties.Add(ParseUnityOffset());
+                    return true;
                 case SyntaxKind.UnityBlendKeyword:
                     stateProperties.Add(ParseUnityBlend());
                     return true;
@@ -516,6 +519,16 @@ namespace HlslTools.Parser
             var value = Match(SyntaxKind.IdentifierToken);
 
             return new UnityStatePropertyLightingSyntax(keyword, value);
+        }
+
+        private UnityStatePropertySyntax ParseUnityOffset()
+        {
+            var keyword = Match(SyntaxKind.UnityOffsetKeyword);
+            var factor = ParseUnityStatePropertyValue(SyntaxKind.FloatLiteralToken, SyntaxKind.IntegerLiteralToken);
+            var commaToken = Match(SyntaxKind.CommaToken);
+            var units = ParseUnityStatePropertyValue(SyntaxKind.FloatLiteralToken, SyntaxKind.IntegerLiteralToken);
+
+            return new UnityStatePropertyOffsetSyntax(keyword, factor, commaToken, units);
         }
 
         private UnityStatePropertySyntax ParseUnityStencil()

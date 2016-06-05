@@ -607,6 +607,11 @@ namespace HlslTools.Syntax
             DefaultVisit(node);
         }
 
+        public virtual void VisitUnityStatePropertyOffset(UnityStatePropertyOffsetSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
         public virtual void VisitUnityStatePropertyBlendOff(UnityStatePropertyBlendOffSyntax node)
         {
             DefaultVisit(node);
@@ -1288,6 +1293,11 @@ namespace HlslTools.Syntax
         }
 
         public virtual T VisitUnityStatePropertyZTest(UnityStatePropertyZTestSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyOffset(UnityStatePropertyOffsetSyntax node)
         {
             return DefaultVisit(node);
         }
