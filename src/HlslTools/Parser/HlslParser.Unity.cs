@@ -121,14 +121,7 @@ namespace HlslTools.Parser
 
         private SyntaxToken MatchNumericLiteral()
         {
-            switch (Current.Kind)
-            {
-                case SyntaxKind.IntegerLiteralToken:
-                case SyntaxKind.FloatLiteralToken:
-                    return NextToken();
-                default:
-                    return Match(SyntaxKind.IntegerLiteralToken);
-            }
+            return MatchOneOf(SyntaxKind.IntegerLiteralToken, SyntaxKind.FloatLiteralToken);
         }
 
         private UnityShaderPropertySimpleTypeSyntax ParseUnityShaderPropertySimpleType()
@@ -173,10 +166,10 @@ namespace HlslTools.Parser
             switch (propertyType)
             {
                 case SyntaxKind.UnityIntKeyword:
-                    numberToken = Match(SyntaxKind.IntegerLiteralToken);
+                    numberToken = MatchOneOf(SyntaxKind.IntegerLiteralToken, SyntaxKind.FloatLiteralToken);
                     break;
                 case SyntaxKind.UnityFloatKeyword:
-                    numberToken = Match(SyntaxKind.FloatLiteralToken);
+                    numberToken = MatchOneOf(SyntaxKind.FloatLiteralToken, SyntaxKind.IntegerLiteralToken);
                     break;
                 case SyntaxKind.UnityRangeKeyword:
                     numberToken = MatchNumericLiteral();
@@ -445,17 +438,17 @@ namespace HlslTools.Parser
         private UnityStatePropertySyntax ParseUnityZWrite()
         {
             var keyword = Match(SyntaxKind.UnityZWriteKeyword);
-            var value = Match(SyntaxKind.IdentifierToken);
+            var value = ParseUnityStatePropertyValue(SyntaxKind.IdentifierToken);
 
-            return new UnityStatePropertyZWriteSyntax(keyword, new UnityStatePropertyConstantValueSyntax(value));
+            return new UnityStatePropertyZWriteSyntax(keyword, value);
         }
 
         private UnityStatePropertySyntax ParseUnityZTest()
         {
             var keyword = Match(SyntaxKind.UnityZTestKeyword);
-            var value = Match(SyntaxKind.IdentifierToken);
+            var value = ParseUnityStatePropertyValue(SyntaxKind.IdentifierToken);
 
-            return new UnityStatePropertyZTestSyntax(keyword, new UnityStatePropertyConstantValueSyntax(value));
+            return new UnityStatePropertyZTestSyntax(keyword, value);
         }
 
         private UnityStatePropertySyntax ParseUnityBlend()
@@ -467,28 +460,28 @@ namespace HlslTools.Parser
                 return new UnityStatePropertyBlendOffSyntax(keyword, NextToken());
             }
 
-            var srcFactorToken = Match(SyntaxKind.IdentifierToken);
-            var dstFactorToken = Match(SyntaxKind.IdentifierToken);
+            var srcFactor = ParseUnityStatePropertyValue(SyntaxKind.IdentifierToken);
+            var dstFactor = ParseUnityStatePropertyValue(SyntaxKind.IdentifierToken);
 
             if (Current.Kind == SyntaxKind.CommaToken)
             {
                 var commaToken = Match(SyntaxKind.CommaToken);
-                var srcFactorAToken = Match(SyntaxKind.IdentifierToken);
-                var dstFactorAToken = Match(SyntaxKind.IdentifierToken);
+                var srcFactorA = ParseUnityStatePropertyValue(SyntaxKind.IdentifierToken);
+                var dstFactorA = ParseUnityStatePropertyValue(SyntaxKind.IdentifierToken);
 
                 return new UnityStatePropertyBlendColorAlphaSyntax(
                     keyword,
-                    srcFactorToken,
-                    dstFactorToken,
+                    srcFactor,
+                    dstFactor,
                     commaToken,
-                    srcFactorAToken,
-                    dstFactorAToken);
+                    srcFactorA,
+                    dstFactorA);
             }
 
             return new UnityStatePropertyBlendColorSyntax(
                 keyword,
-                srcFactorToken,
-                dstFactorToken);
+                srcFactor,
+                dstFactor);
         }
 
         private UnityStatePropertySyntax ParseUnityColorMask()

@@ -3,15 +3,15 @@ namespace HlslTools.Syntax
     public sealed class UnityStatePropertyBlendColorSyntax : UnityStatePropertySyntax
     {
         public readonly SyntaxToken BlendKeyword;
-        public readonly SyntaxToken SrcFactorToken;
-        public readonly SyntaxToken DstFactorToken;
+        public readonly UnityStatePropertyValueSyntax SrcFactor;
+        public readonly UnityStatePropertyValueSyntax DstFactor;
 
-        public UnityStatePropertyBlendColorSyntax(SyntaxToken blendKeyword, SyntaxToken srcFactorToken, SyntaxToken dstFactorToken)
+        public UnityStatePropertyBlendColorSyntax(SyntaxToken blendKeyword, UnityStatePropertyValueSyntax srcFactor, UnityStatePropertyValueSyntax dstFactor)
             : base(SyntaxKind.UnityStatePropertyBlendColor)
         {
             RegisterChildNode(out BlendKeyword, blendKeyword);
-            RegisterChildNode(out SrcFactorToken, srcFactorToken);
-            RegisterChildNode(out DstFactorToken, dstFactorToken);
+            RegisterChildNode(out SrcFactor, srcFactor);
+            RegisterChildNode(out DstFactor, dstFactor);
         }
 
         public override void Accept(SyntaxVisitor visitor)

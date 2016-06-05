@@ -3,21 +3,21 @@ namespace HlslTools.Syntax
     public sealed class UnityStatePropertyBlendColorAlphaSyntax : UnityStatePropertySyntax
     {
         public readonly SyntaxToken BlendKeyword;
-        public readonly SyntaxToken SrcFactorToken;
-        public readonly SyntaxToken DstFactorToken;
+        public readonly UnityStatePropertyValueSyntax SrcFactor;
+        public readonly UnityStatePropertyValueSyntax DstFactor;
         public readonly SyntaxToken CommaToken;
-        public readonly SyntaxToken SrcFactorAToken;
-        public readonly SyntaxToken DstFactorAToken;
+        public readonly UnityStatePropertyValueSyntax SrcFactorA;
+        public readonly UnityStatePropertyValueSyntax DstFactorA;
 
-        public UnityStatePropertyBlendColorAlphaSyntax(SyntaxToken blendKeyword, SyntaxToken srcFactorToken, SyntaxToken dstFactorToken, SyntaxToken commaToken, SyntaxToken srcFactorAToken, SyntaxToken dstFactorAToken)
+        public UnityStatePropertyBlendColorAlphaSyntax(SyntaxToken blendKeyword, UnityStatePropertyValueSyntax srcFactor, UnityStatePropertyValueSyntax dstFactor, SyntaxToken commaToken, UnityStatePropertyValueSyntax srcFactorA, UnityStatePropertyValueSyntax dstFactorA)
             : base(SyntaxKind.UnityStatePropertyBlendColorAlpha)
         {
             RegisterChildNode(out BlendKeyword, blendKeyword);
-            RegisterChildNode(out SrcFactorToken, srcFactorToken);
-            RegisterChildNode(out DstFactorToken, dstFactorToken);
+            RegisterChildNode(out SrcFactor, srcFactor);
+            RegisterChildNode(out DstFactor, dstFactor);
             RegisterChildNode(out CommaToken, commaToken);
-            RegisterChildNode(out SrcFactorAToken, srcFactorAToken);
-            RegisterChildNode(out DstFactorAToken, dstFactorAToken);
+            RegisterChildNode(out SrcFactorA, srcFactorA);
+            RegisterChildNode(out DstFactorA, dstFactorA);
         }
 
         public override void Accept(SyntaxVisitor visitor)
