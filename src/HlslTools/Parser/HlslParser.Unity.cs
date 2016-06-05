@@ -101,11 +101,13 @@ namespace HlslTools.Parser
         {
             var openBracketToken = Match(SyntaxKind.OpenBracketToken);
             var name = Match(SyntaxKind.IdentifierToken);
+            var arguments = ParseAttributeArgumentList();
             var closeBracketToken = Match(SyntaxKind.CloseBracketToken);
 
             return new UnityShaderPropertyAttributeSyntax(
                 openBracketToken,
                 name,
+                arguments,
                 closeBracketToken);
         }
 
