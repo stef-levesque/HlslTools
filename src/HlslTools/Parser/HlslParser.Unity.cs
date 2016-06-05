@@ -128,22 +128,15 @@ namespace HlslTools.Parser
 
         private UnityShaderPropertySimpleTypeSyntax ParseUnityShaderPropertySimpleType()
         {
-            SyntaxToken typeKeyword;
-            switch (Current.Kind)
-            {
-                case SyntaxKind.UnityFloatKeyword:
-                case SyntaxKind.UnityIntKeyword:
-                case SyntaxKind.UnityColorKeyword:
-                case SyntaxKind.UnityVectorKeyword:
-                case SyntaxKind.Unity2DKeyword:
-                case SyntaxKind.Unity3DKeyword:
-                case SyntaxKind.UnityCubeKeyword:
-                    typeKeyword = NextToken();
-                    break;
-                default:
-                    typeKeyword = Match(SyntaxKind.UnityIntKeyword);
-                    break;
-            }
+            var typeKeyword = MatchOneOf(
+                SyntaxKind.UnityIntKeyword,
+                SyntaxKind.UnityFloatKeyword,
+                SyntaxKind.UnityColorKeyword,
+                SyntaxKind.UnityVectorKeyword,
+                SyntaxKind.Unity2DKeyword,
+                SyntaxKind.Unity3DKeyword,
+                SyntaxKind.UnityCubeKeyword,
+                SyntaxKind.UnityAnyKeyword);
 
             return new UnityShaderPropertySimpleTypeSyntax(typeKeyword);
         }
@@ -162,6 +155,7 @@ namespace HlslTools.Parser
                 case SyntaxKind.Unity2DKeyword:
                 case SyntaxKind.Unity3DKeyword:
                 case SyntaxKind.UnityCubeKeyword:
+                case SyntaxKind.UnityAnyKeyword:
                     return ParseUnityShaderPropertyTextureDefaultValue();
                 default:
                     throw new ArgumentOutOfRangeException();

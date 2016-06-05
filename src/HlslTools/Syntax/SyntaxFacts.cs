@@ -255,6 +255,8 @@ namespace HlslTools.Syntax
                     return "3D";
                 case SyntaxKind.UnityCubeKeyword:
                     return "Cube";
+                case SyntaxKind.UnityAnyKeyword:
+                    return "Any";
                 case SyntaxKind.UnitySubShaderKeyword:
                     return "SubShader";
                 case SyntaxKind.UnityTagsKeyword:
@@ -1332,6 +1334,7 @@ namespace HlslTools.Syntax
                 case SyntaxKind.Unity2DKeyword:
                 case SyntaxKind.Unity3DKeyword:
                 case SyntaxKind.UnityCubeKeyword:
+                case SyntaxKind.UnityAnyKeyword:
                 case SyntaxKind.UnitySubShaderKeyword:
                 case SyntaxKind.UnityTagsKeyword:
                 case SyntaxKind.UnityPassKeyword:
@@ -1531,6 +1534,8 @@ namespace HlslTools.Syntax
                     return SyntaxKind.Unity3DKeyword;
                 case "cube":
                     return SyntaxKind.UnityCubeKeyword;
+                case "any":
+                    return SyntaxKind.UnityAnyKeyword;
                 case "subshader":
                     return SyntaxKind.UnitySubShaderKeyword;
                 case "tags":

@@ -544,6 +544,7 @@ namespace HlslTools.Syntax
         Unity2DKeyword,
         Unity3DKeyword,
         UnityCubeKeyword,
+        UnityAnyKeyword,
         UnitySubShaderKeyword,
         UnityTagsKeyword,
         UnityPassKeyword,

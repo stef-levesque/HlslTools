@@ -77,7 +77,7 @@ namespace HlslTools.Diagnostics
         public static void ReportTokenExpectedMultipleChoices(this ICollection<Diagnostic> diagnostics, TextSpan span, SyntaxToken actual, IEnumerable<SyntaxKind> expected)
         {
             var actualText = actual.GetDisplayText();
-            var expectedText = string.Join(",", expected.Select(x => $"'{x.GetDisplayText()}'"));
+            var expectedText = string.Join(", ", expected.Select(x => $"'{x.GetDisplayText()}'"));
             diagnostics.Report(span, DiagnosticId.TokenExpectedMultipleChoices, actualText, expectedText);
         }
 
