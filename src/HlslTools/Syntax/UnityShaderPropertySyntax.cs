@@ -1,8 +1,10 @@
+using System.Collections.Generic;
+
 namespace HlslTools.Syntax
 {
     public sealed class UnityShaderPropertySyntax : SyntaxNode
     {
-        public readonly UnityShaderPropertyAttributeSyntax Attribute;
+        public readonly List<UnityShaderPropertyAttributeSyntax> Attributes;
         public readonly SyntaxToken NameToken;
         public readonly SyntaxToken OpenParenToken;
         public readonly SyntaxToken DisplayNameToken;
@@ -12,10 +14,10 @@ namespace HlslTools.Syntax
         public readonly SyntaxToken EqualsToken;
         public readonly UnityShaderPropertyDefaultValueSyntax DefaultValue;
 
-        public UnityShaderPropertySyntax(UnityShaderPropertyAttributeSyntax attribute, SyntaxToken nameToken, SyntaxToken openParenToken, SyntaxToken displayNameToken, SyntaxToken commaToken, UnityShaderPropertyTypeSyntax propertyType, SyntaxToken closeParenToken, SyntaxToken equalsToken, UnityShaderPropertyDefaultValueSyntax defaultValue)
+        public UnityShaderPropertySyntax(List<UnityShaderPropertyAttributeSyntax> attributes, SyntaxToken nameToken, SyntaxToken openParenToken, SyntaxToken displayNameToken, SyntaxToken commaToken, UnityShaderPropertyTypeSyntax propertyType, SyntaxToken closeParenToken, SyntaxToken equalsToken, UnityShaderPropertyDefaultValueSyntax defaultValue)
             : base(SyntaxKind.UnityShaderProperty)
         {
-            RegisterChildNode(out Attribute, attribute);
+            RegisterChildNodes(out Attributes, attributes);
             RegisterChildNode(out NameToken, nameToken);
             RegisterChildNode(out OpenParenToken, openParenToken);
             RegisterChildNode(out DisplayNameToken, displayNameToken);

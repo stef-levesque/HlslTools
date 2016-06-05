@@ -82,9 +82,9 @@ namespace HlslTools.Parser
 
         private UnityShaderPropertySyntax ParseUnityShaderProperty()
         {
-            UnityShaderPropertyAttributeSyntax attribute = null;
-            if (Current.Kind == SyntaxKind.OpenBracketToken)
-                attribute = ParseUnityShaderPropertyAttribute();
+            var attributes = new List<UnityShaderPropertyAttributeSyntax>();
+            while (Current.Kind == SyntaxKind.OpenBracketToken)
+                attributes.Add(ParseUnityShaderPropertyAttribute());
 
             var nameToken = Match(SyntaxKind.IdentifierToken);
             var openParenToken = Match(SyntaxKind.OpenParenToken);
@@ -96,7 +96,7 @@ namespace HlslTools.Parser
             var defaultValue = ParseUnityShaderPropertyDefaultValue(propertyType);
 
             return new UnityShaderPropertySyntax(
-                attribute,
+                attributes,
                 nameToken,
                 openParenToken,
                 displayNameToken,
