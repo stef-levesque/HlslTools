@@ -597,6 +597,11 @@ namespace HlslTools.Syntax
             DefaultVisit(node);
         }
 
+        public virtual void VisitUnityStatePropertyConstantColorValue(UnityStatePropertyConstantColorValueSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
         public virtual void VisitUnityStatePropertyVariableValue(UnityStatePropertyVariableValueSyntax node)
         {
             DefaultVisit(node);
@@ -718,6 +723,36 @@ namespace HlslTools.Syntax
         }
 
         public virtual void VisitUnityStatePropertyDependency(UnityStatePropertyDependencySyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityStatePropertyMaterial(UnityStatePropertyMaterialSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityStatePropertyMaterialDiffuse(UnityStatePropertyMaterialDiffuseSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityStatePropertyMaterialAmbient(UnityStatePropertyMaterialAmbientSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityStatePropertyMaterialShininess(UnityStatePropertyMaterialShininessSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityStatePropertyMaterialSpecular(UnityStatePropertyMaterialSpecularSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityStatePropertyMaterialEmission(UnityStatePropertyMaterialEmissionSyntax node)
         {
             DefaultVisit(node);
         }
@@ -1322,6 +1357,11 @@ namespace HlslTools.Syntax
             return DefaultVisit(node);
         }
 
+        public virtual T VisitUnityStatePropertyConstantColorValue(UnityStatePropertyConstantColorValueSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
         public virtual T VisitUnityStatePropertyVariableValue(UnityStatePropertyVariableValueSyntax node)
         {
             return DefaultVisit(node);
@@ -1443,6 +1483,36 @@ namespace HlslTools.Syntax
         }
 
         public virtual T VisitUnityStatePropertyDependency(UnityStatePropertyDependencySyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyMaterial(UnityStatePropertyMaterialSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyMaterialDiffuse(UnityStatePropertyMaterialDiffuseSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyMaterialAmbient(UnityStatePropertyMaterialAmbientSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyMaterialShininess(UnityStatePropertyMaterialShininessSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyMaterialSpecular(UnityStatePropertyMaterialSpecularSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityStatePropertyMaterialEmission(UnityStatePropertyMaterialEmissionSyntax node)
         {
             return DefaultVisit(node);
         }

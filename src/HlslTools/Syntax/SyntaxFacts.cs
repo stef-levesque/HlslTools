@@ -317,6 +317,18 @@ namespace HlslTools.Syntax
                     return "GrabPass";
                 case SyntaxKind.UnityDependencyKeyword:
                     return "Dependency";
+                case SyntaxKind.UnityMaterialKeyword:
+                    return "Material";
+                case SyntaxKind.UnityDiffuseKeyword:
+                    return "Diffuse";
+                case SyntaxKind.UnityAmbientKeyword:
+                    return "Ambient";
+                case SyntaxKind.UnityShininessKeyword:
+                    return "Shininess";
+                case SyntaxKind.UnitySpecularKeyword:
+                    return "Specular";
+                case SyntaxKind.UnityEmissionKeyword:
+                    return "Emission";
 
                 default:
                     return string.Empty;
@@ -1391,6 +1403,12 @@ namespace HlslTools.Syntax
                 case SyntaxKind.UnityUsePassKeyword:
                 case SyntaxKind.UnityGrabPassKeyword:
                 case SyntaxKind.UnityDependencyKeyword:
+                case SyntaxKind.UnityMaterialKeyword:
+                case SyntaxKind.UnityDiffuseKeyword:
+                case SyntaxKind.UnityAmbientKeyword:
+                case SyntaxKind.UnityShininessKeyword:
+                case SyntaxKind.UnitySpecularKeyword:
+                case SyntaxKind.UnityEmissionKeyword:
                     return true;
 
                 default:
@@ -1631,6 +1649,18 @@ namespace HlslTools.Syntax
                     return SyntaxKind.UnityGrabPassKeyword;
                 case "dependency":
                     return SyntaxKind.UnityDependencyKeyword;
+                case "material":
+                    return SyntaxKind.UnityMaterialKeyword;
+                case "diffuse":
+                    return SyntaxKind.UnityDiffuseKeyword;
+                case "ambient":
+                    return SyntaxKind.UnityAmbientKeyword;
+                case "shininess":
+                    return SyntaxKind.UnityShininessKeyword;
+                case "specular":
+                    return SyntaxKind.UnitySpecularKeyword;
+                case "emission":
+                    return SyntaxKind.UnityEmissionKeyword;
 
                 default:
                     return SyntaxKind.IdentifierToken;

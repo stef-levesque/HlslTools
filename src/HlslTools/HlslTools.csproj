@@ -336,6 +336,7 @@
     <Compile Include="Syntax\UnityCgIncludeSyntax.cs" />
     <Compile Include="Syntax\UnityCgProgramSyntax.cs" />
     <Compile Include="Syntax\UnityCompilationUnitSyntax.cs" />
+    <Compile Include="Syntax\UnityStatePropertyColorValueSyntax.cs" />
     <Compile Include="Syntax\UnityStatePropertyDependencySyntax.cs" />
     <Compile Include="Syntax\UnityGrabPassSyntax.cs" />
     <Compile Include="Syntax\UnityPassSyntax.cs" />
@@ -362,6 +363,12 @@
     <Compile Include="Syntax\UnityStatePropertyCullSyntax.cs" />
     <Compile Include="Syntax\UnityStatePropertyLightingSyntax.cs" />
     <Compile Include="Syntax\UnityStatePropertyLodSyntax.cs" />
+    <Compile Include="Syntax\UnityStatePropertyMaterialAmbientSyntax.cs" />
+    <Compile Include="Syntax\UnityStatePropertyMaterialDiffuseSyntax.cs" />
+    <Compile Include="Syntax\UnityStatePropertyMaterialEmissionSyntax.cs" />
+    <Compile Include="Syntax\UnityStatePropertyMaterialShininessSyntax.cs" />
+    <Compile Include="Syntax\UnityStatePropertyMaterialSpecularSyntax.cs" />
+    <Compile Include="Syntax\UnityStatePropertyMaterialSyntax.cs" />
     <Compile Include="Syntax\UnityStatePropertyNameSyntax.cs" />
     <Compile Include="Syntax\UnityStatePropertyOffsetSyntax.cs" />
     <Compile Include="Syntax\UnityStatePropertyStencilCompSyntax.cs" />

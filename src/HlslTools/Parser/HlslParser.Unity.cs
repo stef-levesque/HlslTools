@@ -493,6 +493,9 @@ namespace HlslTools.Parser
                 case SyntaxKind.UnityStencilKeyword:
                     stateProperties.Add(ParseUnityStencil());
                     return true;
+                case SyntaxKind.UnityMaterialKeyword:
+                    stateProperties.Add(ParseUnityMaterial());
+                    return true;
 
                 default:
                     return false;
@@ -746,6 +749,124 @@ namespace HlslTools.Parser
             var value = ParseUnityStatePropertyValue(SyntaxKind.IdentifierToken);
 
             return new UnityStatePropertyStencilZFailSyntax(keyword, value);
+        }
+
+        private UnityStatePropertySyntax ParseUnityMaterial()
+        {
+            var keyword = Match(SyntaxKind.UnityMaterialKeyword);
+            var openBraceToken = Match(SyntaxKind.OpenBraceToken);
+
+            var stateProperties = new List<UnityStatePropertySyntax>();
+            var shouldContinue = true;
+            while (shouldContinue && Current.Kind != SyntaxKind.CloseBraceToken)
+            {
+                switch (Current.Kind)
+                {
+                    case SyntaxKind.UnityDiffuseKeyword:
+                        stateProperties.Add(ParseUnityMaterialDiffuse());
+                        break;
+                    case SyntaxKind.UnityAmbientKeyword:
+                        stateProperties.Add(ParseUnityMaterialAmbient());
+                        break;
+                    case SyntaxKind.UnityShininessKeyword:
+                        stateProperties.Add(ParseUnityMaterialShininess());
+                        break;
+                    case SyntaxKind.UnitySpecularKeyword:
+                        stateProperties.Add(ParseUnityMaterialSpecular());
+                        break;
+                    case SyntaxKind.UnityEmissionKeyword:
+                        stateProperties.Add(ParseUnityMaterialEmission());
+                        break;
+
+                    default:
+                        shouldContinue = false;
+                        break;
+                }
+            }
+
+            var closeBraceToken = Match(SyntaxKind.CloseBraceToken);
+
+            return new UnityStatePropertyMaterialSyntax(
+                keyword,
+                openBraceToken,
+                stateProperties,
+                closeBraceToken);
+        }
+
+        private UnityStatePropertyValueSyntax ParseUnityStatePropertyColorValue()
+        {
+            if (Current.Kind == SyntaxKind.OpenBracketToken)
+            {
+                var openBracketToken = NextToken();
+                var identifier = Match(SyntaxKind.IdentifierToken);
+                var closeBracketToken = Match(SyntaxKind.CloseBracketToken);
+
+                return new UnityStatePropertyVariableValueSyntax(
+                    openBracketToken,
+                    identifier,
+                    closeBracketToken);
+            }
+
+            var openParenToken = Match(SyntaxKind.OpenParenToken);
+            var rToken = MatchNumericLiteral();
+            var firstCommaToken = Match(SyntaxKind.CommaToken);
+            var gToken = MatchNumericLiteral();
+            var secondCommaToken = Match(SyntaxKind.CommaToken);
+            var bToken = MatchNumericLiteral();
+            var thirdCommaToken = Match(SyntaxKind.CommaToken);
+            var aToken = MatchNumericLiteral();
+            var closeParenToken = Match(SyntaxKind.CloseParenToken);
+
+            return new UnityStatePropertyConstantColorValueSyntax(
+                openParenToken,
+                rToken,
+                firstCommaToken,
+                gToken,
+                secondCommaToken,
+                bToken,
+                thirdCommaToken,
+                aToken,
+                closeParenToken);
+        }
+
+        private UnityStatePropertySyntax ParseUnityMaterialDiffuse()
+        {
+            var keyword = Match(SyntaxKind.UnityDiffuseKeyword);
+            var value = ParseUnityStatePropertyColorValue();
+
+            return new UnityStatePropertyMaterialDiffuseSyntax(keyword, value);
+        }
+
+        private UnityStatePropertySyntax ParseUnityMaterialAmbient()
+        {
+            var keyword = Match(SyntaxKind.UnityAmbientKeyword);
+            var value = ParseUnityStatePropertyColorValue();
+
+            return new UnityStatePropertyMaterialAmbientSyntax(keyword, value);
+        }
+
+        private UnityStatePropertySyntax ParseUnityMaterialShininess()
+        {
+            var keyword = Match(SyntaxKind.UnityShininessKeyword);
+            var value = ParseUnityStatePropertyValue(SyntaxKind.FloatLiteralToken, SyntaxKind.IntegerLiteralToken);
+
+            return new UnityStatePropertyMaterialShininessSyntax(keyword, value);
+        }
+
+        private UnityStatePropertySyntax ParseUnityMaterialSpecular()
+        {
+            var keyword = Match(SyntaxKind.UnitySpecularKeyword);
+            var value = ParseUnityStatePropertyColorValue();
+
+            return new UnityStatePropertyMaterialSpecularSyntax(keyword, value);
+        }
+
+        private UnityStatePropertySyntax ParseUnityMaterialEmission()
+        {
+            var keyword = Match(SyntaxKind.UnityEmissionKeyword);
+            var value = ParseUnityStatePropertyColorValue();
+
+            return new UnityStatePropertyMaterialEmissionSyntax(keyword, value);
         }
     }
 }

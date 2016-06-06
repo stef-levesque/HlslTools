@@ -526,6 +526,7 @@ namespace HlslTools.Syntax
         UnityCgProgram,
         UnityCgInclude,
         UnityStatePropertyConstantValue,
+        UnityStatePropertyConstantColorValue,
         UnityStatePropertyVariableValue,
         UnityStatePropertyFallback,
         UnityStatePropertyCustomEditor,
@@ -549,6 +550,12 @@ namespace HlslTools.Syntax
         UnityStatePropertyStencilFail,
         UnityStatePropertyStencilZFail,
         UnityStatePropertyDependency,
+        UnityStatePropertyMaterial,
+        UnityStatePropertyMaterialDiffuse,
+        UnityStatePropertyMaterialAmbient,
+        UnityStatePropertyMaterialShininess,
+        UnityStatePropertyMaterialSpecular,
+        UnityStatePropertyMaterialEmission,
 
         UnityShaderKeyword,
         UnityPropertiesKeyword,
@@ -590,6 +597,12 @@ namespace HlslTools.Syntax
         UnityZFailKeyword,
         UnityUsePassKeyword,
         UnityGrabPassKeyword,
-        UnityDependencyKeyword
+        UnityDependencyKeyword,
+        UnityMaterialKeyword,
+        UnityDiffuseKeyword,
+        UnityAmbientKeyword,
+        UnityShininessKeyword,
+        UnitySpecularKeyword,
+        UnityEmissionKeyword
     }
 }
