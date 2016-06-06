@@ -37,6 +37,11 @@ namespace HlslTools.Syntax
             DefaultVisit(node);
         }
 
+        public virtual void VisitEmptyExpandedMacroTrivia(EmptyExpandedMacroTrivia node)
+        {
+            DefaultVisit(node);
+        }
+
         public virtual void VisitSkippedTokensSyntaxTrivia(SkippedTokensTriviaSyntax node)
         {
             DefaultVisit(node);
@@ -753,6 +758,11 @@ namespace HlslTools.Syntax
         }
 
         public virtual T VisitSyntaxTrivia(SyntaxTrivia node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitEmptyExpandedMacroTrivia(EmptyExpandedMacroTrivia node)
         {
             return DefaultVisit(node);
         }

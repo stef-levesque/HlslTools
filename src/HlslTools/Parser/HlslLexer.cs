@@ -121,20 +121,29 @@ namespace HlslTools.Parser
             if (token.Kind == SyntaxKind.IdentifierToken && ExpandMacros)
             {
                 List<SyntaxToken> expandedTokens;
-                if (TryExpandMacro(token, new BaseMacroExpansionLexer(this), out expandedTokens))
+                MacroReference macroReference;
+                if (TryExpandMacro(token, new BaseMacroExpansionLexer(this), out expandedTokens, out macroReference))
                 {
                     if (expandedTokens.Count == 0) // Can happen for macros with empty body.
                     {
                         // Attach macro call as leading trivia on next token.
-                        var originalToken = token;
                         token = Lex(mode);
 
+                        // If next token is itself a macro reference, attach macro call to original token.
+                        var tokenToAttachMacroCallTo = token;
+                        if (token.MacroReference != null)
+                            tokenToAttachMacroCallTo = token.MacroReference.NameToken;
+
                         var leadingTrivia = new List<SyntaxNode>();
-                        leadingTrivia.AddRange(originalToken.LeadingTrivia);
-                        leadingTrivia.Add(new SyntaxTrivia(SyntaxKind.EmptyExpandedMacroTrivia, originalToken.Text, originalToken.SourceRange, originalToken.Span, ImmutableArray<Diagnostic>.Empty));
-                        leadingTrivia.AddRange(originalToken.TrailingTrivia);
-                        leadingTrivia.AddRange(token.LeadingTrivia);
+                        leadingTrivia.Add(new EmptyExpandedMacroTrivia(macroReference));
+                        leadingTrivia.AddRange(tokenToAttachMacroCallTo.LeadingTrivia);
+
                         token = token.WithLeadingTrivia(leadingTrivia.ToImmutableArray());
+
+                        if (token.MacroReference != null)
+                            token = token.WithOriginalMacroReference(
+                                token.MacroReference.WithLeadingTrivia(leadingTrivia.ToImmutableArray()),
+                                token.IsFirstTokenInMacroExpansion);
                     }
                     else
                     {

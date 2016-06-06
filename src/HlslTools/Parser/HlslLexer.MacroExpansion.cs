@@ -11,9 +11,10 @@ namespace HlslTools.Parser
     {
         private readonly Stack<DefineDirectiveTriviaSyntax> _currentlyExpandingMacros = new Stack<DefineDirectiveTriviaSyntax>();
 
-        private bool TryExpandMacro(SyntaxToken token, IMacroExpansionLexer lexer, out List<SyntaxToken> expandedTokens)
+        private bool TryExpandMacro(SyntaxToken token, IMacroExpansionLexer lexer, out List<SyntaxToken> expandedTokens, out MacroReference macroReference)
         {
             expandedTokens = null;
+            macroReference = null;
 
             // First, check if this token might be a macro.
             DefineDirectiveTriviaSyntax directive;
@@ -24,7 +25,6 @@ namespace HlslTools.Parser
             if (_currentlyExpandingMacros.Contains(directive))
                 return false;
 
-            MacroReference macroReference;
             List<SyntaxToken> macroBody;
             SyntaxToken lastToken;
             switch (directive.Kind)
@@ -97,12 +97,13 @@ namespace HlslTools.Parser
                 }
 
             var localExpandedTokens = expandedTokens;
+            var localMacroReference = macroReference;
             expandedTokens = expandedTokens
                 .Select((x, i) =>
                 {
                     var result = x
-                        .WithOriginalMacroReference(macroReference, i == 0)
-                        .WithSpan(macroReference.SourceRange, macroReference.Span);
+                        .WithOriginalMacroReference(localMacroReference, i == 0)
+                        .WithSpan(localMacroReference.SourceRange, localMacroReference.Span);
                     if (i == 0)
                         result = result.WithLeadingTrivia(token.LeadingTrivia);
                     if (i == localExpandedTokens.Count - 1)
@@ -124,7 +125,8 @@ namespace HlslTools.Parser
             while ((token = lexer.GetNextToken()) != null)
             {
                 List<SyntaxToken> expandedTokens;
-                if (TryExpandMacro(token, lexer, out expandedTokens))
+                MacroReference macroReference;
+                if (TryExpandMacro(token, lexer, out expandedTokens, out macroReference))
                     result.AddRange(expandedTokens);
                 else
                     result.Add(token);
