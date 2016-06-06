@@ -106,7 +106,9 @@ namespace HlslTools.Tests.Parser
             // http://docs.unity3d.com/Manual/SL-BuiltinIncludes.html
 
             // Act.
-            var tokens = LexAllTokens(SourceText.From(File.ReadAllText(testFile)), new TestUnityFileSystem(testFile));
+            var tokens = LexAllTokens(
+                SourceText.From(File.ReadAllText(testFile)), 
+                new TestFileSystem(testFile, "Shaders/Unity/CGIncludes"));
 
             // Assert.
             Assert.That(tokens, Has.Count.GreaterThan(0));

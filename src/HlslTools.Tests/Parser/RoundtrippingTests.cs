@@ -30,7 +30,9 @@ namespace HlslTools.Tests.Parser
             var sourceCode = File.ReadAllText(testFile);
 
             // Build syntax tree.
-            var syntaxTree = SyntaxFactory.ParseUnitySyntaxTree(SourceText.From(sourceCode), fileSystem: new TestUnityFileSystem(testFile));
+            var syntaxTree = SyntaxFactory.ParseUnitySyntaxTree(
+                SourceText.From(sourceCode), 
+                fileSystem: new TestFileSystem(testFile, "Shaders/Unity/CGIncludes"));
 
             ShaderTestUtility.CheckForParseErrors(syntaxTree);
 
