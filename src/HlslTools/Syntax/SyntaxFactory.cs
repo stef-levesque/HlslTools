@@ -16,7 +16,20 @@ namespace HlslTools.Syntax
 
         public static SyntaxTree ParseUnitySyntaxTree(SourceText sourceText, ParserOptions options = null, IIncludeFileSystem fileSystem = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Parse(sourceText, options, fileSystem ?? new DummyFileSystem(), p => p.ParseUnityCompilationUnit(cancellationToken), LexerMode.UnitySyntax);
+            // TODO
+
+            // Automatically included:
+            // - HLSLSupport.cginc
+            // - UnityShaderVariables.cginc
+
+            // Automatically included for surface shaders:
+            // - Lighting.cginc
+
+            return Parse(
+                sourceText, 
+                options, 
+                fileSystem ?? new DummyFileSystem(), 
+                p => p.ParseUnityCompilationUnit(cancellationToken), LexerMode.UnitySyntax);
         }
 
         public static CompilationUnitSyntax ParseCompilationUnit(string text, IIncludeFileSystem fileSystem = null)
