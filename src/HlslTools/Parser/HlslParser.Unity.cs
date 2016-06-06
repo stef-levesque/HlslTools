@@ -260,8 +260,6 @@ namespace HlslTools.Parser
             var openBraceToken = Match(SyntaxKind.OpenBraceToken);
 
             var statements = new List<SyntaxNode>();
-            var subShaders = new List<UnitySubShaderSyntax>();
-
             var shouldContinue = true;
             while (shouldContinue && Current.Kind != SyntaxKind.CloseBraceToken)
             {
@@ -271,7 +269,7 @@ namespace HlslTools.Parser
                         statements.Add(ParseUnityShaderTags());
                         break;
                     case SyntaxKind.UnitySubShaderKeyword:
-                        subShaders.Add(ParseUnitySubShader());
+                        statements.Add(ParseUnitySubShader());
                         break;
 
                     default:
@@ -286,7 +284,6 @@ namespace HlslTools.Parser
                 categoryKeyword,
                 openBraceToken,
                 statements,
-                subShaders,
                 closeBraceToken);
         }
 
@@ -304,11 +301,17 @@ namespace HlslTools.Parser
                     case SyntaxKind.UnityTagsKeyword:
                         statements.Add(ParseUnityShaderTags());
                         break;
+                    case SyntaxKind.UnityPassKeyword:
+                        statements.Add(ParseUnityPass());
+                        break;
                     case SyntaxKind.UnityUsePassKeyword:
                         statements.Add(ParseUnityUsePass());
                         break;
                     case SyntaxKind.UnityGrabPassKeyword:
                         statements.Add(ParseUnityGrabPass());
+                        break;
+                    case SyntaxKind.UnityCgProgramKeyword:
+                        statements.Add(ParseUnityCgProgram());
                         break;
                     case SyntaxKind.UnityCgIncludeKeyword:
                         statements.Add(ParseUnityCgInclude());
@@ -320,22 +323,12 @@ namespace HlslTools.Parser
                 }
             }
 
-            var passes = new List<UnityPassSyntax>();
-            while (Current.Kind == SyntaxKind.UnityPassKeyword)
-                passes.Add(ParseUnityPass());
-
-            UnityCgProgramSyntax cgProgram = null;
-            if (Current.Kind == SyntaxKind.UnityCgProgramKeyword)
-                cgProgram = ParseUnityCgProgram();
-
             var closeBraceToken = Match(SyntaxKind.CloseBraceToken);
 
             return new UnitySubShaderSyntax(
                 subShaderKeyword, 
                 openBraceToken,
                 statements, 
-                cgProgram, 
-                passes, 
                 closeBraceToken);
         }
 
