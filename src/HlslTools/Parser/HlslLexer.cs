@@ -76,6 +76,11 @@ namespace HlslTools.Parser
             PushIncludeContext(text);
         }
 
+        public void ResetDirectiveStack()
+        {
+            _directives = DirectiveStack.Empty;
+        }
+
         public SourceText Text => _includeStack.Peek().Text;
 
         public SyntaxToken Lex(LexerMode mode)

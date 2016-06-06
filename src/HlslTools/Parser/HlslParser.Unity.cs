@@ -474,6 +474,8 @@ namespace HlslTools.Parser
 
             _mode = LexerMode.UnitySyntax;
 
+            _lexer.ResetDirectiveStack();
+
             endCgKeyword = Match(SyntaxKind.UnityEndCgKeyword);
         }
 

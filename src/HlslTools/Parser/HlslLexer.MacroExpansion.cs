@@ -258,6 +258,10 @@ namespace HlslTools.Parser
 
                 return result;
             }
+
+            public void ResetDirectiveStack()
+            {
+            }
         }
 
         private class NestedMacroExpansionLexer : IMacroExpansionLexer
@@ -295,6 +299,10 @@ namespace HlslTools.Parser
                 if (_tokenIndex < _macroBody.Count)
                     return _macroBody[_tokenIndex];
                 return SyntaxFactory.ParseToken("\0");
+            }
+
+            public void ResetDirectiveStack()
+            {
             }
         }
     }

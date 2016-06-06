@@ -8,5 +8,6 @@ namespace HlslTools.Parser
         SourceText Text { get; }
 
         SyntaxToken Lex(LexerMode mode);
+        void ResetDirectiveStack();
     }
 }
