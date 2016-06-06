@@ -139,24 +139,41 @@ namespace HlslTools.Parser
         {
             var rangeKeyword = Match(SyntaxKind.UnityRangeKeyword);
             var openParenToken = Match(SyntaxKind.OpenParenToken);
-            var minValueToken = MatchNumericLiteral();
+            var minValue = ParseUnityPossiblyNegativeNumericLiteralExpression();
             var commaToken = Match(SyntaxKind.CommaToken);
-            var maxValueToken = MatchNumericLiteral();
+            var maxValue = ParseUnityPossiblyNegativeNumericLiteralExpression();
 
             var closeParenToken = Match(SyntaxKind.CloseParenToken);
 
             return new UnityShaderPropertyRangeTypeSyntax(
                 rangeKeyword,
                 openParenToken,
-                minValueToken,
+                minValue,
                 commaToken,
-                maxValueToken,
+                maxValue,
                 closeParenToken);
         }
 
-        private SyntaxToken MatchNumericLiteral()
+        private ExpressionSyntax ParseUnityPossiblyNegativeNumericLiteralExpression()
         {
-            return MatchOneOf(SyntaxKind.IntegerLiteralToken, SyntaxKind.FloatLiteralToken);
+            if (Current.Kind == SyntaxKind.MinusToken)
+            {
+                var operatorToken = NextToken();
+                var literalToken = MatchOneOf(SyntaxKind.IntegerLiteralToken, SyntaxKind.FloatLiteralToken);
+                var operand = new LiteralExpressionSyntax(
+                    SyntaxFacts.GetLiteralExpression(literalToken.Kind),
+                    literalToken);
+                return new PrefixUnaryExpressionSyntax(
+                    SyntaxFacts.GetPrefixUnaryExpression(operatorToken.Kind),
+                    operatorToken, operand);
+            }
+            else
+            {
+                var literalToken = MatchOneOf(SyntaxKind.IntegerLiteralToken, SyntaxKind.FloatLiteralToken);
+                return new LiteralExpressionSyntax(
+                    SyntaxFacts.GetLiteralExpression(literalToken.Kind),
+                    literalToken);
+            }
         }
 
         private UnityShaderPropertySimpleTypeSyntax ParseUnityShaderPropertySimpleType()
@@ -197,46 +214,31 @@ namespace HlslTools.Parser
 
         private UnityShaderPropertyNumericDefaultValueSyntax ParseUnityShaderPropertyNumericDefaultValue(SyntaxKind propertyType)
         {
-            SyntaxToken numberToken;
-            switch (propertyType)
-            {
-                case SyntaxKind.UnityIntKeyword:
-                    numberToken = MatchOneOf(SyntaxKind.IntegerLiteralToken, SyntaxKind.FloatLiteralToken);
-                    break;
-                case SyntaxKind.UnityFloatKeyword:
-                    numberToken = MatchOneOf(SyntaxKind.FloatLiteralToken, SyntaxKind.IntegerLiteralToken);
-                    break;
-                case SyntaxKind.UnityRangeKeyword:
-                    numberToken = MatchNumericLiteral();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
-            return new UnityShaderPropertyNumericDefaultValueSyntax(numberToken);
+            var number = ParseUnityPossiblyNegativeNumericLiteralExpression();
+            return new UnityShaderPropertyNumericDefaultValueSyntax(number);
         }
 
         private UnityShaderPropertyVectorDefaultValueSyntax ParseUnityShaderPropertyVectorDefaultValue()
         {
             var openParenToken = Match(SyntaxKind.OpenParenToken);
-            var xToken = MatchNumericLiteral();
+            var x = ParseUnityPossiblyNegativeNumericLiteralExpression();
             var firstCommaToken = Match(SyntaxKind.CommaToken);
-            var yToken = MatchNumericLiteral();
+            var y = ParseUnityPossiblyNegativeNumericLiteralExpression();
             var secondCommaToken = Match(SyntaxKind.CommaToken);
-            var zToken = MatchNumericLiteral();
+            var z = ParseUnityPossiblyNegativeNumericLiteralExpression();
             var thirdCommaToken = Match(SyntaxKind.CommaToken);
-            var wToken = MatchNumericLiteral();
+            var w = ParseUnityPossiblyNegativeNumericLiteralExpression();
             var closeParenToken = Match(SyntaxKind.CloseParenToken);
 
             return new UnityShaderPropertyVectorDefaultValueSyntax(
                 openParenToken,
-                xToken,
+                x,
                 firstCommaToken,
-                yToken,
+                y,
                 secondCommaToken,
-                zToken,
+                z,
                 thirdCommaToken,
-                wToken,
+                w,
                 closeParenToken);
         }
 
@@ -363,10 +365,7 @@ namespace HlslTools.Parser
             var passKeyword = Match(SyntaxKind.UnityPassKeyword);
             var openBraceToken = Match(SyntaxKind.OpenBraceToken);
 
-            UnityStatePropertySyntax name = null;
             var statements = new List<SyntaxNode>();
-            UnityCgProgramSyntax cgProgram = null;
-
             var shouldContinue = true;
             while (shouldContinue && Current.Kind != SyntaxKind.CloseBraceToken)
             {
@@ -375,11 +374,46 @@ namespace HlslTools.Parser
                     case SyntaxKind.UnityTagsKeyword:
                         statements.Add(ParseUnityShaderTags());
                         break;
-                    case SyntaxKind.UnityCgProgramKeyword:
-                        cgProgram = ParseUnityCgProgram();
+                    case SyntaxKind.UnityNameKeyword:
+                        statements.Add(ParseUnityName());
+                        break;
+
+                    default:
+                        shouldContinue = TryParseStateProperty(statements);
+                        break;
+                }
+            }
+
+            UnityCgProgramSyntax cgProgram = null;
+            if (Current.Kind == SyntaxKind.UnityCgProgram)
+                cgProgram = ParseUnityCgProgram();
+
+            var closeBraceToken = Match(SyntaxKind.CloseBraceToken);
+
+            return new UnityPassSyntax(
+                passKeyword, 
+                openBraceToken, 
+                statements,
+                cgProgram, 
+                closeBraceToken);
+        }
+
+        private UnityGrabPassSyntax ParseUnityGrabPass()
+        {
+            var grabPassKeyword = Match(SyntaxKind.UnityGrabPassKeyword);
+            var openBraceToken = Match(SyntaxKind.OpenBraceToken);
+
+            var statements = new List<SyntaxNode>();
+            var shouldContinue = true;
+            while (shouldContinue && Current.Kind != SyntaxKind.CloseBraceToken)
+            {
+                switch (Current.Kind)
+                {
+                    case SyntaxKind.UnityTagsKeyword:
+                        statements.Add(ParseUnityShaderTags());
                         break;
                     case SyntaxKind.UnityNameKeyword:
-                        name = ParseUnityName();
+                        statements.Add(ParseUnityName());
                         break;
 
                     default:
@@ -390,24 +424,10 @@ namespace HlslTools.Parser
 
             var closeBraceToken = Match(SyntaxKind.CloseBraceToken);
 
-            return new UnityPassSyntax(
-                passKeyword, 
-                openBraceToken, 
-                name,
-                statements,
-                cgProgram, 
-                closeBraceToken);
-        }
-
-        private UnityGrabPassSyntax ParseUnityGrabPass()
-        {
-            var grabPassKeyword = Match(SyntaxKind.UnityGrabPassKeyword);
-            var openBraceToken = Match(SyntaxKind.OpenBraceToken);
-            var closeBraceToken = Match(SyntaxKind.CloseBraceToken);
-
             return new UnityGrabPassSyntax(
                 grabPassKeyword,
                 openBraceToken,
+                statements,
                 closeBraceToken);
         }
 
@@ -808,24 +828,24 @@ namespace HlslTools.Parser
             }
 
             var openParenToken = Match(SyntaxKind.OpenParenToken);
-            var rToken = MatchNumericLiteral();
+            var r = ParseUnityPossiblyNegativeNumericLiteralExpression();
             var firstCommaToken = Match(SyntaxKind.CommaToken);
-            var gToken = MatchNumericLiteral();
+            var g = ParseUnityPossiblyNegativeNumericLiteralExpression();
             var secondCommaToken = Match(SyntaxKind.CommaToken);
-            var bToken = MatchNumericLiteral();
+            var b = ParseUnityPossiblyNegativeNumericLiteralExpression();
             var thirdCommaToken = Match(SyntaxKind.CommaToken);
-            var aToken = MatchNumericLiteral();
+            var a = ParseUnityPossiblyNegativeNumericLiteralExpression();
             var closeParenToken = Match(SyntaxKind.CloseParenToken);
 
             return new UnityStatePropertyConstantColorValueSyntax(
                 openParenToken,
-                rToken,
+                r,
                 firstCommaToken,
-                gToken,
+                g,
                 secondCommaToken,
-                bToken,
+                b,
                 thirdCommaToken,
-                aToken,
+                a,
                 closeParenToken);
         }
 

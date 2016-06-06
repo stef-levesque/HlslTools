@@ -3,26 +3,26 @@ namespace HlslTools.Syntax
     public sealed class UnityShaderPropertyVectorDefaultValueSyntax : UnityShaderPropertyDefaultValueSyntax
     {
         public readonly SyntaxToken OpenParenToken;
-        public readonly SyntaxToken XToken;
+        public readonly ExpressionSyntax X;
         public readonly SyntaxToken FirstCommaToken;
-        public readonly SyntaxToken YToken;
+        public readonly ExpressionSyntax Y;
         public readonly SyntaxToken SecondCommaToken;
-        public readonly SyntaxToken ZToken;
+        public readonly ExpressionSyntax Z;
         public readonly SyntaxToken ThirdCommaToken;
-        public readonly SyntaxToken WToken;
+        public readonly ExpressionSyntax W;
         public readonly SyntaxToken CloseParenToken;
 
-        public UnityShaderPropertyVectorDefaultValueSyntax(SyntaxToken openParenToken, SyntaxToken xToken, SyntaxToken firstCommaToken, SyntaxToken yToken, SyntaxToken secondCommaToken, SyntaxToken zToken, SyntaxToken thirdCommaToken, SyntaxToken wToken, SyntaxToken closeParenToken)
+        public UnityShaderPropertyVectorDefaultValueSyntax(SyntaxToken openParenToken, ExpressionSyntax x, SyntaxToken firstCommaToken, ExpressionSyntax y, SyntaxToken secondCommaToken, ExpressionSyntax z, SyntaxToken thirdCommaToken, ExpressionSyntax w, SyntaxToken closeParenToken)
             : base(SyntaxKind.UnityShaderPropertyVectorDefaultValue)
         {
             RegisterChildNode(out OpenParenToken, openParenToken);
-            RegisterChildNode(out XToken, xToken);
+            RegisterChildNode(out X, x);
             RegisterChildNode(out FirstCommaToken, firstCommaToken);
-            RegisterChildNode(out YToken, yToken);
+            RegisterChildNode(out Y, y);
             RegisterChildNode(out SecondCommaToken, secondCommaToken);
-            RegisterChildNode(out ZToken, zToken);
+            RegisterChildNode(out Z, z);
             RegisterChildNode(out ThirdCommaToken, thirdCommaToken);
-            RegisterChildNode(out WToken, wToken);
+            RegisterChildNode(out W, w);
             RegisterChildNode(out CloseParenToken, closeParenToken);
         }
 

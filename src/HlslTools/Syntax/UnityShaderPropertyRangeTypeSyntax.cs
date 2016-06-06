@@ -1,26 +1,24 @@
-using System;
-
 namespace HlslTools.Syntax
 {
     public sealed class UnityShaderPropertyRangeTypeSyntax : UnityShaderPropertyTypeSyntax
     {
         public readonly SyntaxToken RangeKeyword;
         public readonly SyntaxToken OpenParenToken;
-        public readonly SyntaxToken MinValueToken;
+        public readonly ExpressionSyntax MinValue;
         public readonly SyntaxToken CommaToken;
-        public readonly SyntaxToken MaxValueToken;
+        public readonly ExpressionSyntax MaxValue;
         public readonly SyntaxToken CloseParenToken;
 
         public override SyntaxKind TypeKind => SyntaxKind.UnityRangeKeyword;
 
-        public UnityShaderPropertyRangeTypeSyntax(SyntaxToken rangeKeyword, SyntaxToken openParenToken, SyntaxToken minValueToken, SyntaxToken commaToken, SyntaxToken maxValueToken, SyntaxToken closeParenToken)
+        public UnityShaderPropertyRangeTypeSyntax(SyntaxToken rangeKeyword, SyntaxToken openParenToken, ExpressionSyntax minValue, SyntaxToken commaToken, ExpressionSyntax maxValue, SyntaxToken closeParenToken)
             : base(SyntaxKind.UnityShaderPropertyRangeType)
         {
             RegisterChildNode(out RangeKeyword, rangeKeyword);
             RegisterChildNode(out OpenParenToken, openParenToken);
-            RegisterChildNode(out MinValueToken, minValueToken);
+            RegisterChildNode(out MinValue, minValue);
             RegisterChildNode(out CommaToken, commaToken);
-            RegisterChildNode(out MaxValueToken, maxValueToken);
+            RegisterChildNode(out MaxValue, maxValue);
             RegisterChildNode(out CloseParenToken, closeParenToken);
         }
 

@@ -3,26 +3,26 @@ namespace HlslTools.Syntax
     public sealed class UnityStatePropertyConstantColorValueSyntax : UnityStatePropertyValueSyntax
     {
         public readonly SyntaxToken OpenParenToken;
-        public readonly SyntaxToken RToken;
+        public readonly ExpressionSyntax R;
         public readonly SyntaxToken FirstCommaToken;
-        public readonly SyntaxToken GToken;
+        public readonly ExpressionSyntax G;
         public readonly SyntaxToken SecondCommaToken;
-        public readonly SyntaxToken BToken;
+        public readonly ExpressionSyntax B;
         public readonly SyntaxToken ThirdCommaToken;
-        public readonly SyntaxToken AToken;
+        public readonly ExpressionSyntax A;
         public readonly SyntaxToken CloseParenToken;
 
-        public UnityStatePropertyConstantColorValueSyntax(SyntaxToken openParenToken, SyntaxToken rToken, SyntaxToken firstCommaToken, SyntaxToken gToken, SyntaxToken secondCommaToken, SyntaxToken bToken, SyntaxToken thirdCommaToken, SyntaxToken aToken, SyntaxToken closeParenToken)
+        public UnityStatePropertyConstantColorValueSyntax(SyntaxToken openParenToken, ExpressionSyntax r, SyntaxToken firstCommaToken, ExpressionSyntax g, SyntaxToken secondCommaToken, ExpressionSyntax b, SyntaxToken thirdCommaToken, ExpressionSyntax a, SyntaxToken closeParenToken)
             : base(SyntaxKind.UnityStatePropertyConstantColorValue)
         {
             RegisterChildNode(out OpenParenToken, openParenToken);
-            RegisterChildNode(out RToken, rToken);
+            RegisterChildNode(out R, r);
             RegisterChildNode(out FirstCommaToken, firstCommaToken);
-            RegisterChildNode(out GToken, gToken);
+            RegisterChildNode(out G, g);
             RegisterChildNode(out SecondCommaToken, secondCommaToken);
-            RegisterChildNode(out BToken, bToken);
+            RegisterChildNode(out B, b);
             RegisterChildNode(out ThirdCommaToken, thirdCommaToken);
-            RegisterChildNode(out AToken, aToken);
+            RegisterChildNode(out A, a);
             RegisterChildNode(out CloseParenToken, closeParenToken);
         }
 
