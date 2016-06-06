@@ -296,9 +296,6 @@ namespace HlslTools.Parser
             var openBraceToken = Match(SyntaxKind.OpenBraceToken);
 
             var statements = new List<SyntaxNode>();
-            UnityCgProgramSyntax cgProgram = null;
-            var passes = new List<BaseUnityPassSyntax>();
-
             var shouldContinue = true;
             while (shouldContinue && Current.Kind != SyntaxKind.CloseBraceToken)
             {
@@ -307,17 +304,11 @@ namespace HlslTools.Parser
                     case SyntaxKind.UnityTagsKeyword:
                         statements.Add(ParseUnityShaderTags());
                         break;
-                    case SyntaxKind.UnityCgProgramKeyword:
-                        cgProgram = ParseUnityCgProgram();
-                        break;
-                    case SyntaxKind.UnityPassKeyword:
-                        passes.Add(ParseUnityPass());
-                        break;
                     case SyntaxKind.UnityUsePassKeyword:
-                        passes.Add(ParseUnityUsePass());
+                        statements.Add(ParseUnityUsePass());
                         break;
                     case SyntaxKind.UnityGrabPassKeyword:
-                        passes.Add(ParseUnityGrabPass());
+                        statements.Add(ParseUnityGrabPass());
                         break;
 
                     default:
@@ -325,6 +316,14 @@ namespace HlslTools.Parser
                         break;
                 }
             }
+
+            var passes = new List<UnityPassSyntax>();
+            while (Current.Kind == SyntaxKind.UnityPassKeyword)
+                passes.Add(ParseUnityPass());
+
+            UnityCgProgramSyntax cgProgram = null;
+            if (Current.Kind == SyntaxKind.UnityCgProgramKeyword)
+                cgProgram = ParseUnityCgProgram();
 
             var closeBraceToken = Match(SyntaxKind.CloseBraceToken);
 
@@ -385,7 +384,7 @@ namespace HlslTools.Parser
             }
 
             UnityCgProgramSyntax cgProgram = null;
-            if (Current.Kind == SyntaxKind.UnityCgProgram)
+            if (Current.Kind == SyntaxKind.UnityCgProgramKeyword)
                 cgProgram = ParseUnityCgProgram();
 
             var closeBraceToken = Match(SyntaxKind.CloseBraceToken);
