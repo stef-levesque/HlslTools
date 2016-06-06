@@ -310,6 +310,9 @@ namespace HlslTools.Parser
                     case SyntaxKind.UnityGrabPassKeyword:
                         statements.Add(ParseUnityGrabPass());
                         break;
+                    case SyntaxKind.UnityCgIncludeKeyword:
+                        statements.Add(ParseUnityCgInclude());
+                        break;
 
                     default:
                         shouldContinue = TryParseStateProperty(statements);
