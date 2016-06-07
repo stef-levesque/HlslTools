@@ -1053,36 +1053,65 @@ namespace HlslTools.Parser
             if (Current.Kind == SyntaxKind.UnityDoubleKeyword || Current.Kind == SyntaxKind.UnityQuadKeyword)
                 modifierToken = NextToken();
 
-            return new UnityCommandSetTextureCombineSyntax(keyword, value, modifierToken);
+            UnityCommandSetTextureCombineAlphaComponentSyntax alphaComponent = null;
+            if (Current.Kind == SyntaxKind.CommaToken)
+                alphaComponent = ParseUnityCommandSetTextureCombineAlphaComponent();
+
+            return new UnityCommandSetTextureCombineSyntax(keyword, value, modifierToken, alphaComponent);
+        }
+
+        private UnityCommandSetTextureCombineAlphaComponentSyntax ParseUnityCommandSetTextureCombineAlphaComponent()
+        {
+            var commaToken = Match(SyntaxKind.CommaToken);
+            var value = ParseUnitySetTextureCombineValue();
+
+            return new UnityCommandSetTextureCombineAlphaComponentSyntax(
+                commaToken,
+                value);
         }
 
         private BaseUnityCommandSetTextureCombineValueSyntax ParseUnitySetTextureCombineValue()
         {
-            var source1 = Match(SyntaxKind.IdentifierToken);
+            var source1 = ParseUnitySetTextureCombineSource();
 
             switch (Current.Kind)
             {
                 case SyntaxKind.UnityLerpKeyword:
                     return ParseUnitySetTextureCombineLerpValue(source1);
 
-                default:
+                case SyntaxKind.AsteriskToken:
+                case SyntaxKind.PlusToken:
+                case SyntaxKind.MinusToken:
                     var operatorToken = MatchOneOf(SyntaxKind.AsteriskToken, SyntaxKind.PlusToken, SyntaxKind.MinusToken);
-                    var source2 = Match(SyntaxKind.IdentifierToken);
+                    var source2 = ParseUnitySetTextureCombineSource();
 
                     if (operatorToken.Kind == SyntaxKind.AsteriskToken && Current.Kind == SyntaxKind.PlusToken)
                         return ParseUnitySetTextureCombineMultiplyAlphaValue(source1, operatorToken, source2);
 
                     return new UnityCommandSetTextureCombineBinaryValueSyntax(source1, operatorToken, source2);
+
+                default:
+                    return new UnityCommandSetTextureCombineUnaryValueSyntax(source1);
             }
         }
 
-        private BaseUnityCommandSetTextureCombineValueSyntax ParseUnitySetTextureCombineLerpValue(SyntaxToken source1)
+        private UnityCommandSetTextureCombineSourceSyntax ParseUnitySetTextureCombineSource()
+        {
+            var sourceToken = Match(SyntaxKind.IdentifierToken);
+            var alphaKeyword = NextTokenIf(SyntaxKind.UnityAlphaKeyword);
+
+            return new UnityCommandSetTextureCombineSourceSyntax(
+                sourceToken,
+                alphaKeyword);
+        }
+
+        private BaseUnityCommandSetTextureCombineValueSyntax ParseUnitySetTextureCombineLerpValue(UnityCommandSetTextureCombineSourceSyntax source1)
         {
             var lerpKeyword = Match(SyntaxKind.UnityLerpKeyword);
             var openParenToken = Match(SyntaxKind.OpenParenToken);
-            var source2 = Match(SyntaxKind.IdentifierToken);
+            var source2 = ParseUnitySetTextureCombineSource();
             var closeParenToken = Match(SyntaxKind.CloseParenToken);
-            var source3 = Match(SyntaxKind.IdentifierToken);
+            var source3 = ParseUnitySetTextureCombineSource();
 
             return new UnityCommandSetTextureCombineLerpValueSyntax(
                 source1,
@@ -1093,10 +1122,10 @@ namespace HlslTools.Parser
                 source3);
         }
 
-        private BaseUnityCommandSetTextureCombineValueSyntax ParseUnitySetTextureCombineMultiplyAlphaValue(SyntaxToken source1, SyntaxToken operatorToken, SyntaxToken source2)
+        private BaseUnityCommandSetTextureCombineValueSyntax ParseUnitySetTextureCombineMultiplyAlphaValue(UnityCommandSetTextureCombineSourceSyntax source1, SyntaxToken operatorToken, UnityCommandSetTextureCombineSourceSyntax source2)
         {
             var plusToken = Match(SyntaxKind.PlusToken);
-            var source3 = Match(SyntaxKind.IdentifierToken);
+            var source3 = ParseUnitySetTextureCombineSource();
 
             return new UnityCommandSetTextureCombineMultiplyAlphaValueSyntax(
                 source1,

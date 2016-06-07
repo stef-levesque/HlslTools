@@ -349,10 +349,13 @@
     <Compile Include="Syntax\UnityCommandFogRangeSyntax.cs" />
     <Compile Include="Syntax\UnityCommandFogSyntax.cs" />
     <Compile Include="Syntax\UnityCommandSeparateSpecularSyntax.cs" />
+    <Compile Include="Syntax\UnityCommandSetTextureCombineAlphaComponentSyntax.cs" />
+    <Compile Include="Syntax\UnityCommandSetTextureCombineSourceSyntax.cs" />
     <Compile Include="Syntax\UnityCommandSetTextureCombineSyntax.cs" />
     <Compile Include="Syntax\UnityCommandSetTextureCombineBinaryValueSyntax.cs" />
     <Compile Include="Syntax\UnityCommandSetTextureCombineLerpValueSyntax.cs" />
     <Compile Include="Syntax\UnityCommandSetTextureCombineMultiplyAlphaValueSyntax.cs" />
+    <Compile Include="Syntax\UnityCommandSetTextureCombineUnaryValueSyntax.cs" />
     <Compile Include="Syntax\UnityCommandSetTextureConstantColorSyntax.cs" />
     <Compile Include="Syntax\UnityCommandSetTextureMatrixSyntax.cs" />
     <Compile Include="Syntax\UnityCommandSetTextureSyntax.cs" />

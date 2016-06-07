@@ -345,6 +345,8 @@ namespace HlslTools.Syntax
                     return "SetTexture";
                 case SyntaxKind.UnityCombineKeyword:
                     return "Combine";
+                case SyntaxKind.UnityAlphaKeyword:
+                    return "Alpha";
                 case SyntaxKind.UnityLerpKeyword:
                     return "lerp";
                 case SyntaxKind.UnityDoubleKeyword:
@@ -1451,6 +1453,7 @@ namespace HlslTools.Syntax
                 case SyntaxKind.UnitySeparateSpecularKeyword:
                 case SyntaxKind.UnitySetTextureKeyword:
                 case SyntaxKind.UnityCombineKeyword:
+                case SyntaxKind.UnityAlphaKeyword:
                 case SyntaxKind.UnityLerpKeyword:
                 case SyntaxKind.UnityDoubleKeyword:
                 case SyntaxKind.UnityQuadKeyword:
@@ -1728,6 +1731,8 @@ namespace HlslTools.Syntax
                     return SyntaxKind.UnitySetTextureKeyword;
                 case "combine":
                     return SyntaxKind.UnityCombineKeyword;
+                case "alpha":
+                    return SyntaxKind.UnityAlphaKeyword;
                 case "lerp":
                     return SyntaxKind.UnityLerpKeyword;
                 case "double":

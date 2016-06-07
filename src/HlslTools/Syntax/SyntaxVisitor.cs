@@ -817,6 +817,16 @@ namespace HlslTools.Syntax
             DefaultVisit(node);
         }
 
+        public virtual void VisitUnityCommandSetTextureCombineSource(UnityCommandSetTextureCombineSourceSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityCommandSetTextureCombineUnaryValue(UnityCommandSetTextureCombineUnaryValueSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
         public virtual void VisitUnityCommandSetTextureCombineBinaryValue(UnityCommandSetTextureCombineBinaryValueSyntax node)
         {
             DefaultVisit(node);
@@ -828,6 +838,11 @@ namespace HlslTools.Syntax
         }
 
         public virtual void VisitUnityCommandSetTextureCombineMultiplyAlphaValue(UnityCommandSetTextureCombineMultiplyAlphaValueSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityCommandSetTextureCombineAlphaComponent(UnityCommandSetTextureCombineAlphaComponentSyntax node)
         {
             DefaultVisit(node);
         }
@@ -1682,6 +1697,16 @@ namespace HlslTools.Syntax
             return DefaultVisit(node);
         }
 
+        public virtual T VisitUnityCommandSetTextureCombineSource(UnityCommandSetTextureCombineSourceSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityCommandSetTextureCombineUnaryValue(UnityCommandSetTextureCombineUnaryValueSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
         public virtual T VisitUnityCommandSetTextureCombineBinaryValue(UnityCommandSetTextureCombineBinaryValueSyntax node)
         {
             return DefaultVisit(node);
@@ -1693,6 +1718,11 @@ namespace HlslTools.Syntax
         }
 
         public virtual T VisitUnityCommandSetTextureCombineMultiplyAlphaValue(UnityCommandSetTextureCombineMultiplyAlphaValueSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityCommandSetTextureCombineAlphaComponent(UnityCommandSetTextureCombineAlphaComponentSyntax node)
         {
             return DefaultVisit(node);
         }
