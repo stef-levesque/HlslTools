@@ -63,10 +63,7 @@ namespace HlslTools.Parser
                 foreach (var define in options.PreprocessorDefines)
                 {
                     _directives = _directives.Add(new Directive(new ObjectLikeDefineDirectiveTriviaSyntax(
-                        null, null, SyntaxFactory.ParseToken(define), new List<SyntaxToken>
-                        {
-                            SyntaxFactory.ParseToken("1")
-                        }, null, true)));
+                        null, null, SyntaxFactory.ParseToken(define), new List<SyntaxToken>(), null, true)));
                 }
 
             ExpandMacros = true;

@@ -25,6 +25,9 @@ namespace HlslTools.Syntax
             // Automatically included for surface shaders:
             // - Lighting.cginc
 
+            options = options ?? new ParserOptions();
+            options.PreprocessorDefines.Add("INTERNAL_DATA"); // Used by surface shaders.
+
             return Parse(
                 sourceText, 
                 options, 
