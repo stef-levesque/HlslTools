@@ -549,6 +549,9 @@ namespace HlslTools.Parser
                 case SyntaxKind.UnityColorMaterialKeyword:
                     stateProperties.Add(ParseUnityColorMaterial());
                     return true;
+                case SyntaxKind.UnityBindChannelsKeyword:
+                    stateProperties.Add(ParseUnityBindChannels());
+                    return true;
 
                 default:
                     return false;
@@ -1059,6 +1062,36 @@ namespace HlslTools.Parser
             var value = Match(SyntaxKind.IdentifierToken);
 
             return new UnityCommandColorMaterialSyntax(keyword, value);
+        }
+
+        private UnityCommandSyntax ParseUnityBindChannels()
+        {
+            var keyword = Match(SyntaxKind.UnityBindChannelsKeyword);
+            var openBraceToken = Match(SyntaxKind.OpenBraceToken);
+
+            var commands = new List<UnityCommandSyntax>();
+            while (Current.Kind == SyntaxKind.UnityBindKeyword)
+                commands.Add(ParseUnityBind());
+
+            var closeBraceToken = Match(SyntaxKind.CloseBraceToken);
+
+            return new UnityCommandBindChannelsSyntax(
+                keyword,
+                openBraceToken,
+                commands,
+                closeBraceToken);
+        }
+
+        private UnityCommandSyntax ParseUnityBind()
+        {
+            var keyword = Match(SyntaxKind.UnityBindKeyword);
+            var sourceToken = Match(SyntaxKind.StringLiteralToken);
+            var commaToken = Match(SyntaxKind.CommaToken);
+            var targetToken = MatchOneOf(SyntaxKind.IdentifierToken, SyntaxKind.UnityColorKeyword);
+            if (targetToken.Kind == SyntaxKind.UnityColorKeyword)
+                targetToken = targetToken.WithKind(SyntaxKind.IdentifierToken);
+
+            return new UnityCommandBindChannelsBindSyntax(keyword, sourceToken, commaToken, targetToken);
         }
     }
 }

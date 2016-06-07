@@ -339,6 +339,8 @@
     <Compile Include="Syntax\UnityCommandAlphaTestOffSyntax.cs" />
     <Compile Include="Syntax\UnityCommandAlphaTestSyntax.cs" />
     <Compile Include="Syntax\UnityCommandAlphaToMaskSyntax.cs" />
+    <Compile Include="Syntax\UnityCommandBindChannelsBindSyntax.cs" />
+    <Compile Include="Syntax\UnityCommandBindChannelsSyntax.cs" />
     <Compile Include="Syntax\UnityCommandColorMaterialSyntax.cs" />
     <Compile Include="Syntax\UnityCommandFogColorSyntax.cs" />
     <Compile Include="Syntax\UnityCommandFogDensitySyntax.cs" />

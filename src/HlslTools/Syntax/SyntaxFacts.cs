@@ -355,6 +355,10 @@ namespace HlslTools.Syntax
                     return "AlphaTest";
                 case SyntaxKind.UnityColorMaterialKeyword:
                     return "ColorMaterial";
+                case SyntaxKind.UnityBindChannelsKeyword:
+                    return "BindChannels";
+                case SyntaxKind.UnityBindKeyword:
+                    return "Bind";
 
                 default:
                     return string.Empty;
@@ -1448,6 +1452,8 @@ namespace HlslTools.Syntax
                 case SyntaxKind.UnityMatrixKeyword:
                 case SyntaxKind.UnityAlphaTestKeyword:
                 case SyntaxKind.UnityColorMaterialKeyword:
+                case SyntaxKind.UnityBindChannelsKeyword:
+                case SyntaxKind.UnityBindKeyword:
                     return true;
 
                 default:
@@ -1726,6 +1732,10 @@ namespace HlslTools.Syntax
                     return SyntaxKind.UnityAlphaTestKeyword;
                 case "colormaterial":
                     return SyntaxKind.UnityColorMaterialKeyword;
+                case "bindchannels":
+                    return SyntaxKind.UnityBindChannelsKeyword;
+                case "bind":
+                    return SyntaxKind.UnityBindKeyword;
 
                 default:
                     return SyntaxKind.IdentifierToken;

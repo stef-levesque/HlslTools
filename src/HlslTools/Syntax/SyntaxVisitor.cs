@@ -831,6 +831,16 @@ namespace HlslTools.Syntax
         {
             DefaultVisit(node);
         }
+
+        public virtual void VisitUnityCommandBindChannels(UnityCommandBindChannelsSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityCommandBindChannelsBind(UnityCommandBindChannelsBindSyntax node)
+        {
+            DefaultVisit(node);
+        }
     }
 
     public abstract class SyntaxVisitor<T>
@@ -1663,6 +1673,16 @@ namespace HlslTools.Syntax
         }
 
         public virtual T VisitUnityCommandColorMaterial(UnityCommandColorMaterialSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityCommandBindChannels(UnityCommandBindChannelsSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityCommandBindChannelsBind(UnityCommandBindChannelsBindSyntax node)
         {
             return DefaultVisit(node);
         }

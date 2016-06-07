@@ -572,6 +572,8 @@ namespace HlslTools.Syntax
         UnityCommandAlphaTestComparison,
         UnityCommandAlphaToMask,
         UnityCommandColorMaterial,
+        UnityCommandBindChannels,
+        UnityCommandBindChannelsBind,
 
         UnityShaderKeyword,
         UnityPropertiesKeyword,
@@ -632,6 +634,8 @@ namespace HlslTools.Syntax
         UnityConstantColorKeyword,
         UnityMatrixKeyword,
         UnityAlphaTestKeyword,
-        UnityColorMaterialKeyword
+        UnityColorMaterialKeyword,
+        UnityBindChannelsKeyword,
+        UnityBindKeyword
     }
 }
