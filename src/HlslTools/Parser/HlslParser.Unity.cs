@@ -1008,9 +1008,9 @@ namespace HlslTools.Parser
                     case SyntaxKind.UnityMatrixKeyword:
                         commands.Add(ParseUnitySetTextureMatrix());
                         break;
-                    //case SyntaxKind.UnityCombineKeyword:
-                    //    commands.Add(ParseUnitySetTextureCombine());
-                    //    break;
+                    case SyntaxKind.UnityCombineKeyword:
+                        commands.Add(ParseUnitySetTextureCombine());
+                        break;
 
                     default:
                         shouldContinue = false;
@@ -1042,6 +1042,68 @@ namespace HlslTools.Parser
             var value = ParseUnityCommandVariableValue();
 
             return new UnityCommandSetTextureMatrixSyntax(keyword, value);
+        }
+
+        private UnityCommandSyntax ParseUnitySetTextureCombine()
+        {
+            var keyword = Match(SyntaxKind.UnityCombineKeyword);
+            var value = ParseUnitySetTextureCombineValue();
+
+            SyntaxToken modifierToken = null;
+            if (Current.Kind == SyntaxKind.UnityDoubleKeyword || Current.Kind == SyntaxKind.UnityQuadKeyword)
+                modifierToken = NextToken();
+
+            return new UnityCommandSetTextureCombineSyntax(keyword, value, modifierToken);
+        }
+
+        private BaseUnityCommandSetTextureCombineValueSyntax ParseUnitySetTextureCombineValue()
+        {
+            var source1 = Match(SyntaxKind.IdentifierToken);
+
+            switch (Current.Kind)
+            {
+                case SyntaxKind.UnityLerpKeyword:
+                    return ParseUnitySetTextureCombineLerpValue(source1);
+
+                default:
+                    var operatorToken = MatchOneOf(SyntaxKind.AsteriskToken, SyntaxKind.PlusToken, SyntaxKind.MinusToken);
+                    var source2 = Match(SyntaxKind.IdentifierToken);
+
+                    if (operatorToken.Kind == SyntaxKind.AsteriskToken && Current.Kind == SyntaxKind.PlusToken)
+                        return ParseUnitySetTextureCombineMultiplyAlphaValue(source1, operatorToken, source2);
+
+                    return new UnityCommandSetTextureCombineBinaryValueSyntax(source1, operatorToken, source2);
+            }
+        }
+
+        private BaseUnityCommandSetTextureCombineValueSyntax ParseUnitySetTextureCombineLerpValue(SyntaxToken source1)
+        {
+            var lerpKeyword = Match(SyntaxKind.UnityLerpKeyword);
+            var openParenToken = Match(SyntaxKind.OpenParenToken);
+            var source2 = Match(SyntaxKind.IdentifierToken);
+            var closeParenToken = Match(SyntaxKind.CloseParenToken);
+            var source3 = Match(SyntaxKind.IdentifierToken);
+
+            return new UnityCommandSetTextureCombineLerpValueSyntax(
+                source1,
+                lerpKeyword,
+                openParenToken,
+                source2,
+                closeParenToken,
+                source3);
+        }
+
+        private BaseUnityCommandSetTextureCombineValueSyntax ParseUnitySetTextureCombineMultiplyAlphaValue(SyntaxToken source1, SyntaxToken operatorToken, SyntaxToken source2)
+        {
+            var plusToken = Match(SyntaxKind.PlusToken);
+            var source3 = Match(SyntaxKind.IdentifierToken);
+
+            return new UnityCommandSetTextureCombineMultiplyAlphaValueSyntax(
+                source1,
+                operatorToken,
+                source2,
+                plusToken,
+                source3);
         }
 
         private UnityCommandSyntax ParseUnityAlphaTest()

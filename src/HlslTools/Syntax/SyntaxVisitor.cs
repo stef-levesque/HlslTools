@@ -812,6 +812,26 @@ namespace HlslTools.Syntax
             DefaultVisit(node);
         }
 
+        public virtual void VisitUnityCommandSetTextureCombine(UnityCommandSetTextureCombineSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityCommandSetTextureCombineBinaryValue(UnityCommandSetTextureCombineBinaryValueSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityCommandSetTextureCombineLerpValue(UnityCommandSetTextureCombineLerpValueSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityCommandSetTextureCombineMultiplyAlphaValue(UnityCommandSetTextureCombineMultiplyAlphaValueSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
         public virtual void VisitUnityCommandAlphaTestOff(UnityCommandAlphaTestOffSyntax node)
         {
             DefaultVisit(node);
@@ -1653,6 +1673,26 @@ namespace HlslTools.Syntax
         }
 
         public virtual T VisitUnityCommandSetTextureMatrix(UnityCommandSetTextureMatrixSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityCommandSetTextureCombine(UnityCommandSetTextureCombineSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityCommandSetTextureCombineBinaryValue(UnityCommandSetTextureCombineBinaryValueSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityCommandSetTextureCombineLerpValue(UnityCommandSetTextureCombineLerpValueSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityCommandSetTextureCombineMultiplyAlphaValue(UnityCommandSetTextureCombineMultiplyAlphaValueSyntax node)
         {
             return DefaultVisit(node);
         }

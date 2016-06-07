@@ -197,6 +197,7 @@
     <Compile Include="Symbols\StructSymbol.cs" />
     <Compile Include="Symbols\VariadicParameterSymbol.cs" />
     <Compile Include="Syntax\AnnotationsSyntax.cs" />
+    <Compile Include="Syntax\BaseUnityCommandSetTextureCombineValueSyntax.cs" />
     <Compile Include="Syntax\BaseUnityPassSyntax.cs" />
     <Compile Include="Syntax\BaseUnityVectorSyntax.cs" />
     <Compile Include="Syntax\CompileExpressionSyntax.cs" />
@@ -348,6 +349,10 @@
     <Compile Include="Syntax\UnityCommandFogRangeSyntax.cs" />
     <Compile Include="Syntax\UnityCommandFogSyntax.cs" />
     <Compile Include="Syntax\UnityCommandSeparateSpecularSyntax.cs" />
+    <Compile Include="Syntax\UnityCommandSetTextureCombineSyntax.cs" />
+    <Compile Include="Syntax\UnityCommandSetTextureCombineBinaryValueSyntax.cs" />
+    <Compile Include="Syntax\UnityCommandSetTextureCombineLerpValueSyntax.cs" />
+    <Compile Include="Syntax\UnityCommandSetTextureCombineMultiplyAlphaValueSyntax.cs" />
     <Compile Include="Syntax\UnityCommandSetTextureConstantColorSyntax.cs" />
     <Compile Include="Syntax\UnityCommandSetTextureMatrixSyntax.cs" />
     <Compile Include="Syntax\UnityCommandSetTextureSyntax.cs" />
