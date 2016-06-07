@@ -529,6 +529,9 @@ namespace HlslTools.Parser
                 case SyntaxKind.UnitySetTextureKeyword:
                     stateProperties.Add(ParseUnitySetTexture());
                     return true;
+                case SyntaxKind.UnityAlphaTestKeyword:
+                    stateProperties.Add(ParseUnityAlphaTest());
+                    return true;
 
                 default:
                     return false;
@@ -610,7 +613,7 @@ namespace HlslTools.Parser
         {
             var keyword = Match(SyntaxKind.UnityBlendKeyword);
 
-            if (Current.Kind == SyntaxKind.IdentifierToken && Current.Text == "Off")
+            if (Current.Kind == SyntaxKind.IdentifierToken && string.Equals(Current.Text, "Off", StringComparison.OrdinalIgnoreCase))
             {
                 return new UnityCommandBlendOffSyntax(keyword, NextToken());
             }
@@ -1011,6 +1014,18 @@ namespace HlslTools.Parser
             var value = ParseUnityCommandVariableValue();
 
             return new UnityCommandSetTextureMatrixSyntax(keyword, value);
+        }
+
+        private UnityCommandSyntax ParseUnityAlphaTest()
+        {
+            var keyword = Match(SyntaxKind.UnityAlphaTestKeyword);
+            var identifier = Match(SyntaxKind.IdentifierToken);
+
+            if (string.Equals(identifier.Text, "Off", StringComparison.OrdinalIgnoreCase))
+                return new UnityCommandAlphaTestOffSyntax(keyword, identifier);
+
+            var alphaValue = ParseUnityCommandValue(SyntaxKind.FloatLiteralToken, SyntaxKind.IntegerLiteralToken);
+            return new UnityCommandAlphaTestComparisonSyntax(keyword, identifier, alphaValue);
         }
     }
 }

@@ -806,6 +806,16 @@ namespace HlslTools.Syntax
         {
             DefaultVisit(node);
         }
+
+        public virtual void VisitUnityCommandAlphaTestOff(UnityCommandAlphaTestOffSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityCommandAlphaTestComparison(UnityCommandAlphaTestComparisonSyntax node)
+        {
+            DefaultVisit(node);
+        }
     }
 
     public abstract class SyntaxVisitor<T>
@@ -1613,6 +1623,16 @@ namespace HlslTools.Syntax
         }
 
         public virtual T VisitUnityCommandSetTextureMatrix(UnityCommandSetTextureMatrixSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityCommandAlphaTestOff(UnityCommandAlphaTestOffSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityCommandAlphaTestComparison(UnityCommandAlphaTestComparisonSyntax node)
         {
             return DefaultVisit(node);
         }

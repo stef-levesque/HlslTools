@@ -567,6 +567,8 @@ namespace HlslTools.Syntax
         UnityCommandSetTextureCombine,
         UnityCommandSetTextureConstantColor,
         UnityCommandSetTextureMatrix,
+        UnityCommandAlphaTestOff,
+        UnityCommandAlphaTestComparison,
 
         UnityShaderKeyword,
         UnityPropertiesKeyword,
@@ -625,6 +627,7 @@ namespace HlslTools.Syntax
         UnityDoubleKeyword,
         UnityQuadKeyword,
         UnityConstantColorKeyword,
-        UnityMatrixKeyword
+        UnityMatrixKeyword,
+        UnityAlphaTestKeyword
     }
 }

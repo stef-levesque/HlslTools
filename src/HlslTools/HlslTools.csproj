@@ -335,6 +335,8 @@
     <Compile Include="Syntax\UnityCategorySyntax.cs" />
     <Compile Include="Syntax\UnityCgIncludeSyntax.cs" />
     <Compile Include="Syntax\UnityCgProgramSyntax.cs" />
+    <Compile Include="Syntax\UnityCommandAlphaTestOffSyntax.cs" />
+    <Compile Include="Syntax\UnityCommandAlphaTestSyntax.cs" />
     <Compile Include="Syntax\UnityCommandFogColorSyntax.cs" />
     <Compile Include="Syntax\UnityCommandFogDensitySyntax.cs" />
     <Compile Include="Syntax\UnityCommandFogModeSyntax.cs" />
