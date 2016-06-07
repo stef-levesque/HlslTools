@@ -733,6 +733,8 @@ namespace HlslTools.Parser
                         stateProperties.Add(ParseUnityStencilWriteMask());
                         break;
                     case SyntaxKind.UnityCompKeyword:
+                    case SyntaxKind.UnityCompBackKeyword:
+                    case SyntaxKind.UnityCompFrontKeyword:
                         stateProperties.Add(ParseUnityStencilComp());
                         break;
                     case SyntaxKind.UnityPassKeyword:
@@ -786,7 +788,7 @@ namespace HlslTools.Parser
 
         private UnityCommandSyntax ParseUnityStencilComp()
         {
-            var keyword = Match(SyntaxKind.UnityCompKeyword);
+            var keyword = NextToken();
             var value = ParseUnityCommandValue(SyntaxKind.IdentifierToken);
 
             return new UnityCommandStencilCompSyntax(keyword, value);

@@ -611,6 +611,8 @@ namespace HlslTools.Syntax
         UnityReadMaskKeyword,
         UnityWriteMaskKeyword,
         UnityCompKeyword,
+        UnityCompBackKeyword,
+        UnityCompFrontKeyword,
         UnityFailKeyword,
         UnityZFailKeyword,
         UnityUsePassKeyword,

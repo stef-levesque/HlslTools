@@ -307,6 +307,10 @@ namespace HlslTools.Syntax
                     return "WriteMask";
                 case SyntaxKind.UnityCompKeyword:
                     return "Comp";
+                case SyntaxKind.UnityCompBackKeyword:
+                    return "CompBack";
+                case SyntaxKind.UnityCompFrontKeyword:
+                    return "CompFront";
                 case SyntaxKind.UnityFailKeyword:
                     return "Fail";
                 case SyntaxKind.UnityZFailKeyword:
@@ -1428,6 +1432,8 @@ namespace HlslTools.Syntax
                 case SyntaxKind.UnityReadMaskKeyword:
                 case SyntaxKind.UnityWriteMaskKeyword:
                 case SyntaxKind.UnityCompKeyword:
+                case SyntaxKind.UnityCompBackKeyword:
+                case SyntaxKind.UnityCompFrontKeyword:
                 case SyntaxKind.UnityFailKeyword:
                 case SyntaxKind.UnityZFailKeyword:
                 case SyntaxKind.UnityUsePassKeyword:
@@ -1684,6 +1690,10 @@ namespace HlslTools.Syntax
                     return SyntaxKind.UnityWriteMaskKeyword;
                 case "comp":
                     return SyntaxKind.UnityCompKeyword;
+                case "compback":
+                    return SyntaxKind.UnityCompBackKeyword;
+                case "compfront":
+                    return SyntaxKind.UnityCompFrontKeyword;
                 case "fail":
                     return SyntaxKind.UnityFailKeyword;
                 case "zfail":
