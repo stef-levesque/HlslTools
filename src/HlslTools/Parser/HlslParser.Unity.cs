@@ -225,7 +225,7 @@ namespace HlslTools.Parser
             return new UnityShaderPropertyVectorDefaultValueSyntax(vector);
         }
 
-        private UnityVectorSyntax ParseUnityVector()
+        private BaseUnityVectorSyntax ParseUnityVector()
         {
             var openParenToken = Match(SyntaxKind.OpenParenToken);
             var x = ParseUnityPossiblyNegativeNumericLiteralExpression();
@@ -233,11 +233,22 @@ namespace HlslTools.Parser
             var y = ParseUnityPossiblyNegativeNumericLiteralExpression();
             var secondCommaToken = Match(SyntaxKind.CommaToken);
             var z = ParseUnityPossiblyNegativeNumericLiteralExpression();
+
+            if (Current.Kind == SyntaxKind.CloseParenToken)
+                return new UnityVector3Syntax(
+                    openParenToken,
+                    x,
+                    firstCommaToken,
+                    y,
+                    secondCommaToken,
+                    z,
+                    NextToken());
+
             var thirdCommaToken = Match(SyntaxKind.CommaToken);
             var w = ParseUnityPossiblyNegativeNumericLiteralExpression();
             var closeParenToken = Match(SyntaxKind.CloseParenToken);
 
-            return new UnityVectorSyntax(
+            return new UnityVector4Syntax(
                 openParenToken,
                 x,
                 firstCommaToken,

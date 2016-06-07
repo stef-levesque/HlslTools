@@ -2,9 +2,9 @@ namespace HlslTools.Syntax
 {
     public sealed class UnityShaderPropertyVectorDefaultValueSyntax : UnityShaderPropertyDefaultValueSyntax
     {
-        public readonly UnityVectorSyntax Vector;
+        public readonly BaseUnityVectorSyntax Vector;
 
-        public UnityShaderPropertyVectorDefaultValueSyntax(UnityVectorSyntax vector)
+        public UnityShaderPropertyVectorDefaultValueSyntax(BaseUnityVectorSyntax vector)
             : base (SyntaxKind.UnityShaderPropertyVectorDefaultValue)
         {
             RegisterChildNode(out Vector, vector);

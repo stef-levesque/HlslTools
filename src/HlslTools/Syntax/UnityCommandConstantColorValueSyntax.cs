@@ -2,9 +2,9 @@ namespace HlslTools.Syntax
 {
     public sealed class UnityCommandConstantColorValueSyntax : UnityCommandValueSyntax
     {
-        public readonly UnityVectorSyntax Vector;
+        public readonly BaseUnityVectorSyntax Vector;
 
-        public UnityCommandConstantColorValueSyntax(UnityVectorSyntax vector)
+        public UnityCommandConstantColorValueSyntax(BaseUnityVectorSyntax vector)
             : base(SyntaxKind.UnityCommandConstantColorValue)
         {
             RegisterChildNode(out Vector, vector);

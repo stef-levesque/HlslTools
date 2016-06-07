@@ -198,6 +198,7 @@
     <Compile Include="Symbols\VariadicParameterSymbol.cs" />
     <Compile Include="Syntax\AnnotationsSyntax.cs" />
     <Compile Include="Syntax\BaseUnityPassSyntax.cs" />
+    <Compile Include="Syntax\BaseUnityVectorSyntax.cs" />
     <Compile Include="Syntax\CompileExpressionSyntax.cs" />
     <Compile Include="Syntax\CompoundExpressionSyntax.cs" />
     <Compile Include="Syntax\DeclarationNameSyntax.cs" />
@@ -399,7 +400,8 @@
     <Compile Include="Syntax\UnityCommandZWriteSyntax.cs" />
     <Compile Include="Syntax\UnitySubShaderSyntax.cs" />
     <Compile Include="Syntax\UnityUsePassSyntax.cs" />
-    <Compile Include="Syntax\UnityVectorSyntax.cs" />
+    <Compile Include="Syntax\UnityVector3Syntax.cs" />
+    <Compile Include="Syntax\UnityVector4Syntax.cs" />
     <Compile Include="Syntax\VariableDeclarationStatementSyntax.cs" />
     <Compile Include="Syntax\VariableDeclarationSyntax.cs" />
     <Compile Include="Syntax\VariableDeclaratorQualifierSyntax.cs" />

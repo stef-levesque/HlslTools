@@ -1,6 +1,6 @@
-﻿namespace HlslTools.Syntax
+namespace HlslTools.Syntax
 {
-    public sealed class UnityVectorSyntax : SyntaxNode
+    public sealed class UnityVector3Syntax : BaseUnityVectorSyntax
     {
         public readonly SyntaxToken OpenParenToken;
         public readonly ExpressionSyntax X;
@@ -8,12 +8,10 @@
         public readonly ExpressionSyntax Y;
         public readonly SyntaxToken SecondCommaToken;
         public readonly ExpressionSyntax Z;
-        public readonly SyntaxToken ThirdCommaToken;
-        public readonly ExpressionSyntax W;
         public readonly SyntaxToken CloseParenToken;
 
-        public UnityVectorSyntax(SyntaxToken openParenToken, ExpressionSyntax x, SyntaxToken firstCommaToken, ExpressionSyntax y, SyntaxToken secondCommaToken, ExpressionSyntax z, SyntaxToken thirdCommaToken, ExpressionSyntax w, SyntaxToken closeParenToken)
-            : base (SyntaxKind.UnityVector)
+        public UnityVector3Syntax(SyntaxToken openParenToken, ExpressionSyntax x, SyntaxToken firstCommaToken, ExpressionSyntax y, SyntaxToken secondCommaToken, ExpressionSyntax z, SyntaxToken closeParenToken)
+            : base (SyntaxKind.UnityVector3)
         {
             RegisterChildNode(out OpenParenToken, openParenToken);
             RegisterChildNode(out X, x);
@@ -21,19 +19,17 @@
             RegisterChildNode(out Y, y);
             RegisterChildNode(out SecondCommaToken, secondCommaToken);
             RegisterChildNode(out Z, z);
-            RegisterChildNode(out ThirdCommaToken, thirdCommaToken);
-            RegisterChildNode(out W, w);
             RegisterChildNode(out CloseParenToken, closeParenToken);
         }
 
         public override void Accept(SyntaxVisitor visitor)
         {
-            visitor.VisitUnityVector(this);
+            visitor.VisitUnityVector3(this);
         }
 
         public override T Accept<T>(SyntaxVisitor<T> visitor)
         {
-            return visitor.VisitUnityVector(this);
+            return visitor.VisitUnityVector3(this);
         }
     }
 }

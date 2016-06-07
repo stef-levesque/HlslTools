@@ -552,7 +552,12 @@ namespace HlslTools.Syntax
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityVector(UnityVectorSyntax node)
+        public virtual void VisitUnityVector3(UnityVector3Syntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityVector4(UnityVector4Syntax node)
         {
             DefaultVisit(node);
         }
@@ -1397,7 +1402,12 @@ namespace HlslTools.Syntax
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityVector(UnityVectorSyntax node)
+        public virtual T VisitUnityVector3(UnityVector3Syntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityVector4(UnityVector4Syntax node)
         {
             return DefaultVisit(node);
         }
