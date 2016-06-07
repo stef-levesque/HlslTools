@@ -563,6 +563,10 @@ namespace HlslTools.Syntax
         UnityCommandFogDensity,
         UnityCommandFogRange,
         UnityCommandSeparateSpecular,
+        UnityCommandSetTexture,
+        UnityCommandSetTextureCombine,
+        UnityCommandSetTextureConstantColor,
+        UnityCommandSetTextureMatrix,
 
         UnityShaderKeyword,
         UnityPropertiesKeyword,
@@ -614,6 +618,13 @@ namespace HlslTools.Syntax
         UnityFogKeyword,
         UnityModeKeyword,
         UnityDensityKeyword,
-        UnitySeparateSpecularKeyword
+        UnitySeparateSpecularKeyword,
+        UnitySetTextureKeyword,
+        UnityCombineKeyword,
+        UnityLerpKeyword,
+        UnityDoubleKeyword,
+        UnityQuadKeyword,
+        UnityConstantColorKeyword,
+        UnityMatrixKeyword
     }
 }

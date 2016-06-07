@@ -337,6 +337,20 @@ namespace HlslTools.Syntax
                     return "Density";
                 case SyntaxKind.UnitySeparateSpecularKeyword:
                     return "SeparateSpecular";
+                case SyntaxKind.UnitySetTextureKeyword:
+                    return "SetTexture";
+                case SyntaxKind.UnityCombineKeyword:
+                    return "Combine";
+                case SyntaxKind.UnityLerpKeyword:
+                    return "lerp";
+                case SyntaxKind.UnityDoubleKeyword:
+                    return "Double";
+                case SyntaxKind.UnityQuadKeyword:
+                    return "Quad";
+                case SyntaxKind.UnityConstantColorKeyword:
+                    return "ConstantColor";
+                case SyntaxKind.UnityMatrixKeyword:
+                    return "Matrix";
 
                 default:
                     return string.Empty;
@@ -1421,6 +1435,13 @@ namespace HlslTools.Syntax
                 case SyntaxKind.UnityModeKeyword:
                 case SyntaxKind.UnityDensityKeyword:
                 case SyntaxKind.UnitySeparateSpecularKeyword:
+                case SyntaxKind.UnitySetTextureKeyword:
+                case SyntaxKind.UnityCombineKeyword:
+                case SyntaxKind.UnityLerpKeyword:
+                case SyntaxKind.UnityDoubleKeyword:
+                case SyntaxKind.UnityQuadKeyword:
+                case SyntaxKind.UnityConstantColorKeyword:
+                case SyntaxKind.UnityMatrixKeyword:
                     return true;
 
                 default:
@@ -1681,6 +1702,20 @@ namespace HlslTools.Syntax
                     return SyntaxKind.UnityDensityKeyword;
                 case "separatespecular":
                     return SyntaxKind.UnitySeparateSpecularKeyword;
+                case "settexture":
+                    return SyntaxKind.UnitySetTextureKeyword;
+                case "combine":
+                    return SyntaxKind.UnityCombineKeyword;
+                case "lerp":
+                    return SyntaxKind.UnityLerpKeyword;
+                case "double":
+                    return SyntaxKind.UnityDoubleKeyword;
+                case "quad":
+                    return SyntaxKind.UnityQuadKeyword;
+                case "constantcolor":
+                    return SyntaxKind.UnityConstantColorKeyword;
+                case "matrix":
+                    return SyntaxKind.UnityMatrixKeyword;
 
                 default:
                     return SyntaxKind.IdentifierToken;

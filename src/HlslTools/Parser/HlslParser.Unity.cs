@@ -520,8 +520,14 @@ namespace HlslTools.Parser
                 case SyntaxKind.UnityMaterialKeyword:
                     stateProperties.Add(ParseUnityMaterial());
                     return true;
+                case SyntaxKind.UnityFogKeyword:
+                    stateProperties.Add(ParseUnityFog());
+                    return true;
                 case SyntaxKind.UnitySeparateSpecularKeyword:
                     stateProperties.Add(ParseUnitySeparateSpecular());
+                    return true;
+                case SyntaxKind.UnitySetTextureKeyword:
+                    stateProperties.Add(ParseUnitySetTexture());
                     return true;
 
                 default:
@@ -529,19 +535,22 @@ namespace HlslTools.Parser
             }
         }
 
+        private UnityCommandVariableValueSyntax ParseUnityCommandVariableValue()
+        {
+            var openBracketToken = NextToken();
+            var identifier = Match(SyntaxKind.IdentifierToken);
+            var closeBracketToken = Match(SyntaxKind.CloseBracketToken);
+
+            return new UnityCommandVariableValueSyntax(
+                openBracketToken,
+                identifier,
+                closeBracketToken);
+        }
+
         private UnityCommandValueSyntax ParseUnityCommandValue(SyntaxKind preferred, params SyntaxKind[] otherOptions)
         {
             if (Current.Kind == SyntaxKind.OpenBracketToken)
-            {
-                var openBracketToken = NextToken();
-                var identifier = Match(SyntaxKind.IdentifierToken);
-                var closeBracketToken = Match(SyntaxKind.CloseBracketToken);
-
-                return new UnityCommandVariableValueSyntax(
-                    openBracketToken,
-                    identifier,
-                    closeBracketToken);
-            }
+                return ParseUnityCommandVariableValue();
 
             var valueToken = MatchOneOf(preferred, otherOptions);
             return new UnityCommandConstantValueSyntax(valueToken);
@@ -823,19 +832,9 @@ namespace HlslTools.Parser
         private UnityCommandValueSyntax ParseUnityCommandColorValue()
         {
             if (Current.Kind == SyntaxKind.OpenBracketToken)
-            {
-                var openBracketToken = NextToken();
-                var identifier = Match(SyntaxKind.IdentifierToken);
-                var closeBracketToken = Match(SyntaxKind.CloseBracketToken);
-
-                return new UnityCommandVariableValueSyntax(
-                    openBracketToken,
-                    identifier,
-                    closeBracketToken);
-            }
+                return ParseUnityCommandVariableValue();
 
             var vector = ParseUnityVector();
-
             return new UnityCommandConstantColorValueSyntax(vector);
         }
 
@@ -958,6 +957,60 @@ namespace HlslTools.Parser
             var value = ParseUnityCommandValue(SyntaxKind.IdentifierToken);
 
             return new UnityCommandSeparateSpecularSyntax(keyword, value);
+        }
+
+        private UnityCommandSyntax ParseUnitySetTexture()
+        {
+            var keyword = Match(SyntaxKind.UnitySetTextureKeyword);
+            var textureName = ParseUnityCommandVariableValue();
+            var openBraceToken = Match(SyntaxKind.OpenBraceToken);
+
+            var commands = new List<UnityCommandSyntax>();
+            var shouldContinue = true;
+            while (shouldContinue && Current.Kind != SyntaxKind.CloseBraceToken)
+            {
+                switch (Current.Kind)
+                {
+                    case SyntaxKind.UnityConstantColorKeyword:
+                        commands.Add(ParseUnitySetTextureConstantColor());
+                        break;
+                    case SyntaxKind.UnityMatrixKeyword:
+                        commands.Add(ParseUnitySetTextureMatrix());
+                        break;
+                    //case SyntaxKind.UnityCombineKeyword:
+                    //    commands.Add(ParseUnitySetTextureCombine());
+                    //    break;
+
+                    default:
+                        shouldContinue = false;
+                        break;
+                }
+            }
+
+            var closeBraceToken = Match(SyntaxKind.CloseBraceToken);
+
+            return new UnityCommandSetTextureSyntax(
+                keyword,
+                textureName,
+                openBraceToken,
+                commands,
+                closeBraceToken);
+        }
+
+        private UnityCommandSyntax ParseUnitySetTextureConstantColor()
+        {
+            var keyword = Match(SyntaxKind.UnityConstantColorKeyword);
+            var value = ParseUnityCommandColorValue();
+
+            return new UnityCommandSetTextureConstantColorSyntax(keyword, value);
+        }
+
+        private UnityCommandSyntax ParseUnitySetTextureMatrix()
+        {
+            var keyword = Match(SyntaxKind.UnityMatrixKeyword);
+            var value = ParseUnityCommandVariableValue();
+
+            return new UnityCommandSetTextureMatrixSyntax(keyword, value);
         }
     }
 }

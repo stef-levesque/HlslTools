@@ -791,6 +791,21 @@ namespace HlslTools.Syntax
         {
             DefaultVisit(node);
         }
+
+        public virtual void VisitUnityCommandSetTexture(UnityCommandSetTextureSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityCommandSetTextureConstantColor(UnityCommandSetTextureConstantColorSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityCommandSetTextureMatrix(UnityCommandSetTextureMatrixSyntax node)
+        {
+            DefaultVisit(node);
+        }
     }
 
     public abstract class SyntaxVisitor<T>
@@ -1583,6 +1598,21 @@ namespace HlslTools.Syntax
         }
 
         public virtual T VisitUnityCommandSeparateSpecular(UnityCommandSeparateSpecularSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityCommandSetTexture(UnityCommandSetTextureSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityCommandSetTextureConstantColor(UnityCommandSetTextureConstantColorSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityCommandSetTextureMatrix(UnityCommandSetTextureMatrixSyntax node)
         {
             return DefaultVisit(node);
         }
