@@ -264,11 +264,17 @@ namespace HlslTools.Parser
         {
             var defaultTextureToken = Match(SyntaxKind.StringLiteralToken);
             var openBraceToken = Match(SyntaxKind.OpenBraceToken);
+
+            var options = new List<SyntaxToken>();
+            while (Current.Kind != SyntaxKind.CloseBraceToken)
+                options.Add(Match(SyntaxKind.IdentifierToken));
+
             var closeBraceToken = Match(SyntaxKind.CloseBraceToken);
 
             return new UnityShaderPropertyTextureDefaultValueSyntax(
                 defaultTextureToken,
                 openBraceToken,
+                options,
                 closeBraceToken);
         }
 
