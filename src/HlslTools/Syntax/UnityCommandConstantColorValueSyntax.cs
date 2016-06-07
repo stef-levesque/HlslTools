@@ -2,28 +2,12 @@ namespace HlslTools.Syntax
 {
     public sealed class UnityCommandConstantColorValueSyntax : UnityCommandValueSyntax
     {
-        public readonly SyntaxToken OpenParenToken;
-        public readonly ExpressionSyntax R;
-        public readonly SyntaxToken FirstCommaToken;
-        public readonly ExpressionSyntax G;
-        public readonly SyntaxToken SecondCommaToken;
-        public readonly ExpressionSyntax B;
-        public readonly SyntaxToken ThirdCommaToken;
-        public readonly ExpressionSyntax A;
-        public readonly SyntaxToken CloseParenToken;
+        public readonly UnityVectorSyntax Vector;
 
-        public UnityCommandConstantColorValueSyntax(SyntaxToken openParenToken, ExpressionSyntax r, SyntaxToken firstCommaToken, ExpressionSyntax g, SyntaxToken secondCommaToken, ExpressionSyntax b, SyntaxToken thirdCommaToken, ExpressionSyntax a, SyntaxToken closeParenToken)
+        public UnityCommandConstantColorValueSyntax(UnityVectorSyntax vector)
             : base(SyntaxKind.UnityCommandConstantColorValue)
         {
-            RegisterChildNode(out OpenParenToken, openParenToken);
-            RegisterChildNode(out R, r);
-            RegisterChildNode(out FirstCommaToken, firstCommaToken);
-            RegisterChildNode(out G, g);
-            RegisterChildNode(out SecondCommaToken, secondCommaToken);
-            RegisterChildNode(out B, b);
-            RegisterChildNode(out ThirdCommaToken, thirdCommaToken);
-            RegisterChildNode(out A, a);
-            RegisterChildNode(out CloseParenToken, closeParenToken);
+            RegisterChildNode(out Vector, vector);
         }
 
         public override void Accept(SyntaxVisitor visitor)

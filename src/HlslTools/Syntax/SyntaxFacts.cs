@@ -329,6 +329,12 @@ namespace HlslTools.Syntax
                     return "Specular";
                 case SyntaxKind.UnityEmissionKeyword:
                     return "Emission";
+                case SyntaxKind.UnityFogKeyword:
+                    return "Fog";
+                case SyntaxKind.UnityModeKeyword:
+                    return "Mode";
+                case SyntaxKind.UnityDensityKeyword:
+                    return "Density";
 
                 default:
                     return string.Empty;
@@ -1409,6 +1415,9 @@ namespace HlslTools.Syntax
                 case SyntaxKind.UnityShininessKeyword:
                 case SyntaxKind.UnitySpecularKeyword:
                 case SyntaxKind.UnityEmissionKeyword:
+                case SyntaxKind.UnityFogKeyword:
+                case SyntaxKind.UnityModeKeyword:
+                case SyntaxKind.UnityDensityKeyword:
                     return true;
 
                 default:
@@ -1661,6 +1670,12 @@ namespace HlslTools.Syntax
                     return SyntaxKind.UnitySpecularKeyword;
                 case "emission":
                     return SyntaxKind.UnityEmissionKeyword;
+                case "fog":
+                    return SyntaxKind.UnityFogKeyword;
+                case "mode":
+                    return SyntaxKind.UnityModeKeyword;
+                case "density":
+                    return SyntaxKind.UnityDensityKeyword;
 
                 default:
                     return SyntaxKind.IdentifierToken;

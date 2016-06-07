@@ -1,18 +1,18 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace HlslTools.Syntax
 {
-    public sealed class UnityCommandMaterialSyntax : UnityCommandSyntax
+    public sealed class UnityCommandFogSyntax : UnityCommandSyntax
     {
-        public readonly SyntaxToken MaterialKeyword;
+        public readonly SyntaxToken FogKeyword;
         public readonly SyntaxToken OpenBraceToken;
         public readonly List<UnityCommandSyntax> Commands;
         public readonly SyntaxToken CloseBraceToken;
 
-        public UnityCommandMaterialSyntax(SyntaxToken materialKeyword, SyntaxToken openBraceToken, List<UnityCommandSyntax> commands, SyntaxToken closeBraceToken)
-            : base (SyntaxKind.UnityCommandMaterial)
+        public UnityCommandFogSyntax(SyntaxToken fogKeyword, SyntaxToken openBraceToken, List<UnityCommandSyntax> commands, SyntaxToken closeBraceToken)
+            : base (SyntaxKind.UnityCommandFog)
         {
-            RegisterChildNode(out MaterialKeyword, materialKeyword);
+            RegisterChildNode(out FogKeyword, fogKeyword);
             RegisterChildNode(out OpenBraceToken, openBraceToken);
             RegisterChildNodes(out Commands, commands);
             RegisterChildNode(out CloseBraceToken, closeBraceToken);
@@ -20,12 +20,12 @@ namespace HlslTools.Syntax
 
         public override void Accept(SyntaxVisitor visitor)
         {
-            visitor.VisitUnityCommandMaterial(this);
+            visitor.VisitUnityCommandFog(this);
         }
 
         public override T Accept<T>(SyntaxVisitor<T> visitor)
         {
-            return visitor.VisitUnityCommandMaterial(this);
+            return visitor.VisitUnityCommandFog(this);
         }
     }
 }

@@ -552,6 +552,11 @@ namespace HlslTools.Syntax
             DefaultVisit(node);
         }
 
+        public virtual void VisitUnityVector(UnityVectorSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
         public virtual void VisitUnityShaderTags(UnityShaderTagsSyntax node)
         {
             DefaultVisit(node);
@@ -753,6 +758,31 @@ namespace HlslTools.Syntax
         }
 
         public virtual void VisitUnityCommandMaterialEmission(UnityCommandMaterialEmissionSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityCommandFog(UnityCommandFogSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityCommandFogMode(UnityCommandFogModeSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityCommandFogColor(UnityCommandFogColorSyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityCommandFogDensity(UnityCommandFogDensitySyntax node)
+        {
+            DefaultVisit(node);
+        }
+
+        public virtual void VisitUnityCommandFogRange(UnityCommandFogRangeSyntax node)
         {
             DefaultVisit(node);
         }
@@ -1327,6 +1357,11 @@ namespace HlslTools.Syntax
             return DefaultVisit(node);
         }
 
+        public virtual T VisitUnityVector(UnityVectorSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
         public virtual T VisitUnitySubShader(UnitySubShaderSyntax node)
         {
             return DefaultVisit(node);
@@ -1513,6 +1548,31 @@ namespace HlslTools.Syntax
         }
 
         public virtual T VisitUnityCommandMaterialEmission(UnityCommandMaterialEmissionSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityCommandFog(UnityCommandFogSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityCommandFogMode(UnityCommandFogModeSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityCommandFogColor(UnityCommandFogColorSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityCommandFogDensity(UnityCommandFogDensitySyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityCommandFogRange(UnityCommandFogRangeSyntax node)
         {
             return DefaultVisit(node);
         }

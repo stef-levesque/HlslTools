@@ -516,6 +516,7 @@ namespace HlslTools.Syntax
         UnityShaderPropertyNumericDefaultValue,
         UnityShaderPropertyVectorDefaultValue,
         UnityShaderPropertyTextureDefaultValue,
+        UnityVector,
         UnityShaderTags,
         UnityShaderTag,
         UnityCategory,
@@ -556,6 +557,11 @@ namespace HlslTools.Syntax
         UnityCommandMaterialShininess,
         UnityCommandMaterialSpecular,
         UnityCommandMaterialEmission,
+        UnityCommandFog,
+        UnityCommandFogMode,
+        UnityCommandFogColor,
+        UnityCommandFogDensity,
+        UnityCommandFogRange,
 
         UnityShaderKeyword,
         UnityPropertiesKeyword,
@@ -603,6 +609,9 @@ namespace HlslTools.Syntax
         UnityAmbientKeyword,
         UnityShininessKeyword,
         UnitySpecularKeyword,
-        UnityEmissionKeyword
+        UnityEmissionKeyword,
+        UnityFogKeyword,
+        UnityModeKeyword,
+        UnityDensityKeyword
     }
 }

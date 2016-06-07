@@ -220,6 +220,13 @@ namespace HlslTools.Parser
 
         private UnityShaderPropertyVectorDefaultValueSyntax ParseUnityShaderPropertyVectorDefaultValue()
         {
+            var vector = ParseUnityVector();
+
+            return new UnityShaderPropertyVectorDefaultValueSyntax(vector);
+        }
+
+        private UnityVectorSyntax ParseUnityVector()
+        {
             var openParenToken = Match(SyntaxKind.OpenParenToken);
             var x = ParseUnityPossiblyNegativeNumericLiteralExpression();
             var firstCommaToken = Match(SyntaxKind.CommaToken);
@@ -230,7 +237,7 @@ namespace HlslTools.Parser
             var w = ParseUnityPossiblyNegativeNumericLiteralExpression();
             var closeParenToken = Match(SyntaxKind.CloseParenToken);
 
-            return new UnityShaderPropertyVectorDefaultValueSyntax(
+            return new UnityVectorSyntax(
                 openParenToken,
                 x,
                 firstCommaToken,
@@ -824,26 +831,9 @@ namespace HlslTools.Parser
                     closeBracketToken);
             }
 
-            var openParenToken = Match(SyntaxKind.OpenParenToken);
-            var r = ParseUnityPossiblyNegativeNumericLiteralExpression();
-            var firstCommaToken = Match(SyntaxKind.CommaToken);
-            var g = ParseUnityPossiblyNegativeNumericLiteralExpression();
-            var secondCommaToken = Match(SyntaxKind.CommaToken);
-            var b = ParseUnityPossiblyNegativeNumericLiteralExpression();
-            var thirdCommaToken = Match(SyntaxKind.CommaToken);
-            var a = ParseUnityPossiblyNegativeNumericLiteralExpression();
-            var closeParenToken = Match(SyntaxKind.CloseParenToken);
+            var vector = ParseUnityVector();
 
-            return new UnityCommandConstantColorValueSyntax(
-                openParenToken,
-                r,
-                firstCommaToken,
-                g,
-                secondCommaToken,
-                b,
-                thirdCommaToken,
-                a,
-                closeParenToken);
+            return new UnityCommandConstantColorValueSyntax(vector);
         }
 
         private UnityCommandSyntax ParseUnityMaterialDiffuse()
@@ -884,6 +874,79 @@ namespace HlslTools.Parser
             var value = ParseUnityCommandColorValue();
 
             return new UnityCommandMaterialEmissionSyntax(keyword, value);
+        }
+
+        private UnityCommandSyntax ParseUnityFog()
+        {
+            var keyword = Match(SyntaxKind.UnityFogKeyword);
+            var openBraceToken = Match(SyntaxKind.OpenBraceToken);
+
+            var commands = new List<UnityCommandSyntax>();
+            var shouldContinue = true;
+            while (shouldContinue && Current.Kind != SyntaxKind.CloseBraceToken)
+            {
+                switch (Current.Kind)
+                {
+                    case SyntaxKind.UnityModeKeyword:
+                        commands.Add(ParseUnityFogMode());
+                        break;
+                    case SyntaxKind.UnityColorKeyword:
+                        commands.Add(ParseUnityFogColor());
+                        break;
+                    case SyntaxKind.UnityDensityKeyword:
+                        commands.Add(ParseUnityFogDensity());
+                        break;
+                    case SyntaxKind.UnityRangeKeyword:
+                        commands.Add(ParseUnityFogRange());
+                        break;
+
+                    default:
+                        shouldContinue = false;
+                        break;
+                }
+            }
+
+            var closeBraceToken = Match(SyntaxKind.CloseBraceToken);
+
+            return new UnityCommandFogSyntax(
+                keyword,
+                openBraceToken,
+                commands,
+                closeBraceToken);
+        }
+
+        private UnityCommandSyntax ParseUnityFogMode()
+        {
+            var keyword = Match(SyntaxKind.UnityModeKeyword);
+            var value = ParseUnityCommandValue(SyntaxKind.IdentifierToken);
+
+            return new UnityCommandFogModeSyntax(keyword, value);
+        }
+
+        private UnityCommandSyntax ParseUnityFogColor()
+        {
+            var keyword = Match(SyntaxKind.UnityColorKeyword);
+            var value = ParseUnityCommandColorValue();
+
+            return new UnityCommandFogColorSyntax(keyword, value);
+        }
+
+        private UnityCommandSyntax ParseUnityFogDensity()
+        {
+            var keyword = Match(SyntaxKind.UnityDensityKeyword);
+            var value = ParseUnityCommandValue(SyntaxKind.FloatLiteralToken, SyntaxKind.IntegerLiteralToken);
+
+            return new UnityCommandFogDensitySyntax(keyword, value);
+        }
+
+        private UnityCommandSyntax ParseUnityFogRange()
+        {
+            var keyword = Match(SyntaxKind.UnityRangeKeyword);
+            var near = ParseUnityCommandValue(SyntaxKind.FloatLiteralToken, SyntaxKind.IntegerLiteralToken);
+            var commaToken = Match(SyntaxKind.CommaToken);
+            var far = ParseUnityCommandValue(SyntaxKind.FloatLiteralToken, SyntaxKind.IntegerLiteralToken);
+
+            return new UnityCommandFogRangeSyntax(keyword, near, commaToken, far);
         }
     }
 }
