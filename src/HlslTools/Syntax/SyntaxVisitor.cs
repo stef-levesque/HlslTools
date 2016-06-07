@@ -816,6 +816,11 @@ namespace HlslTools.Syntax
         {
             DefaultVisit(node);
         }
+
+        public virtual void VisitUnityCommandAlphaToMask(UnityCommandAlphaToMaskSyntax node)
+        {
+            DefaultVisit(node);
+        }
     }
 
     public abstract class SyntaxVisitor<T>
@@ -1633,6 +1638,11 @@ namespace HlslTools.Syntax
         }
 
         public virtual T VisitUnityCommandAlphaTestComparison(UnityCommandAlphaTestComparisonSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityCommandAlphaToMask(UnityCommandAlphaToMaskSyntax node)
         {
             return DefaultVisit(node);
         }

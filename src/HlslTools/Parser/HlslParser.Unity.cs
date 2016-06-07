@@ -532,6 +532,9 @@ namespace HlslTools.Parser
                 case SyntaxKind.UnityAlphaTestKeyword:
                     stateProperties.Add(ParseUnityAlphaTest());
                     return true;
+                case SyntaxKind.UnityAlphaToMaskKeyword:
+                    stateProperties.Add(ParseUnityAlphaToMask());
+                    return true;
 
                 default:
                     return false;
@@ -1026,6 +1029,14 @@ namespace HlslTools.Parser
 
             var alphaValue = ParseUnityCommandValue(SyntaxKind.FloatLiteralToken, SyntaxKind.IntegerLiteralToken);
             return new UnityCommandAlphaTestComparisonSyntax(keyword, identifier, alphaValue);
+        }
+
+        private UnityCommandSyntax ParseUnityAlphaToMask()
+        {
+            var keyword = Match(SyntaxKind.UnityAlphaToMaskKeyword);
+            var value = ParseUnityCommandValue(SyntaxKind.IdentifierToken);
+
+            return new UnityCommandAlphaToMaskSyntax(keyword, value);
         }
     }
 }

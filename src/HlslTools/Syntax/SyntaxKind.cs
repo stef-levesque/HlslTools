@@ -569,6 +569,7 @@ namespace HlslTools.Syntax
         UnityCommandSetTextureMatrix,
         UnityCommandAlphaTestOff,
         UnityCommandAlphaTestComparison,
+        UnityCommandAlphaToMask,
 
         UnityShaderKeyword,
         UnityPropertiesKeyword,

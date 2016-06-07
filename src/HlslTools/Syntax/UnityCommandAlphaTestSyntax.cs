@@ -24,4 +24,6 @@ namespace HlslTools.Syntax
             return visitor.VisitUnityCommandAlphaTestComparison(this);
         }
     }
+
+    
 }
