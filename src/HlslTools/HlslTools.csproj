@@ -340,6 +340,7 @@
     <Compile Include="Syntax\UnityCommandFogModeSyntax.cs" />
     <Compile Include="Syntax\UnityCommandFogRangeSyntax.cs" />
     <Compile Include="Syntax\UnityCommandFogSyntax.cs" />
+    <Compile Include="Syntax\UnityCommandSeparateSpecularSyntax.cs" />
     <Compile Include="Syntax\UnityCompilationUnitSyntax.cs" />
     <Compile Include="Syntax\UnityCommandConstantColorValueSyntax.cs" />
     <Compile Include="Syntax\UnityCommandDependencySyntax.cs" />

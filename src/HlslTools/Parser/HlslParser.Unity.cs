@@ -520,6 +520,9 @@ namespace HlslTools.Parser
                 case SyntaxKind.UnityMaterialKeyword:
                     stateProperties.Add(ParseUnityMaterial());
                     return true;
+                case SyntaxKind.UnitySeparateSpecularKeyword:
+                    stateProperties.Add(ParseUnitySeparateSpecular());
+                    return true;
 
                 default:
                     return false;
@@ -947,6 +950,14 @@ namespace HlslTools.Parser
             var far = ParseUnityCommandValue(SyntaxKind.FloatLiteralToken, SyntaxKind.IntegerLiteralToken);
 
             return new UnityCommandFogRangeSyntax(keyword, near, commaToken, far);
+        }
+
+        private UnityCommandSyntax ParseUnitySeparateSpecular()
+        {
+            var keyword = Match(SyntaxKind.UnitySeparateSpecularKeyword);
+            var value = ParseUnityCommandValue(SyntaxKind.IdentifierToken);
+
+            return new UnityCommandSeparateSpecularSyntax(keyword, value);
         }
     }
 }

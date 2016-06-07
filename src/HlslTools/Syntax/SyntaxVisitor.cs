@@ -786,6 +786,11 @@ namespace HlslTools.Syntax
         {
             DefaultVisit(node);
         }
+
+        public virtual void VisitUnityCommandSeparateSpecular(UnityCommandSeparateSpecularSyntax node)
+        {
+            DefaultVisit(node);
+        }
     }
 
     public abstract class SyntaxVisitor<T>
@@ -1573,6 +1578,11 @@ namespace HlslTools.Syntax
         }
 
         public virtual T VisitUnityCommandFogRange(UnityCommandFogRangeSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityCommandSeparateSpecular(UnityCommandSeparateSpecularSyntax node)
         {
             return DefaultVisit(node);
         }
