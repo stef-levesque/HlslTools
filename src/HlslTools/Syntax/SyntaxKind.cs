@@ -570,6 +570,7 @@ namespace HlslTools.Syntax
         UnityCommandAlphaTestOff,
         UnityCommandAlphaTestComparison,
         UnityCommandAlphaToMask,
+        UnityCommandColorMaterial,
 
         UnityShaderKeyword,
         UnityPropertiesKeyword,
@@ -629,6 +630,7 @@ namespace HlslTools.Syntax
         UnityQuadKeyword,
         UnityConstantColorKeyword,
         UnityMatrixKeyword,
-        UnityAlphaTestKeyword
+        UnityAlphaTestKeyword,
+        UnityColorMaterialKeyword
     }
 }

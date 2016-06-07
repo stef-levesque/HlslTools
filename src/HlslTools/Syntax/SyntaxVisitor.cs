@@ -821,6 +821,11 @@ namespace HlslTools.Syntax
         {
             DefaultVisit(node);
         }
+
+        public virtual void VisitUnityCommandColorMaterial(UnityCommandColorMaterialSyntax node)
+        {
+            DefaultVisit(node);
+        }
     }
 
     public abstract class SyntaxVisitor<T>
@@ -1643,6 +1648,11 @@ namespace HlslTools.Syntax
         }
 
         public virtual T VisitUnityCommandAlphaToMask(UnityCommandAlphaToMaskSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityCommandColorMaterial(UnityCommandColorMaterialSyntax node)
         {
             return DefaultVisit(node);
         }

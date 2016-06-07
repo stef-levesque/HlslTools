@@ -353,6 +353,8 @@ namespace HlslTools.Syntax
                     return "Matrix";
                 case SyntaxKind.UnityAlphaTestKeyword:
                     return "AlphaTest";
+                case SyntaxKind.UnityColorMaterialKeyword:
+                    return "ColorMaterial";
 
                 default:
                     return string.Empty;
@@ -1445,6 +1447,7 @@ namespace HlslTools.Syntax
                 case SyntaxKind.UnityConstantColorKeyword:
                 case SyntaxKind.UnityMatrixKeyword:
                 case SyntaxKind.UnityAlphaTestKeyword:
+                case SyntaxKind.UnityColorMaterialKeyword:
                     return true;
 
                 default:
@@ -1721,6 +1724,8 @@ namespace HlslTools.Syntax
                     return SyntaxKind.UnityMatrixKeyword;
                 case "alphatest":
                     return SyntaxKind.UnityAlphaTestKeyword;
+                case "colormaterial":
+                    return SyntaxKind.UnityColorMaterialKeyword;
 
                 default:
                     return SyntaxKind.IdentifierToken;

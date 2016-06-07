@@ -535,6 +535,9 @@ namespace HlslTools.Parser
                 case SyntaxKind.UnityAlphaToMaskKeyword:
                     stateProperties.Add(ParseUnityAlphaToMask());
                     return true;
+                case SyntaxKind.UnityColorMaterialKeyword:
+                    stateProperties.Add(ParseUnityColorMaterial());
+                    return true;
 
                 default:
                     return false;
@@ -1037,6 +1040,14 @@ namespace HlslTools.Parser
             var value = ParseUnityCommandValue(SyntaxKind.IdentifierToken);
 
             return new UnityCommandAlphaToMaskSyntax(keyword, value);
+        }
+
+        private UnityCommandSyntax ParseUnityColorMaterial()
+        {
+            var keyword = Match(SyntaxKind.UnityColorMaterialKeyword);
+            var value = Match(SyntaxKind.IdentifierToken);
+
+            return new UnityCommandColorMaterialSyntax(keyword, value);
         }
     }
 }
