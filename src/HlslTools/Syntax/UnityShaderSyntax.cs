@@ -10,10 +10,10 @@ namespace HlslTools.Syntax
         public readonly UnityShaderPropertiesSyntax Properties;
         public readonly UnityCgIncludeSyntax CgInclude;
         public readonly List<SyntaxNode> Statements;
-        public readonly List<UnityStatePropertySyntax> StateProperties;
+        public readonly List<UnityCommandSyntax> StateProperties;
         public readonly SyntaxToken CloseBraceToken;
 
-        public UnityShaderSyntax(SyntaxToken shaderKeyword, SyntaxToken nameToken, SyntaxToken openBraceToken, UnityShaderPropertiesSyntax properties, UnityCgIncludeSyntax cgInclude, List<SyntaxNode> statements, List<UnityStatePropertySyntax> stateProperties, SyntaxToken closeBraceToken)
+        public UnityShaderSyntax(SyntaxToken shaderKeyword, SyntaxToken nameToken, SyntaxToken openBraceToken, UnityShaderPropertiesSyntax properties, UnityCgIncludeSyntax cgInclude, List<SyntaxNode> statements, List<UnityCommandSyntax> stateProperties, SyntaxToken closeBraceToken)
             : base(SyntaxKind.UnityShader)
         {
             RegisterChildNode(out ShaderKeyword, shaderKeyword);

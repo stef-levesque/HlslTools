@@ -504,7 +504,7 @@ namespace HlslTools.Syntax
 
         public virtual void VisitFunctionLikeMacroReference(FunctionLikeMacroReference node)
         {
-
+            
         }
 
         public virtual void VisitUnityCompilationUnit(UnityCompilationUnitSyntax node)
@@ -592,122 +592,122 @@ namespace HlslTools.Syntax
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyConstantValue(UnityStatePropertyConstantValueSyntax node)
+        public virtual void VisitUnityCommandConstantValue(UnityCommandConstantValueSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyConstantColorValue(UnityStatePropertyConstantColorValueSyntax node)
+        public virtual void VisitUnityCommandConstantColorValue(UnityCommandConstantColorValueSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyVariableValue(UnityStatePropertyVariableValueSyntax node)
+        public virtual void VisitUnityCommandVariableValue(UnityCommandVariableValueSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyFallback(UnityStatePropertyFallbackSyntax node)
+        public virtual void VisitUnityCommandFallback(UnityCommandFallbackSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyCustomEditor(UnityStatePropertyCustomEditorSyntax node)
+        public virtual void VisitUnityCommandCustomEditor(UnityCommandCustomEditorSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyCull(UnityStatePropertyCullSyntax node)
+        public virtual void VisitUnityCommandCull(UnityCommandCullSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyZWrite(UnityStatePropertyZWriteSyntax node)
+        public virtual void VisitUnityCommandZWrite(UnityCommandZWriteSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyZTest(UnityStatePropertyZTestSyntax node)
+        public virtual void VisitUnityCommandZTest(UnityCommandZTestSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyOffset(UnityStatePropertyOffsetSyntax node)
+        public virtual void VisitUnityCommandOffset(UnityCommandOffsetSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyBlendOff(UnityStatePropertyBlendOffSyntax node)
+        public virtual void VisitUnityCommandBlendOff(UnityCommandBlendOffSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyBlendColor(UnityStatePropertyBlendColorSyntax node)
+        public virtual void VisitUnityCommandBlendColor(UnityCommandBlendColorSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyBlendColorAlpha(UnityStatePropertyBlendColorAlphaSyntax node)
+        public virtual void VisitUnityCommandBlendColorAlpha(UnityCommandBlendColorAlphaSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyColorMask(UnityStatePropertyColorMaskSyntax node)
+        public virtual void VisitUnityCommandColorMask(UnityCommandColorMaskSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyLod(UnityStatePropertyLodSyntax node)
+        public virtual void VisitUnityCommandLod(UnityCommandLodSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyName(UnityStatePropertyNameSyntax node)
+        public virtual void VisitUnityCommandName(UnityCommandNameSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyLighting(UnityStatePropertyLightingSyntax node)
+        public virtual void VisitUnityCommandLighting(UnityCommandLightingSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyStencil(UnityStatePropertyStencilSyntax node)
+        public virtual void VisitUnityCommandStencil(UnityCommandStencilSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyStencilRef(UnityStatePropertyStencilRefSyntax node)
+        public virtual void VisitUnityCommandStencilRef(UnityCommandStencilRefSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyStencilReadMask(UnityStatePropertyStencilReadMaskSyntax node)
+        public virtual void VisitUnityCommandStencilReadMask(UnityCommandStencilReadMaskSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyStencilWriteMask(UnityStatePropertyStencilWriteMaskSyntax node)
+        public virtual void VisitUnityCommandStencilWriteMask(UnityCommandStencilWriteMaskSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyStencilComp(UnityStatePropertyStencilCompSyntax node)
+        public virtual void VisitUnityCommandStencilComp(UnityCommandStencilCompSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyStencilPass(UnityStatePropertyStencilPassSyntax node)
+        public virtual void VisitUnityCommandStencilPass(UnityCommandStencilPassSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyStencilFail(UnityStatePropertyStencilFailSyntax node)
+        public virtual void VisitUnityCommandStencilFail(UnityCommandStencilFailSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyStencilZFail(UnityStatePropertyStencilZFailSyntax node)
+        public virtual void VisitUnityCommandStencilZFail(UnityCommandStencilZFailSyntax node)
         {
             DefaultVisit(node);
         }
@@ -722,37 +722,37 @@ namespace HlslTools.Syntax
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyDependency(UnityStatePropertyDependencySyntax node)
+        public virtual void VisitUnityCommandDependency(UnityCommandDependencySyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyMaterial(UnityStatePropertyMaterialSyntax node)
+        public virtual void VisitUnityCommandMaterial(UnityCommandMaterialSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyMaterialDiffuse(UnityStatePropertyMaterialDiffuseSyntax node)
+        public virtual void VisitUnityCommandMaterialDiffuse(UnityCommandMaterialDiffuseSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyMaterialAmbient(UnityStatePropertyMaterialAmbientSyntax node)
+        public virtual void VisitUnityCommandMaterialAmbient(UnityCommandMaterialAmbientSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyMaterialShininess(UnityStatePropertyMaterialShininessSyntax node)
+        public virtual void VisitUnityCommandMaterialShininess(UnityCommandMaterialShininessSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyMaterialSpecular(UnityStatePropertyMaterialSpecularSyntax node)
+        public virtual void VisitUnityCommandMaterialSpecular(UnityCommandMaterialSpecularSyntax node)
         {
             DefaultVisit(node);
         }
 
-        public virtual void VisitUnityStatePropertyMaterialEmission(UnityStatePropertyMaterialEmissionSyntax node)
+        public virtual void VisitUnityCommandMaterialEmission(UnityCommandMaterialEmissionSyntax node)
         {
             DefaultVisit(node);
         }
@@ -1352,122 +1352,122 @@ namespace HlslTools.Syntax
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyConstantValue(UnityStatePropertyConstantValueSyntax node)
+        public virtual T VisitUnityCommandConstantValue(UnityCommandConstantValueSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyConstantColorValue(UnityStatePropertyConstantColorValueSyntax node)
+        public virtual T VisitUnityCommandConstantColorValue(UnityCommandConstantColorValueSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyVariableValue(UnityStatePropertyVariableValueSyntax node)
+        public virtual T VisitUnityCommandVariableValue(UnityCommandVariableValueSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyFallback(UnityStatePropertyFallbackSyntax node)
+        public virtual T VisitUnityCommandFallback(UnityCommandFallbackSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyCustomEditor(UnityStatePropertyCustomEditorSyntax node)
+        public virtual T VisitUnityCommandCustomEditor(UnityCommandCustomEditorSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyCull(UnityStatePropertyCullSyntax node)
+        public virtual T VisitUnityCommandCull(UnityCommandCullSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyZWrite(UnityStatePropertyZWriteSyntax node)
+        public virtual T VisitUnityCommandZWrite(UnityCommandZWriteSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyZTest(UnityStatePropertyZTestSyntax node)
+        public virtual T VisitUnityCommandZTest(UnityCommandZTestSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyOffset(UnityStatePropertyOffsetSyntax node)
+        public virtual T VisitUnityCommandOffset(UnityCommandOffsetSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyBlendOff(UnityStatePropertyBlendOffSyntax node)
+        public virtual T VisitUnityCommandBlendOff(UnityCommandBlendOffSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyBlendColor(UnityStatePropertyBlendColorSyntax node)
+        public virtual T VisitUnityCommandBlendColor(UnityCommandBlendColorSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyBlendColorAlpha(UnityStatePropertyBlendColorAlphaSyntax node)
+        public virtual T VisitUnityCommandBlendColorAlpha(UnityCommandBlendColorAlphaSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyColorMask(UnityStatePropertyColorMaskSyntax node)
+        public virtual T VisitUnityCommandColorMask(UnityCommandColorMaskSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyLod(UnityStatePropertyLodSyntax node)
+        public virtual T VisitUnityCommandLod(UnityCommandLodSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyName(UnityStatePropertyNameSyntax node)
+        public virtual T VisitUnityCommandName(UnityCommandNameSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyLighting(UnityStatePropertyLightingSyntax node)
+        public virtual T VisitUnityCommandLighting(UnityCommandLightingSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyStencil(UnityStatePropertyStencilSyntax node)
+        public virtual T VisitUnityCommandStencil(UnityCommandStencilSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyStencilRef(UnityStatePropertyStencilRefSyntax node)
+        public virtual T VisitUnityCommandStencilRef(UnityCommandStencilRefSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyStencilReadMask(UnityStatePropertyStencilReadMaskSyntax node)
+        public virtual T VisitUnityCommandStencilReadMask(UnityCommandStencilReadMaskSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyStencilWriteMask(UnityStatePropertyStencilWriteMaskSyntax node)
+        public virtual T VisitUnityCommandStencilWriteMask(UnityCommandStencilWriteMaskSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyStencilComp(UnityStatePropertyStencilCompSyntax node)
+        public virtual T VisitUnityCommandStencilComp(UnityCommandStencilCompSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyStencilPass(UnityStatePropertyStencilPassSyntax node)
+        public virtual T VisitUnityCommandStencilPass(UnityCommandStencilPassSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyStencilFail(UnityStatePropertyStencilFailSyntax node)
+        public virtual T VisitUnityCommandStencilFail(UnityCommandStencilFailSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyStencilZFail(UnityStatePropertyStencilZFailSyntax node)
+        public virtual T VisitUnityCommandStencilZFail(UnityCommandStencilZFailSyntax node)
         {
             return DefaultVisit(node);
         }
@@ -1482,37 +1482,37 @@ namespace HlslTools.Syntax
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyDependency(UnityStatePropertyDependencySyntax node)
+        public virtual T VisitUnityCommandDependency(UnityCommandDependencySyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyMaterial(UnityStatePropertyMaterialSyntax node)
+        public virtual T VisitUnityCommandMaterial(UnityCommandMaterialSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyMaterialDiffuse(UnityStatePropertyMaterialDiffuseSyntax node)
+        public virtual T VisitUnityCommandMaterialDiffuse(UnityCommandMaterialDiffuseSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyMaterialAmbient(UnityStatePropertyMaterialAmbientSyntax node)
+        public virtual T VisitUnityCommandMaterialAmbient(UnityCommandMaterialAmbientSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyMaterialShininess(UnityStatePropertyMaterialShininessSyntax node)
+        public virtual T VisitUnityCommandMaterialShininess(UnityCommandMaterialShininessSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyMaterialSpecular(UnityStatePropertyMaterialSpecularSyntax node)
+        public virtual T VisitUnityCommandMaterialSpecular(UnityCommandMaterialSpecularSyntax node)
         {
             return DefaultVisit(node);
         }
 
-        public virtual T VisitUnityStatePropertyMaterialEmission(UnityStatePropertyMaterialEmissionSyntax node)
+        public virtual T VisitUnityCommandMaterialEmission(UnityCommandMaterialEmissionSyntax node)
         {
             return DefaultVisit(node);
         }
