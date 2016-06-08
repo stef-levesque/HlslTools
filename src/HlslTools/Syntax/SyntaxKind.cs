@@ -580,6 +580,7 @@ namespace HlslTools.Syntax
         UnityCommandColorMaterial,
         UnityCommandBindChannels,
         UnityCommandBindChannelsBind,
+        UnityEnumNameExpression,
 
         UnityShaderKeyword,
         UnityPropertiesKeyword,

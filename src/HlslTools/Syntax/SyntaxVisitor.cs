@@ -876,6 +876,11 @@ namespace HlslTools.Syntax
         {
             DefaultVisit(node);
         }
+
+        public virtual void VisitUnityEnumNameExpression(UnityEnumNameExpressionSyntax node)
+        {
+            DefaultVisit(node);
+        }
     }
 
     public abstract class SyntaxVisitor<T>
@@ -1753,6 +1758,11 @@ namespace HlslTools.Syntax
         }
 
         public virtual T VisitUnityCommandBindChannelsBind(UnityCommandBindChannelsBindSyntax node)
+        {
+            return DefaultVisit(node);
+        }
+
+        public virtual T VisitUnityEnumNameExpression(UnityEnumNameExpressionSyntax node)
         {
             return DefaultVisit(node);
         }

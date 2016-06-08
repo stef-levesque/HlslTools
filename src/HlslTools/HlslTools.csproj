@@ -363,6 +363,7 @@
     <Compile Include="Syntax\UnityCommandConstantColorValueSyntax.cs" />
     <Compile Include="Syntax\UnityCommandDependencySyntax.cs" />
     <Compile Include="Syntax\UnityGrabPassSyntax.cs" />
+    <Compile Include="Syntax\UnityEnumNameExpressionSyntax.cs" />
     <Compile Include="Syntax\UnityPassSyntax.cs" />
     <Compile Include="Syntax\UnityShaderPropertiesSyntax.cs" />
     <Compile Include="Syntax\UnityShaderPropertyAttributeSyntax.cs" />

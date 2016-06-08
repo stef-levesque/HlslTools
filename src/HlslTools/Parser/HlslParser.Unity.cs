@@ -114,7 +114,7 @@ namespace HlslTools.Parser
         {
             var openBracketToken = Match(SyntaxKind.OpenBracketToken);
             var name = Match(SyntaxKind.IdentifierToken);
-            var arguments = ParseAttributeArgumentList();
+            var arguments = ParseUnityShaderPropertyAttributeArgumentList();
             var closeBracketToken = Match(SyntaxKind.CloseBracketToken);
 
             return new UnityShaderPropertyAttributeSyntax(
@@ -122,6 +122,64 @@ namespace HlslTools.Parser
                 name,
                 arguments,
                 closeBracketToken);
+        }
+
+        private AttributeArgumentListSyntax ParseUnityShaderPropertyAttributeArgumentList()
+        {
+            AttributeArgumentListSyntax result = null;
+
+            if (Current.Kind == SyntaxKind.OpenParenToken)
+            {
+                CommaIsSeparatorStack.Push(true);
+
+                try
+                {
+                    var openParen = Match(SyntaxKind.OpenParenToken);
+
+                    var argumentsList = new List<SyntaxNode>();
+                    argumentsList.Add(ParseUnityExpression());
+
+                    while (Current.Kind == SyntaxKind.CommaToken)
+                    {
+                        argumentsList.Add(Match(SyntaxKind.CommaToken));
+                        argumentsList.Add(ParseUnityExpression());
+                    }
+
+                    var closeParen = Match(SyntaxKind.CloseParenToken);
+
+                    result = new AttributeArgumentListSyntax(
+                        openParen,
+                        new SeparatedSyntaxList<LiteralExpressionSyntax>(argumentsList),
+                        closeParen);
+                }
+                finally
+                {
+                    CommaIsSeparatorStack.Pop();
+                }
+            }
+
+            return result;
+        }
+
+        private ExpressionSyntax ParseUnityExpression()
+        {
+            switch (Current.Kind)
+            {
+                case SyntaxKind.IdentifierToken:
+                    return ParseUnityEnumNameExpression();
+
+                default:
+                    return ParseExpression();
+            }
+        }
+
+        private ExpressionSyntax ParseUnityEnumNameExpression()
+        {
+            var nameTokens = new List<SyntaxToken>();
+            while (Current.Kind != SyntaxKind.CommaToken && Current.Kind != SyntaxKind.CloseParenToken)
+                nameTokens.Add(NextToken());
+
+            return new UnityEnumNameExpressionSyntax(nameTokens);
         }
 
         private UnityShaderPropertyTypeSyntax ParseUnityShaderPropertyType()
