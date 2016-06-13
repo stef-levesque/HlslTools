@@ -16,15 +16,6 @@ namespace HlslTools.Syntax
 
         public static SyntaxTree ParseUnitySyntaxTree(SourceText sourceText, ParserOptions options = null, IIncludeFileSystem fileSystem = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            // TODO
-
-            // Automatically included:
-            // - HLSLSupport.cginc
-            // - UnityShaderVariables.cginc
-
-            // Automatically included for surface shaders:
-            // - Lighting.cginc
-
             options = options ?? new ParserOptions();
             options.PreprocessorDefines.Add("INTERNAL_DATA"); // Used by surface shaders.
 

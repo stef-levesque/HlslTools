@@ -18,7 +18,9 @@ namespace HlslTools.Parser
         private readonly List<Diagnostic> _diagnostics = new List<Diagnostic>();
 
         private LexerMode _mode;
+
         public bool ExpandMacros { get; set; }
+        public bool ProcessIncludeDirectives { get; set; } = true;
 
         private List<SyntaxToken> _expandedMacroTokens;
         private int _expandedMacroIndex;
@@ -54,7 +56,7 @@ namespace HlslTools.Parser
         // - {main.hlsl, 101, 200}
         internal List<FileSegment> FileSegments { get; }
 
-        public HlslLexer(SourceText text, ParserOptions options = null, IIncludeFileSystem fileSystem = null)
+        public HlslLexer(SourceText text, ParserOptions options = null, IIncludeFileSystem fileSystem = null, int start = 0)
         {
             _fileSystem = fileSystem ?? new DummyFileSystem();
             _directives = DirectiveStack.Empty;
@@ -70,12 +72,19 @@ namespace HlslTools.Parser
 
             FileSegments = new List<FileSegment>();
             _includeStack = new Stack<IncludeContext>();
-            PushIncludeContext(text);
+            PushIncludeContext(text, start);
         }
 
-        public void ResetDirectiveStack()
+        // TODO: This won't be necessary once we're using separate lexer for CGPROGRAMs.
+        void ILexer.ResetDirectiveStack()
         {
             _directives = DirectiveStack.Empty;
+        }
+
+        // TODO: This shouldn't be here.
+        void ILexer.AddPreprocessorInclude(string path)
+        {
+            // TODO
         }
 
         public SourceText Text => _includeStack.Peek().Text;
@@ -286,7 +295,7 @@ namespace HlslTools.Parser
         {
             var directive = LexSingleDirective(true, true, afterNonWhitespaceOnLine, triviaList);
 
-            if (directive.Kind == SyntaxKind.IncludeDirectiveTrivia)
+            if (directive.Kind == SyntaxKind.IncludeDirectiveTrivia && ProcessIncludeDirectives)
             {
                 var includeDirective = (IncludeDirectiveTriviaSyntax)directive;
                 var includeFilename = includeDirective.TrimmedFilename;
@@ -324,14 +333,15 @@ namespace HlslTools.Parser
             return true;
         }
 
-        private void PushIncludeContext(SourceText text)
+        private void PushIncludeContext(SourceText text, int start = 0)
         {
             _currentFileSegmentAbsolutePosition = FileSegments.Sum(x => x.Length);
 
             var includeContext = new IncludeContext(text);
             _includeStack.Push(includeContext);
             _charReader = includeContext.CharReader;
-            FileSegments.Add(new FileSegment(text, 0));
+            _charReader.Reset(start);
+            FileSegments.Add(new FileSegment(text, _charReader.Position));
         }
 
         private void PopIncludeContext()

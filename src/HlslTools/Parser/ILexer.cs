@@ -9,5 +9,6 @@ namespace HlslTools.Parser
 
         SyntaxToken Lex(LexerMode mode);
         void ResetDirectiveStack();
+        void AddPreprocessorInclude(string path);
     }
 }

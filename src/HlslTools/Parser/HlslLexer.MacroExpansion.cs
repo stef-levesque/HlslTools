@@ -259,7 +259,11 @@ namespace HlslTools.Parser
                 return result;
             }
 
-            public void ResetDirectiveStack()
+            void ILexer.ResetDirectiveStack()
+            {
+            }
+
+            void ILexer.AddPreprocessorInclude(string path)
             {
             }
         }
@@ -301,7 +305,11 @@ namespace HlslTools.Parser
                 return SyntaxFactory.ParseToken("\0");
             }
 
-            public void ResetDirectiveStack()
+            void ILexer.ResetDirectiveStack()
+            {
+            }
+
+            void ILexer.AddPreprocessorInclude(string path)
             {
             }
         }

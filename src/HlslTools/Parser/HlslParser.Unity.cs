@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using HlslTools.Syntax;
 
 namespace HlslTools.Parser
@@ -524,6 +525,36 @@ namespace HlslTools.Parser
 
             List<SyntaxNode> declarations;
             SyntaxToken endCgKeyword;
+
+            // 1st pass, looking for #pragma directives, so we know what to #include at the start.
+            var lexer = new HlslLexer(_lexer.Text, start: cgProgramKeyword.Span.End);
+            lexer.ProcessIncludeDirectives = false;
+
+            var tokens = new List<SyntaxToken>();
+            SyntaxToken token;
+            do
+            {
+                tokens.Add(token = lexer.Lex(LexerMode.UnityCgProgramSyntax));
+            } while (token.Kind != SyntaxKind.UnityEndCgKeyword && token.Kind != SyntaxKind.EndOfFileToken);
+
+            var pragmaDirectives = new List<PragmaDirectiveTriviaSyntax>();
+            foreach (var eachToken in tokens)
+            {
+                pragmaDirectives.AddRange(eachToken.LeadingTrivia.OfType<PragmaDirectiveTriviaSyntax>());
+                pragmaDirectives.AddRange(eachToken.TrailingTrivia.OfType<PragmaDirectiveTriviaSyntax>());
+            }
+
+            // Automatically included:
+            _lexer.AddPreprocessorInclude("HLSLSupport.cginc");
+            _lexer.AddPreprocessorInclude("UnityShaderVariables.cginc");
+
+            var isSurfaceShader = pragmaDirectives.Any(x => x.TokenString.Count > 1 && x.TokenString[0].Text == "surface");
+
+            if (isSurfaceShader)
+            {
+                // Automatically included for surface shaders:
+                _lexer.AddPreprocessorInclude("Lighting.cginc");
+            }
 
             ParseUnityCgProgramOrInclude(out declarations, out endCgKeyword);
 
